@@ -1,7 +1,13 @@
-//Aufgabe: (Nummer und Titel der Aufgabe)
-//Name: (Ihr Name)
-//Matrikel: (Ihre Matrikelnummer)
-//Datum: (Datum der letzten Bearbeitung)
+//Aufgabe: 0 - Eine winzige, interaktive Webseite
+//Name: Leonie Storz
+//Matrikel: 255077
+//Datum: 18.03.17
 //    
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+document.addEventListener('DOMContentLoaded', function () {
+    var text = "Hallo";
+    var begruessung = "Toll, dass du hier bist!";
+    var box = prompt("Bitte gebe hier deinen Namen ein");
+    document.body.innerHTML = text + " " + box + "!" + " " + begruessung;
+});
 //# sourceMappingURL=aufgabe0.js.map
