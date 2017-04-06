@@ -3,10 +3,9 @@
 //Matrikel: 255077
 //Datum: 02.04.17
 //    
-//Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+//Hiermit versichere ich, dass ich diesen Code selbst, sowie in Zusammenarbeit mit Lingnau, Jonathan erstellt habe. Er wurde nicht kopiert und auch nicht diktiert.
 document.addEventListener('DOMContentLoaded', function () {
     var n = 64;
-    var x = 1;
     var c;
     var f;
     var zeile = 0;

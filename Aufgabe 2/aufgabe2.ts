@@ -4,14 +4,13 @@
 //Matrikel: 255077
 //Datum: 02.04.17
 //    
-//Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+//Hiermit versichere ich, dass ich diesen Code selbst, sowie in Zusammenarbeit mit Lingnau, Jonathan erstellt habe. Er wurde nicht kopiert und auch nicht diktiert.
 
 
 document.addEventListener('DOMContentLoaded', function () {
  
 
 let n :number = 64;
-let x :number = 1;
 let c :string;
 let f:string;
 let zeile:number = 0;
