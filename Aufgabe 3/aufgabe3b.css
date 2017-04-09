@@ -1,0 +1,66 @@
+
+/*Aufgabe: 3b - Mau Mau
+Name: Leonie Storz
+Matrikel: 255077
+Datum: 09.04.17
+	
+Hiermit versichere ich, 
+dass ich diesen Code selbst geschrieben habe. 
+Er wurde nicht kopiert und auch nicht diktiert.*/
+
+
+
+body {
+		background-image:url(hintergrund.jpg);} 
+
+
+#nachziehstapel {
+					position:relative;
+					width: 189px;
+					height:265px;
+					margin-top: 10px;
+					margin-left: 375px;
+					border: 0.5px solid black;
+					border-radius: 10px;
+					text-align:center;
+					float:left;
+					z-index:2;
+					background-image:url(spielkarte.jpeg);
+					cursor: pointer;
+}
+
+#ablagestapel {
+				position:relative;
+				width: 189px;
+				height:265px;
+				border: 2px dashed black;
+				border-radius: 10px;
+				margin-top:10px;
+				margin-left:100px;
+				float:left;
+				z-index:2;
+}
+
+#handkarten {
+				width:1100px;
+				height:265px;
+				border: none;
+				margin-top:30px;
+				margin-left:125px;
+				float:left;
+				z-index:2;
+				cursor: pointer;
+				
+}
+
+div {
+	 position:relative;
+	 border:1.5px solid black;
+	 border-radius: 10px;
+	 margin-left: 10px;
+	 width: 189px;
+	 height:265px;
+	 float: left;
+	 text-align: center;
+	 font-size: 20pt;
+}
