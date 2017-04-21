@@ -11,6 +11,7 @@ var aufgabe4_Canvas;
     document.addEventListener('DOMContentLoaded', function () {
         var canvas = document.getElementsByTagName("canvas")[0];
         var crc2 = canvas.getContext("2d");
+        var i;
         drawWiese(0, 0, "#90EE90", "#90EE90");
         drawHimmel(0, 0, "##48d1CC", "#48d1CC");
         drawBerg1(500, 400, "#a9a9a9", "#a9a9a9");
@@ -25,6 +26,24 @@ var aufgabe4_Canvas;
         drawMohnblume(550, 565);
         drawSonnenblume(760, 465);
         drawTulpe(900, 600);
+        drawVogel(1042, 315, "#000000", "#000000");
+        for (var i = 0; i < 80; i++) {
+            var randomFlower = Math.floor((Math.random() * 3));
+            var width = Math.floor((Math.random() * 1100) + 80);
+            var height = Math.floor((Math.random() * 255) + 380);
+            switch (randomFlower) {
+                case 0:
+                    drawSonnenblume(width, height);
+                    break;
+                case 1:
+                    drawMohnblume(width, height);
+                    break;
+                case 2:
+                    drawTulpe(width, height);
+                    break;
+            }
+        }
+        ;
         function drawWiese(_x, _y, _strokeColor, _fillColor) {
             crc2.beginPath();
             crc2.fillStyle = _fillColor;
@@ -61,13 +80,7 @@ var aufgabe4_Canvas;
             crc2.stroke();
         }
         function drawBerg2(_x, _y) {
-            //        crc2.beginPath();
-            //        crc2.strokeStyle = "#000000";
-            //        crc2.moveTo(451, 199);
-            //        crc2.lineTo(_x + 260, _y - 160);
-            //        crc2.lineTo(_x + 160, _y - 160);
-            //        crc2.lineTo(_x + 199, _y - 60);
-            //        crc2.stroke();
+            //Berg
             crc2.beginPath();
             crc2.fillStyle = "#696969";
             crc2.strokeStyle = "#696969";
@@ -76,12 +89,27 @@ var aufgabe4_Canvas;
             crc2.lineTo(_x, _y);
             crc2.fill();
             crc2.stroke();
+            //Schnee
+            crc2.beginPath();
+            crc2.fillStyle = "#FFFFFF";
+            crc2.moveTo(451, 199);
+            crc2.lineTo(_x + 250, _y - 150);
+            crc2.arcTo(_x + 230, _y - 140, 60, 0, 2 * Math.PI);
+            crc2.arcTo(_x + 225, _y - 145, 60, 0, 2 * Math.PI);
+            crc2.arcTo(_x + 195, _y - 134, 80, 0, 2 * Math.PI);
+            crc2.arcTo(_x + 180, _y - 150, 60, 0, 2 * Math.PI);
+            crc2.arcTo(_x + 160, _y - 140, 80, 0, 2 * Math.PI);
+            crc2.lineTo(_x + 150, _y - 150);
+            crc2.lineTo(451, 199);
+            crc2.fill();
             crc2.closePath();
         }
         function drawSonne(_x, _y, _strokeColor, _fillColor) {
+            //Sonne
             crc2.beginPath();
             crc2.fillStyle = _fillColor;
             crc2.strokeStyle = _strokeColor;
+            //Sonnenstrahlen
             crc2.arc(_x, _y, 60, 0, 2 * Math.PI);
             crc2.moveTo(560, 120);
             crc2.lineTo(800, 150);
@@ -105,15 +133,17 @@ var aufgabe4_Canvas;
             crc2.lineTo(590, 230);
             crc2.moveTo(560, 120);
             crc2.lineTo(700, 200);
-            crc2.closePath();
             crc2.fill();
             crc2.stroke();
         }
+        crc2.closePath();
         function drawBaum(_x, _y) {
+            //Baumstamm
             crc2.beginPath();
             crc2.fillStyle = "#CD853F";
             crc2.fillRect(1080, 335, 35, 110);
             crc2.fillRect(1050, 350, 50, 6);
+            //Baumkrone
             crc2.beginPath();
             crc2.fillStyle = "#6B8e23";
             crc2.arc(1110, 255, 35, 0, 2 * Math.PI);
@@ -155,10 +185,12 @@ var aufgabe4_Canvas;
             crc2.closePath();
         }
         function drawMohnblume(_x, _y) {
+            //Stiel
             crc2.beginPath();
             crc2.fillStyle = "#556B2F";
             crc2.strokeStyle = "#556B2F";
             crc2.fillRect(_x - 10, _y + 5, 4, 55);
+            //Bl�tter 
             crc2.moveTo(_x - 10, _y + 30);
             crc2.lineTo(_x + 5, _y + 15);
             crc2.moveTo(_x - 10, _y + 40);
@@ -167,6 +199,7 @@ var aufgabe4_Canvas;
             crc2.lineTo(_x + 2, _y + 40);
             crc2.fill();
             crc2.stroke();
+            //Blueten
             crc2.beginPath();
             crc2.fillStyle = "#8B0000";
             crc2.moveTo(_x, _y);
@@ -175,6 +208,7 @@ var aufgabe4_Canvas;
             crc2.arc(_x - 10, _y + 2, 10, 0, 2 * Math.PI);
             crc2.arc(_x - 20, _y - 10, 10, 0, 2 * Math.PI);
             crc2.fill();
+            //Bluetenmitte
             crc2.beginPath();
             crc2.fillStyle = "#000000";
             crc2.arc(_x - 8, _y - 7, 5, 0, 2 * Math.PI);
@@ -182,15 +216,18 @@ var aufgabe4_Canvas;
             crc2.closePath();
         }
         function drawSonnenblume(_x, _y) {
+            //Stiel
             crc2.beginPath();
             crc2.fillStyle = "#556B2F";
             crc2.strokeStyle = "#556B2F";
             crc2.fillRect(_x + 68, _y + 30, 3, 55);
+            //Bl�tter
             crc2.lineTo(_x + 70, _y + 50);
             crc2.lineTo(_x + 60, _y + 50);
             crc2.lineTo(_x + 70, _y + 70);
             crc2.fill();
             crc2.stroke();
+            //Blueten
             crc2.beginPath();
             crc2.fillStyle = "#FFD700";
             crc2.moveTo(_x + 62, _y + 24);
@@ -221,6 +258,7 @@ var aufgabe4_Canvas;
             crc2.lineTo(_x + 58, _y + 8);
             crc2.lineTo(_x + 62, _y + 24);
             crc2.fill();
+            //Bluetenmitte
             crc2.beginPath();
             crc2.fillStyle = "#000000";
             crc2.arc(_x + 70, _y + 30, 5, 0, 2 * Math.PI);
@@ -231,6 +269,7 @@ var aufgabe4_Canvas;
             crc2.beginPath();
             crc2.fillStyle = "#556B2F";
             crc2.fillRect(_x + 9, _y + 28, 3, 40);
+            crc2.arc(_x + 8, _y + 30, 20, 0, 1.5);
             crc2.fill();
             crc2.beginPath();
             crc2.fillStyle = "#FF1493";
@@ -244,6 +283,24 @@ var aufgabe4_Canvas;
             crc2.lineTo(_x + 20, _y + 21);
             crc2.fill();
             crc2.closePath();
+        }
+        function drawVogel(_x, _y, _strokeColor, _fillColor) {
+            crc2.beginPath();
+            crc2.strokeStyle = _strokeColor;
+            crc2.fillStyle = _fillColor;
+            crc2.arc(_x + 22, _y + 20, 8, 0, 2 * Math.PI);
+            crc2.arc(_x + 32, _y + 16, 5, 0, 2 * Math.PI);
+            crc2.lineTo(_x + 42, _y + 18);
+            crc2.moveTo(_x + 24, _y + 28);
+            crc2.lineTo(_x + 24, _y + 35);
+            crc2.moveTo(_x + 20, _y + 28);
+            crc2.lineTo(_x + 20, _y + 35);
+            crc2.moveTo(_x + 14, _y + 18);
+            crc2.lineTo(_x + 10, _y + 14);
+            crc2.lineTo(_x + 10, _y + 17);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
         }
     });
 })(aufgabe4_Canvas || (aufgabe4_Canvas = {}));
