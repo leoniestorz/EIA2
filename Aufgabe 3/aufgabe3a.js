@@ -1,7 +1,7 @@
 //Aufgabe: 3a - Sissas Summe
 //Name: Leonie Storz
 //Matrikel: 255077
-//Datum: 09.04.17
+//Datum: 09.04.17, korrigiert am 26.04.17 
 //    
 //Hiermit versichere ich, 
 //dass ich diesen Code selbst geschrieben habe. 

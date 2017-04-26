@@ -1,7 +1,7 @@
 //Aufgabe: 3b - Mau Mau
 //Name: Leonie Storz
 //Matrikel: 255077
-//Datum: 09.04.17
+//Datum: 09.04.17, korrigiert am 26.04.17 
 //   
 //Hiermit versichere ich, 
 //dass ich diesen Code selbst geschrieben habe. 
@@ -17,7 +17,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var abgelegteKarten = [];
     var a = abgelegteKarten.length;
     // Karte vom Nachziehstapel ziehen und als Handkarte platzieren
-    document.getElementById("nachziehstapel").addEventListener("click", function () {
+    document.getElementById("nachziehstapel").addEventListener("click", karteZiehen);
+    function karteZiehen(_event) {
         if (k > 0 && h < 5) {
             var zufaelligeKarte = spielkarten[Math.floor(Math.random() * spielkarten.length)]; //w�hlt eine zuf�llige Karte aus dem Nachziehstapel
             var div = document.createElement("div"); //erstellt ein Div f�r diese Karte                                         
@@ -28,7 +29,8 @@ document.addEventListener('DOMContentLoaded', function () {
             handkarten[h] = zufaelligeKarte;
             document.getElementById("nachziehstapel").textContent = "Karten:" + "" + k; // Info �brige Karten
             // Handkarte dem Ablagestapel hinzuf�gen
-            div.addEventListener("click", function () {
+            div.addEventListener("click", karteAblegen);
+            function karteAblegen(_event) {
                 for (var i = 0; i < k; i++) {
                     if (this.textContent == handkarten[i]) {
                         abgelegteKarten.push(handkarten[i]); // Handkarte wird dem Ablagestapel hinzuf�gt
@@ -37,11 +39,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
                 a++; // Anzahl der Karten auf dem Ablagestapel wird um 1 erh�ht
                 h--; // Anzahl der Karten auf der Hand wird um 1 reduziert
-                document.getElementById("ablagestapel").textContent = "Karten: " + abgelegteKarten.length; // Info �ber abgelegte Karten
+                document.getElementById("ablagestapel").textContent = abgelegteKarten[abgelegteKarten.length - 1]; // Info �ber abgelegte Karten
                 this.parentNode.removeChild(this); //Handkarte wird aus dem Handkarten-Div ausgeblendet
-            });
+            }
         }
         ;
-    });
+    }
+    ;
 });
 //# sourceMappingURL=aufgabe3b.js.map
