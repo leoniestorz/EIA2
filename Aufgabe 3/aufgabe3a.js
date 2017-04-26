@@ -1,7 +1,7 @@
 //Aufgabe: 3a - Sissas Summe
 //Name: Leonie Storz
 //Matrikel: 255077
-//Datum: 09.04.17, korrigiert am 26.04.17 
+//Datum: 09.04.17
 //    
 //Hiermit versichere ich, 
 //dass ich diesen Code selbst geschrieben habe. 
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         });
     }
     function koernerSumme() {
-        var summe = 0; //Summe der Koerner zu Beginn immer 0 wenn kein Feld markiert ist (vgl. zur�cksetzen) 
+        var summe = 0; //Summe der Koerner zu Beginn immer 0 wenn kein Feld markiert ist (vgl. zuruecksetzen) 
         if (markierteDivs.length <= 0) {
             document.getElementById("box").style.display = "none";
         } // Abfrage-> keine Felder angeklickt, d.h.Box mit Summe erscheint nicht bzw. ohne Inhalt

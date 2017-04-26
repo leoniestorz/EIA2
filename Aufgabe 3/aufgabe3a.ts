@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     
     function koernerSumme() {                                                               
         
-        var summe = 0;                                                                           //Summe der Koerner zu Beginn immer 0 wenn kein Feld markiert ist (vgl. zurücksetzen) 
+        var summe = 0;                                                                           //Summe der Koerner zu Beginn immer 0 wenn kein Feld markiert ist (vgl. zuruecksetzen) 
         
         if (markierteDivs.length <= 0) {
             

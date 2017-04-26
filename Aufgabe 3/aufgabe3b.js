@@ -20,26 +20,26 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("nachziehstapel").addEventListener("click", karteZiehen);
     function karteZiehen(_event) {
         if (k > 0 && h < 5) {
-            var zufaelligeKarte = spielkarten[Math.floor(Math.random() * spielkarten.length)]; //w�hlt eine zuf�llige Karte aus dem Nachziehstapel
+            var zufaelligeKarte = spielkarten[Math.floor(Math.random() * spielkarten.length)]; //waehlt eine zufaellige Karte aus dem Nachziehstapel
             var div = document.createElement("div"); //erstellt ein Div f�r diese Karte                                         
             document.getElementById("handkarten").appendChild(div); //platziert dieses Div innerhalb des Handkarten-Divs
-            div.innerText += zufaelligeKarte; //platziert innerhalb diese Divs die zuf�llig gew�hlte Karte
+            div.innerText += zufaelligeKarte; //platziert innerhalb diese Divs die zufaellig gewaehlte Karte
             k--; //Anzahl der Karten auf dem Nachziehstapel wird um 1 reduziert
-            h++; //Anzahl der Karten auf der Hand wird um 1 erh�ht
+            h++; //Anzahl der Karten auf der Hand wird um 1 erhoeht
             handkarten[h] = zufaelligeKarte;
-            document.getElementById("nachziehstapel").textContent = "Karten:" + "" + k; // Info �brige Karten
-            // Handkarte dem Ablagestapel hinzuf�gen
+            document.getElementById("nachziehstapel").textContent = "Karten:" + "" + k; // Info uebrige Karten
+            // Handkarte dem Ablagestapel hinzufuegen
             div.addEventListener("click", karteAblegen);
             function karteAblegen(_event) {
                 for (var i = 0; i < k; i++) {
                     if (this.textContent == handkarten[i]) {
-                        abgelegteKarten.push(handkarten[i]); // Handkarte wird dem Ablagestapel hinzuf�gt
+                        abgelegteKarten.push(handkarten[i]); // Handkarte wird dem Ablagestapel hinzufuegt
                         handkarten.splice(i, 1);
                     } // Handkarte wird aus dem Handkarten-Div entfernt
                 }
-                a++; // Anzahl der Karten auf dem Ablagestapel wird um 1 erh�ht
+                a++; // Anzahl der Karten auf dem Ablagestapel wird um 1 erhoeht
                 h--; // Anzahl der Karten auf der Hand wird um 1 reduziert
-                document.getElementById("ablagestapel").textContent = abgelegteKarten[abgelegteKarten.length - 1]; // Info �ber abgelegte Karten
+                document.getElementById("ablagestapel").textContent = abgelegteKarten[abgelegteKarten.length - 1]; // Info ueber abgelegte Karten
                 this.parentNode.removeChild(this); //Handkarte wird aus dem Handkarten-Div ausgeblendet
             }
         }

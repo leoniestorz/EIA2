@@ -29,21 +29,21 @@ document.addEventListener('DOMContentLoaded', function () {
     
         if (k > 0 && h < 5){                                                                             
          
-         let zufaelligeKarte = spielkarten[Math.floor(Math.random() * spielkarten.length)]                      //wählt eine zufällige Karte aus dem Nachziehstapel
+         let zufaelligeKarte = spielkarten[Math.floor(Math.random() * spielkarten.length)]                      //waehlt eine zufaellige Karte aus dem Nachziehstapel
 
          let div : HTMLDivElement = document.createElement("div")                                               //erstellt ein Div für diese Karte                                         
          document.getElementById("handkarten").appendChild(div);                                                //platziert dieses Div innerhalb des Handkarten-Divs
          
-         div.innerText += zufaelligeKarte;                                                                      //platziert innerhalb diese Divs die zufällig gewählte Karte
+         div.innerText += zufaelligeKarte;                                                                      //platziert innerhalb diese Divs die zufaellig gewaehlte Karte
          
          k--;                                                                                                   //Anzahl der Karten auf dem Nachziehstapel wird um 1 reduziert
-         h++;                                                                                                   //Anzahl der Karten auf der Hand wird um 1 erhöht
+         h++;                                                                                                   //Anzahl der Karten auf der Hand wird um 1 erhoeht
         
          handkarten[h] = zufaelligeKarte;
         
-         document.getElementById("nachziehstapel").textContent = "Karten:" + "" + k;                            // Info übrige Karten
+         document.getElementById("nachziehstapel").textContent = "Karten:" + "" + k;                            // Info uebrige Karten
          
-// Handkarte dem Ablagestapel hinzufügen
+// Handkarte dem Ablagestapel hinzufuegen
              
         div.addEventListener("click", karteAblegen) 
                    
@@ -51,14 +51,14 @@ document.addEventListener('DOMContentLoaded', function () {
             
                     for (let i = 0; i < k; i++) {
                                 if (this.textContent == handkarten[i]) {
-                                       abgelegteKarten.push(handkarten[i]);                                                 // Handkarte wird dem Ablagestapel hinzufügt
+                                       abgelegteKarten.push(handkarten[i]);                                                 // Handkarte wird dem Ablagestapel hinzufuegt
                                        handkarten.splice(i, 1); }                                                           // Handkarte wird aus dem Handkarten-Div entfernt
                                    
                               }  
-                        a++;                                                                                                // Anzahl der Karten auf dem Ablagestapel wird um 1 erhöht
+                        a++;                                                                                                // Anzahl der Karten auf dem Ablagestapel wird um 1 erhoeht
                         h--;                                                                                                // Anzahl der Karten auf der Hand wird um 1 reduziert
                                                                                                                             
-                        document.getElementById("ablagestapel").textContent =   abgelegteKarten[abgelegteKarten.length - 1]; // Info über abgelegte Karten
+                        document.getElementById("ablagestapel").textContent =   abgelegteKarten[abgelegteKarten.length - 1]; // Info ueber abgelegte Karten
                         this.parentNode.removeChild(this);                                                                  //Handkarte wird aus dem Handkarten-Div ausgeblendet
                       } 
                       
