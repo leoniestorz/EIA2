@@ -7,59 +7,62 @@
 //dass ich diesen Code selbst geschrieben habe. 
 //Er wurde nicht kopiert und auch nicht diktiert.
 
-namespace aufgabe4_Canvas {
+namespace Canvas {
     
-    document.addEventListener('DOMContentLoaded', function () {
+    window.addEventListener("load", init);
+    let crc2: CanvasRenderingContext2D;
+
+    function init(_event: Event): void {
     
-        let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0]; 
-        let crc2: CanvasRenderingContext2D = canvas.getContext("2d");
-        var i:number;
-   
-    drawWiese(0, 0, "#90EE90", "#90EE90");     
-    drawHimmel(0, 0, "##48d1CC", "#48d1CC");
-  
-    drawBergGross(500, 400, "#a9a9a9");
-    drawBergKlein(250, 400);   
-  
-    drawSonne(560, 120, "#FFFF00", "#FFFF00");
-    
-    drawBaum(750, 300);
-    drawBuschGross(860, 380, "#556B2F");
-    drawBuschKlein(90, 380, "#556B2F");
-    drawBuschGross(- 20, 440, "#556B2F");
-   
-    drawWolke(160, 120, "#FFFFFF");
-    drawWolke(750, 180, "#FFFFFF");
-   
-    drawMohnblume(550, 565);
-    drawSonnenblume(760, 465);
-    drawTulpe(900, 600);
-        
-    drawVogel(1042, 315, "#000000", "#000000");
-        
-        
-    for (var i = 0; i < 80; i++) {
-        
-        var randomFlower:number = Math.floor((Math.random() * 3));
-        var height:number = Math.floor((Math.random() * 255) + 380);
-        var width:number  = Math.floor((Math.random() * 1100) + 80); 
+       let canvas: HTMLCanvasElement;
+       canvas = document.getElementsByTagName("canvas")[0];
+       crc2 = canvas.getContext("2d");
        
         
-    switch (randomFlower) {
         
-                case 0:
-                    drawSonnenblume(width, height);
-                    break;
-                case 1:
-                    drawMohnblume(width, height);
-                    break;
-                case 2:
-                    drawTulpe(width, height);
-                    break;
-   } };
+       drawWiese(0, 0, "#90EE90", "#90EE90");     
+       drawHimmel(0, 0, "##48d1CC", "#48d1CC");
 
+       drawBergGross(500, 400, "#a9a9a9");
+       drawBergKlein(250, 400); 
+       drawSonne(560, 120, "#FFFF00", "#FFFF00");
+       drawBaum(750, 300);
+       drawBuschGross(860, 380, "#556B2F");
+       drawBuschKlein(90, 380, "#556B2F");
+       drawBuschGross(- 20, 440, "#556B2F");       
+       drawWolke(160, 120, "#FFFFFF");
+       drawWolke(750, 180, "#FFFFFF");
+               
+       drawMohnblume(550, 565);
+       drawSonnenblume(760, 465);
+       drawTulpe(900, 600);
+                    
+       drawVogel(1042, 315, "#000000", "#000000");
+        
+        
+       for (var i = 0; i < 80; i++) {
+                    
+                    var randomFlower:number = Math.floor((Math.random() * 3));
+                    var height:number = Math.floor((Math.random() * 255) + 380);
+                    var width:number  = Math.floor((Math.random() * 1100) + 80); 
+                   
+        
+       switch (randomFlower) {
+                        
+                                case 0:
+                                    drawSonnenblume(width, height);
+                                    break;
+                                case 1:
+                                    drawMohnblume(width, height);
+                                    break;
+                                case 2:
+                                    drawTulpe(width, height);
+                                    break;} 
+           }
+    }
 
-    function drawWiese (_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
+     
+     function drawWiese (_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
          
         crc2.beginPath();
         crc2.strokeStyle = _strokeColor;
@@ -88,9 +91,11 @@ namespace aufgabe4_Canvas {
         crc2.closePath();
         crc2.stroke();
         crc2.fill();}
-        
-        
-     function drawBergGross(_x: number, _y: number, _fillColor: string): void {
+    
+    
+    
+    
+    function drawBergGross(_x: number, _y: number, _fillColor: string): void {
        
        
         crc2.beginPath();
@@ -136,9 +141,12 @@ namespace aufgabe4_Canvas {
        
        crc2.closePath();
        crc2.fill();}
-        
-        
-      function drawSonne(_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
+    
+    
+    
+    
+    
+    function drawSonne(_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
        
         //Sonne
           
@@ -176,8 +184,8 @@ namespace aufgabe4_Canvas {
         crc2.closePath();
         crc2.stroke();
         crc2.fill();}
-        
-     function drawBaum(_x: number, _y: number): void {
+    
+    function drawBaum(_x: number, _y: number): void {
          
         //Baumstamm
          
@@ -417,10 +425,4 @@ namespace aufgabe4_Canvas {
         crc2.closePath();
         crc2.fill();
         crc2.stroke();}
-         
-         
-       
-        
-});
-   
- }   
+}
