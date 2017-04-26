@@ -12,22 +12,13 @@ Er wurde nicht kopiert und auch nicht diktiert.*/
 
 
 
-#box {
-		display: none;
-		position: absolute;
-		font-style:'Josefin Sans';
-		width: 300px;
-		height:100px;
-		text-align: center;
-		background-color: #CD5C5C;
-		padding-top: 25px;
-		border: 1px solid black;
-		border-radius: 10px;
-		z-index: 2;
+body {
+	  font-style:'Josefin Sans';
 }
-
+ 
+ 
 div:nth-child(8n+1) {
-					 clear: left;
+					  clear: left;
 }
 
 
