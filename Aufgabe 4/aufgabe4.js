@@ -310,4 +310,4 @@ var Canvas;
         crc2.stroke();
     }
 })(Canvas || (Canvas = {}));
-//# sourceMappingURL=a4.js.map
+//# sourceMappingURL=aufgabe4.js.map
