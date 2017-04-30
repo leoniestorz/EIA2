@@ -466,7 +466,7 @@ document.getElementById("kontaktButton").addEventListener ("click", contact);
     
             if (frage==true){
         
-                        alert("Ihre Nachricht wurde erfolgreich versendet!");}
+                        alert("Ihre Nachricht wurde erfolgreich versendet! [Diese Funktion ist leider nicht aktiv.]" );}
         
             else {
                         alert("Der Sendevorgang wurde abgebrochen.");}

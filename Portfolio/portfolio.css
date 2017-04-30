@@ -149,11 +149,11 @@ aside {display:none;}
 #asidenavigation {
 				  background-color:black;
 				  color:white;
-				  font-size:12pt;
+				  font-size:10pt;
 				  text-align:center;
 				  width:28%;
 				  height:16em;
-				  line-height:5em;
+				  line-height:4em;
 				  padding-top:4em;
 				  z-index:400;}
 				  
@@ -171,7 +171,16 @@ aside {display:none;}
 			   z-index:400;}
 			   		   
 
-		    
+#button0 {
+		   background-color:black;
+		   font-size:14pt;
+		   padding-left:-10%;
+		   width:190%;
+		   color:white;
+		   border:none;
+		   line-height:1.5em;
+		   z-index:400;}	
+		   	    
 #button1, #button4 {
 				    background-color:black;
 				    font-size:12pt;
@@ -188,7 +197,10 @@ aside {display:none;}
 					 border:none;
 					 line-height:1.5em;
 					 z-index:400;}
-
+#button0:hover {
+				cursor:pointer;
+				border-bottom:1px solid white;}
+				
 #button1:hover {
 				cursor:pointer;
 				border-bottom:1px solid white;}
@@ -205,6 +217,8 @@ aside {display:none;}
 #button4:hover {
 				cursor:pointer;
 				border-bottom:1px solid white;}
+				
+
 				
 #buttonpfeile { 
 				width:50px;
@@ -247,7 +261,13 @@ aside {display:none;}
 	 margin-top:25em;
 	 padding-left:2%;
 	 border-bottom:2px solid black;
-	 width:100%;}		
+	 width:100%;}	
+	 
+#h4 {
+	 margin-top:30em;
+	 padding-left:2%;
+	 border-bottom:2px solid black;
+	 width:100%;}
 				
 .projekte {
 		    background-color:black;
@@ -296,12 +316,13 @@ aside {display:none;}
 			 				 			
 #awareness {
 			 height:25em;
-			 width:40em;
-			 z-index:200;}
+			 width:70em;
+			 z-index:200;
+			 transform: rotate(270deg);}
 			 					 
 #mopsgedicht {
 			  height:60em;
-			  width:44em;
+			  width:80em;
 			  margin-left:-9em;
 			  z-index:202;}			 
 			 					
@@ -701,7 +722,7 @@ Bildschirmbreite Tablet Landscape <=1024px
 
 #menue {margin-left:-1em;}
 
-#button1, #button2, #button3 {
+#button0, #button1, #button2, #button3 {
 								font-size:14pt;
 								padding-left:20%;
 								text-align:left;}
@@ -886,6 +907,8 @@ Bildschirmbreite Desktop >1024px
 #h2 {margin-top:75em;}
 
 #h3 {margin-top:30em;}
+
+#h4 {margin-top:30em;}
 				
 #hochschulball {
 				height:46em;
@@ -918,8 +941,8 @@ Bildschirmbreite Desktop >1024px
 			  height:60em;}	
 			  		
 #shoppingsite {
-			  height:80em;
-			  width:32.95em;}
+			  height:35em;
+			  width:65em;}
 			  
 		  
 /***************Body*********************/
@@ -927,6 +950,9 @@ Bildschirmbreite Desktop >1024px
 
 /*ÜberMich*/
 
+#balken2 {
+	      margin-top:75em;
+}
 #hintergrund2 {margin-left:-15em;}
 
 #kreativitaet {
@@ -1028,7 +1054,11 @@ Bildschirmbreite Desktop >1024px
 			   width:40px;
 			   margin-top: 2em;
 			   margin-left:0%;}
-			   
+#instagram{ 
+			   height:40px;
+			   width:40px;
+			   margin-top: 2em;
+			   margin-left:0.5%;}			   
 
 
 #hfu {

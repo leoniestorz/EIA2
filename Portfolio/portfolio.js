@@ -429,7 +429,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function contact() {
         var frage = confirm("Nachricht abschicken?");
         if (frage == true) {
-            alert("Ihre Nachricht wurde erfolgreich versendet!");
+            alert("Ihre Nachricht wurde erfolgreich versendet! [Diese Funktion ist leider nicht aktiv.]");
         }
         else {
             alert("Der Sendevorgang wurde abgebrochen.");
