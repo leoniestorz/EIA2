@@ -1,16 +1,17 @@
 //Aufgabe: 5 - Bienenanimation
 //Name: Leonie Storz
 //Matrikel: 255077
-//Datum: 27.04.17
+//Datum: 30.04.17
 //    
-//Hiermit versichere ich, 
-//dass ich diesen Code selbst geschrieben habe. 
+//Hiermit versichere ich, dass ich diesen Code selbst, 
+//sowie in Zusammenarbeit mit Lingnau, Jonathan erstellt habe. 
 //Er wurde nicht kopiert und auch nicht diktiert.
 
 namespace Canvas {
     
     window.addEventListener("load", init);
     let crc2: CanvasRenderingContext2D;
+    let canvas: HTMLCanvasElement;
     
     let x: number[] = [];
     let y: number[] = [];
@@ -21,7 +22,7 @@ namespace Canvas {
     
     function init(_event: Event): void {
     
-       let canvas: HTMLCanvasElement;
+     
        canvas = document.getElementsByTagName("canvas")[0];
        crc2 = canvas.getContext("2d");
        
@@ -45,13 +46,14 @@ namespace Canvas {
        drawTulpe(900, 600);
                     
        drawVogel(1042, 315, "#000000", "#000000");
+       drawBienenkorb(1200, 440);
         
         
        for (var i = 0; i < 80; i++) {
                     
                     var randomFlower:number = Math.floor((Math.random() * 3));
                     var height:number = Math.floor((Math.random() * 255) + 380);
-                    var width:number  = Math.floor((Math.random() * 1100) + 80); 
+                    var width:number  = Math.floor((Math.random() * 1100) - 10); 
                    
         
        switch (randomFlower) {
@@ -73,8 +75,20 @@ namespace Canvas {
         
         
          for (let i: number = 0; i < n; i++) {
-            x[i] = 1200;
-            y[i] = 450 ;}
+            x[i] = 1190;
+            y[i] = 475 ;}
+        
+          if (x[i] < 0) {
+                x[i] = canvas.width; }
+            
+            if (y[i] < 0) {
+                y[i] = canvas.height; }
+            
+            if (x[i] > canvas.width) {
+                x[i] = 0; }
+            
+            if (y[i] > canvas.height) { 
+                y[i] = 0; }
 
             window.setTimeout(animate, 20);
     }
@@ -82,27 +96,99 @@ namespace Canvas {
      function animate(): void {
         console.log("Animate called");
 
-//        crc2.fillStyle = "#ff0000";
-//        crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
+
          
       crc2.putImageData(imageData,0,0);
          
         for (let i: number = 0; i < n; i++) {
             x[i] += Math.random() * 6 - 4;
             y[i] += Math.random() * 6 - 3;
-            drawObject(x[i], y[i]);
+            drawBiene(x[i], y[i]);
         }
 
         window.setTimeout(animate, 20);
+         
+         
+        canvas.addEventListener("click", mehrBienen)
+        canvas.addEventListener("touch", mehrBienen)
     }
 
-    function drawObject(_x: number, _y: number): void {
+   
+     function mehrBienen (_event: Event) : void {
+      x.push(1190);
+      y.push(475);
+      n++;
+
+    
+    }
+
+    
+    
+    function drawBiene(_x: number, _y: number): void {
+        
+        crc2.beginPath();
+        crc2.strokeStyle = "#000000";
         crc2.fillStyle = "#000000";
-        crc2.fillRect(_x, _y, 10, 10);
+        crc2.arc(_x,_y, 7, 0, 2 * Math.PI);
+        crc2.arc(_x - 8 ,_y - 3, 4, 0, 2 * Math.PI);
+        crc2.moveTo(_x, _y);
+        crc2.lineTo(_x + 13, _y + 3);
+        crc2.stroke();
+        crc2.fill();
+        
+        crc2.beginPath();
+        crc2.fillStyle = " #FFFF00";
+        crc2.rect(_x - 6, _y - 4, 2.5, 9);
+        crc2.rect(_x - 2, _y - 6, 2.5, 13);
+        crc2.rect(_x + 2, _y - 4, 2.5, 10);
+        
+             
+        crc2.stroke;
+        crc2.fill();
+        
+        
+        crc2.beginPath();
+        crc2.fillStyle = "#aFEEEE";
+        crc2.arc(_x - 4, _y - 15, 10, 0, 1.5);
+        crc2.moveTo(_x,_y);
+        crc2.arc(_x - 1, _y - 10, 10, 0, 1.5);
+
+
+        crc2.closePath();
+        crc2.fill();
+        
 }
     
     
-    
+     function drawBienenkorb  (_x: number, _y: number): void {
+         
+        crc2.beginPath();
+        crc2.fillStyle = "#A0522D";
+         
+        crc2.arc(_x,_y, 26, 0, 2 * Math.PI);
+        crc2.moveTo(_x,_y - 10)
+        crc2.arc(_x + 23,_y, 10, 0, 2 * Math.PI);
+        crc2.moveTo(_x,_y)
+        crc2.arc(_x + 23,_y + 20, 10, 0, 2 * Math.PI);
+        crc2.moveTo(_x,_y  + 4)
+        crc2.arc(_x + 23,_y + 41, 10, 0, 2 * Math.PI);
+        crc2.arc(_x - 25,_y + 41, 10, 0, 2 * Math.PI);
+        crc2.arc(_x - 25,_y + 20, 10, 0, 2 * Math.PI);
+        crc2.arc(_x - 25,_y, 10, 0, 2 * Math.PI);
+        crc2.fillRect(_x - 26, _y + 6, 51, 45);
+        
+        crc2.fill();
+         
+        crc2.beginPath();
+        crc2.fillStyle = "#000000";
+         
+        crc2.arc(_x - 5,_y + 33, 10, 0, 2 * Math.PI); 
+         
+        crc2.closePath();
+        crc2.fill();}
+         
+         
+         
     
      function drawWiese (_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
          
