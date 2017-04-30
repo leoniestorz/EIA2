@@ -73,59 +73,65 @@ namespace Canvas {
          imageData = crc2.getImageData(0, 0, 1270, 720);
         
         
-        
+//Erscheinen der 10 Bienen am Ausgang des Bienenstocks
+               
          for (let i: number = 0; i < n; i++) {
             x[i] = 1190;
             y[i] = 475 ;}
         
-          if (x[i] < 0) {
-                x[i] = canvas.width; }
-            
-            if (y[i] < 0) {
-                y[i] = canvas.height; }
-            
-            if (x[i] > canvas.width) {
-                x[i] = 0; }
-            
-            if (y[i] > canvas.height) { 
-                y[i] = 0; }
-
             window.setTimeout(animate, 20);
     }
 
      function animate(): void {
-        console.log("Animate called");
-
-
-         
+        
       crc2.putImageData(imageData,0,0);
+
+//Flugrichtung der Bienen
          
         for (let i: number = 0; i < n; i++) {
-            x[i] += Math.random() * 6 - 4;
+            x[i] += Math.random() * 5 - 4;
             y[i] += Math.random() * 6 - 3;
+ 
+//Erscheinen am gegenueberliegenden Rand nach Verlassen des Canvas
+            
+             if (x[i] < 0) {
+                 x[i] = canvas.width; }
+           
+             if (x[i] > canvas.width) {
+                 x[i] = 0; }
+            
+            if (y[i] < 0) {
+                 y[i] = canvas.height; }
+             
+             if (y[i] > canvas.height) { 
+                 y[i] = 0; }
+            
+            
             drawBiene(x[i], y[i]);
         }
 
         window.setTimeout(animate, 20);
          
-         
+//Bei KLick / Touch auf den Canvas erscheint eine neue Biene am Ausgang des Bienenstocks
+                  
         canvas.addEventListener("click", mehrBienen)
         canvas.addEventListener("touch", mehrBienen)
     }
 
-   
+
+//Funktionen
+           
      function mehrBienen (_event: Event) : void {
+      
       x.push(1190);
       y.push(475);
-      n++;
+      n++;}
 
     
-    }
-
-    
-    
-    function drawBiene(_x: number, _y: number): void {
+     function drawBiene(_x: number, _y: number): void {
         
+        //Koerper
+         
         crc2.beginPath();
         crc2.strokeStyle = "#000000";
         crc2.fillStyle = "#000000";
@@ -136,6 +142,8 @@ namespace Canvas {
         crc2.stroke();
         crc2.fill();
         
+        //Streifen
+         
         crc2.beginPath();
         crc2.fillStyle = " #FFFF00";
         crc2.rect(_x - 6, _y - 4, 2.5, 9);
@@ -146,7 +154,8 @@ namespace Canvas {
         crc2.stroke;
         crc2.fill();
         
-        
+        //Fluegel
+         
         crc2.beginPath();
         crc2.fillStyle = "#aFEEEE";
         crc2.arc(_x - 4, _y - 15, 10, 0, 1.5);
@@ -155,12 +164,12 @@ namespace Canvas {
 
 
         crc2.closePath();
-        crc2.fill();
-        
-}
+        crc2.fill();}
     
     
      function drawBienenkorb  (_x: number, _y: number): void {
+         
+        //Bienenkorb
          
         crc2.beginPath();
         crc2.fillStyle = "#A0522D";
@@ -181,6 +190,8 @@ namespace Canvas {
          
         crc2.beginPath();
         crc2.fillStyle = "#000000";
+         
+        //Oeffnung
          
         crc2.arc(_x - 5,_y + 33, 10, 0, 2 * Math.PI); 
          
