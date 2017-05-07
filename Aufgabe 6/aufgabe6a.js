@@ -12,7 +12,7 @@ var BienenInterface;
     var canvas;
     var imgData;
     var z = 10;
-    var bees = [];
+    var alleBienen = [];
     function init(_event) {
         canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
@@ -56,7 +56,7 @@ var BienenInterface;
             b.y = 475;
             b.color = "hsl(" + Math.random() * 60 + ", 100%, 50%)";
             b.stachel = Boolean(Math.round(Math.random()));
-            bees[i_1] = b;
+            alleBienen[i_1] = b;
         }
         window.setTimeout(animate, 10);
     }
@@ -64,7 +64,7 @@ var BienenInterface;
         crc2.putImageData(imgData, 0, 0);
         //Flugrichtung der Bienen 
         for (var i = 0; i < z; i++) {
-            var b = bees[i];
+            var b = alleBienen[i];
             b.x += Math.random() * 5 - 4;
             b.y += Math.random() * 6 - 3;
             //Erscheinen am gegenueberliegenden Rand nach Verlassen des Canvas            
@@ -81,11 +81,11 @@ var BienenInterface;
         }
         window.setTimeout(animate, 10);
         //Bei KLick / Touch auf den Canvas erscheint eine neue Biene am Ausgang des Bienenstocks       
-        canvas.addEventListener("touchend", addBee);
-        canvas.addEventListener("click", addBee);
+        canvas.addEventListener("touchend", mehrBienen);
+        canvas.addEventListener("click", mehrBienen);
     }
-    function addBee() {
-        bees.push({
+    function mehrBienen() {
+        alleBienen.push({
             x: 1190,
             y: 475,
             color: "hsl(" + Math.random() * 60 + ", 100%, 50%)",

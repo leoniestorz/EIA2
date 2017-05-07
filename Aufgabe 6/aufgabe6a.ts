@@ -11,7 +11,7 @@
 namespace BienenInterface {
     window.addEventListener("load", init);
     
-    interface Bee {
+    interface Biene {
         x: number;
         y: number;
         color: string;
@@ -24,7 +24,7 @@ namespace BienenInterface {
     let imgData: ImageData;
     
     let z: number = 10; 
-    let bees: Bee[] = [];
+    let alleBienen: Biene[] = [];
     
     
 
@@ -84,13 +84,14 @@ namespace BienenInterface {
         
         for (let i: number = 0; i < z; i++) {
             
-            let b: Bee = {x: 0, y: 0, color: "", stachel: true};
+            let b: Biene = {x: 0, y: 0, color: "", stachel: true};
             b.x = 1190; 
             b.y = 475;  
+            
             b.color = "hsl(" + Math.random() * 60 + ", 100%, 50%)";
             b.stachel = Boolean(Math.round(Math.random()));
             
-            bees[i] = b;
+            alleBienen[i] = b;
         }
 
         
@@ -108,7 +109,7 @@ namespace BienenInterface {
               
         for (let i: number = 0; i < z; i++) {
            
-            let b: Bee = bees[i];
+            let b: Biene = alleBienen[i];
             b.x += Math.random() * 5 - 4;
             b.y += Math.random() * 6 - 3;
             
@@ -129,13 +130,13 @@ namespace BienenInterface {
         
 //Bei KLick / Touch auf den Canvas erscheint eine neue Biene am Ausgang des Bienenstocks       
         
-        canvas.addEventListener("touchend", addBee); 
-        canvas.addEventListener("click", addBee);
+        canvas.addEventListener("touchend", mehrBienen); 
+        canvas.addEventListener("click", mehrBienen);
 
     }
 
-    function addBee(): void {
-        bees.push({
+    function mehrBienen(): void {
+        alleBienen.push({
             
             x: 1190, 
             y: 475, 
@@ -550,7 +551,7 @@ namespace BienenInterface {
         crc2.fill();}
 
 
-     function drawBiene(_b: Bee): void {
+     function drawBiene(_b: Biene): void {
         
         //Koerper
          
