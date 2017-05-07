@@ -4,16 +4,15 @@
 //Datum: 07.05.17
 //    
 //Hiermit versichere ich, dass ich diesen Code selbst erstellt habe. 
-//Er wurde nicht kopiert und auch nicht diktiert.
-var Canvas;
-(function (Canvas) {
+//Er wurde nicht kopiert und auch nicht diktiert. 
+var BienenInterface;
+(function (BienenInterface) {
     window.addEventListener("load", init);
     var crc2;
     var canvas;
-    var x = [];
-    var y = [];
-    var n = 10;
-    var imageData;
+    var imgData;
+    var z = 10;
+    var bees = [];
     function init(_event) {
         canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
@@ -49,97 +48,51 @@ var Canvas;
                     break;
             }
         }
-        imageData = crc2.getImageData(0, 0, 1270, 720);
+        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); //Speichern des Canvas als Bild
         //Erscheinen der 10 Bienen am Ausgang des Bienenstocks
-        for (var i_1 = 0; i_1 < n; i_1++) {
-            x[i_1] = 1190;
-            y[i_1] = 475;
+        for (var i_1 = 0; i_1 < z; i_1++) {
+            var b = { x: 0, y: 0, color: "", stachel: true };
+            b.x = 1190;
+            b.y = 475;
+            b.color = "hsl(" + Math.random() * 60 + ", 100%, 50%)";
+            b.stachel = Boolean(Math.round(Math.random()));
+            bees[i_1] = b;
         }
-        window.setTimeout(animate, 20);
+        window.setTimeout(animate, 10);
     }
     function animate() {
-        crc2.putImageData(imageData, 0, 0);
-        //Flugrichtung der Bienen
-        for (var i = 0; i < n; i++) {
-            x[i] += Math.random() * 5 - 4;
-            y[i] += Math.random() * 6 - 3;
-            //Erscheinen am gegenueberliegenden Rand nach Verlassen des Canvas
-            if (x[i] < 0) {
-                x[i] = canvas.width;
+        crc2.putImageData(imgData, 0, 0);
+        //Flugrichtung der Bienen 
+        for (var i = 0; i < z; i++) {
+            var b = bees[i];
+            b.x += Math.random() * 5 - 4;
+            b.y += Math.random() * 6 - 3;
+            //Erscheinen am gegenueberliegenden Rand nach Verlassen des Canvas            
+            if (b.x < 0) {
+                b.x = crc2.canvas.width;
             }
-            if (x[i] > canvas.width) {
-                x[i] = 0;
+            if (b.y < 0) {
+                b.y = crc2.canvas.height;
             }
-            if (y[i] < 0) {
-                y[i] = canvas.height;
+            if (b.y >= crc2.canvas.height) {
+                b.y = 0;
             }
-            if (y[i] > canvas.height) {
-                y[i] = 0;
-            }
-            drawBiene(x[i], y[i]);
+            drawBiene(b);
         }
-        window.setTimeout(animate, 20);
-        //Bei KLick / Touch auf den Canvas erscheint eine neue Biene am Ausgang des Bienenstocks
-        canvas.addEventListener("click", mehrBienen);
-        canvas.addEventListener("touch", mehrBienen);
+        window.setTimeout(animate, 10);
+        //Bei KLick / Touch auf den Canvas erscheint eine neue Biene am Ausgang des Bienenstocks       
+        canvas.addEventListener("touchend", addBee);
+        canvas.addEventListener("click", addBee);
+    }
+    function addBee() {
+        bees.push({
+            x: 1190,
+            y: 475,
+            color: "hsl(" + Math.random() * 60 + ", 100%, 50%)",
+            stachel: Boolean(Math.round(Math.random())) });
+        z++;
     }
     //Funktionen
-    function mehrBienen(_event) {
-        x.push(1190);
-        y.push(475);
-        n++;
-    }
-    function drawBiene(_x, _y) {
-        //Koerper
-        crc2.beginPath();
-        crc2.strokeStyle = "#000000";
-        crc2.fillStyle = "#000000";
-        crc2.arc(_x, _y, 7, 0, 2 * Math.PI);
-        crc2.arc(_x - 8, _y - 3, 4, 0, 2 * Math.PI);
-        crc2.moveTo(_x, _y);
-        crc2.lineTo(_x + 13, _y + 3);
-        crc2.stroke();
-        crc2.fill();
-        //Streifen
-        crc2.beginPath();
-        crc2.fillStyle = " #FFFF00";
-        crc2.rect(_x - 6, _y - 4, 2.5, 9);
-        crc2.rect(_x - 2, _y - 6, 2.5, 13);
-        crc2.rect(_x + 2, _y - 4, 2.5, 10);
-        crc2.stroke;
-        crc2.fill();
-        //Fluegel
-        crc2.beginPath();
-        crc2.fillStyle = "#aFEEEE";
-        crc2.arc(_x - 4, _y - 15, 10, 0, 1.5);
-        crc2.moveTo(_x, _y);
-        crc2.arc(_x - 1, _y - 10, 10, 0, 1.5);
-        crc2.closePath();
-        crc2.fill();
-    }
-    function drawBienenkorb(_x, _y) {
-        //Bienenkorb
-        crc2.beginPath();
-        crc2.fillStyle = "#A0522D";
-        crc2.arc(_x, _y, 26, 0, 2 * Math.PI);
-        crc2.moveTo(_x, _y - 10);
-        crc2.arc(_x + 23, _y, 10, 0, 2 * Math.PI);
-        crc2.moveTo(_x, _y);
-        crc2.arc(_x + 23, _y + 20, 10, 0, 2 * Math.PI);
-        crc2.moveTo(_x, _y + 4);
-        crc2.arc(_x + 23, _y + 41, 10, 0, 2 * Math.PI);
-        crc2.arc(_x - 25, _y + 41, 10, 0, 2 * Math.PI);
-        crc2.arc(_x - 25, _y + 20, 10, 0, 2 * Math.PI);
-        crc2.arc(_x - 25, _y, 10, 0, 2 * Math.PI);
-        crc2.fillRect(_x - 26, _y + 6, 51, 45);
-        crc2.fill();
-        crc2.beginPath();
-        crc2.fillStyle = "#000000";
-        //Oeffnung
-        crc2.arc(_x - 5, _y + 33, 10, 0, 2 * Math.PI);
-        crc2.closePath();
-        crc2.fill();
-    }
     function drawWiese(_x, _y, _strokeColor, _fillColor) {
         crc2.beginPath();
         crc2.strokeStyle = _strokeColor;
@@ -403,5 +356,59 @@ var Canvas;
         crc2.fill();
         crc2.stroke();
     }
-})(Canvas || (Canvas = {}));
-//# sourceMappingURL=aufgabe6a.js.map
+    function drawBienenkorb(_x, _y) {
+        //Bienenkorb
+        crc2.beginPath();
+        crc2.fillStyle = "#A0522D";
+        crc2.arc(_x, _y, 26, 0, 2 * Math.PI);
+        crc2.moveTo(_x, _y - 10);
+        crc2.arc(_x + 23, _y, 10, 0, 2 * Math.PI);
+        crc2.moveTo(_x, _y);
+        crc2.arc(_x + 23, _y + 20, 10, 0, 2 * Math.PI);
+        crc2.moveTo(_x, _y + 4);
+        crc2.arc(_x + 23, _y + 41, 10, 0, 2 * Math.PI);
+        crc2.arc(_x - 25, _y + 41, 10, 0, 2 * Math.PI);
+        crc2.arc(_x - 25, _y + 20, 10, 0, 2 * Math.PI);
+        crc2.arc(_x - 25, _y, 10, 0, 2 * Math.PI);
+        crc2.fillRect(_x - 26, _y + 6, 51, 45);
+        crc2.fill();
+        crc2.beginPath();
+        crc2.fillStyle = "#000000";
+        //Oeffnung
+        crc2.arc(_x - 5, _y + 33, 10, 0, 2 * Math.PI);
+        crc2.closePath();
+        crc2.fill();
+    }
+    function drawBiene(_b) {
+        //Koerper
+        crc2.beginPath();
+        crc2.strokeStyle = "#000000";
+        crc2.fillStyle = "#000000";
+        crc2.arc(_b.x, _b.y, 7, 0, 2 * Math.PI);
+        crc2.arc(_b.x - 8, _b.y - 3, 4, 0, 2 * Math.PI);
+        if (_b.stachel == true) {
+            crc2.moveTo(_b.x, _b.y);
+            crc2.lineTo(_b.x + 13, _b.y + 3);
+        }
+        else { }
+        crc2.stroke();
+        crc2.fill();
+        //Streifen
+        crc2.beginPath();
+        crc2.fillStyle = _b.color;
+        crc2.rect(_b.x - 6, _b.y - 4, 2.5, 9);
+        crc2.rect(_b.x - 2, _b.y - 6, 2.5, 13);
+        crc2.rect(_b.x + 2, _b.y - 4, 2.5, 10);
+        crc2.stroke;
+        crc2.fill();
+        //Fluegel
+        crc2.beginPath();
+        crc2.fillStyle = "#aFEEEE";
+        crc2.arc(_b.x - 4, _b.y - 15, 10, 0, 1.5);
+        crc2.moveTo(_b.x, _b.y);
+        crc2.arc(_b.x - 1, _b.y - 10, 10, 0, 1.5);
+        crc2.closePath();
+        crc2.fill();
+    }
+})(BienenInterface || (BienenInterface = {}));
+//# sourceMappingURL=aufgabe6bienen.js.map
