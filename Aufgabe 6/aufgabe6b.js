@@ -40,10 +40,10 @@ var StudiVZ;
         var geschlechtEingabe;
         if (parseInt(InputArray[4]) == 0) {
             geschlechtEingabe = "maennlich";
-        }
+        } // 0 = m�nnlich
         else {
             geschlechtEingabe = "weiblich";
-        }
+        } // 1 = weiblich 
         //Ungueltige Eingabe, wenn mind. eine Angabe fehlt      
         if (InputArray.length <= 5) {
             return "Ihre Eingabe enthielt nicht alle benoetigten Angaben.\nBitte erneut versuchen";

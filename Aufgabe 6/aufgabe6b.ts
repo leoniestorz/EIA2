@@ -62,9 +62,9 @@ namespace StudiVZ {
         
        if (parseInt(InputArray[4]) == 0) 
        
-            {geschlechtEingabe = "maennlich";}
+            {geschlechtEingabe = "maennlich";} // 0 = männlich
        
-       else {geschlechtEingabe = "weiblich";} 
+       else {geschlechtEingabe = "weiblich";} // 1 = weiblich 
 
         
 //Ungueltige Eingabe, wenn mind. eine Angabe fehlt      
