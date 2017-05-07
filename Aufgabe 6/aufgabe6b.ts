@@ -9,13 +9,21 @@
 
 namespace StudiVZ {
     interface StudentData {
-        // hier ist noch die richtige Datenstruktur festzulegen
+
+        Matrikelnummer : number;
+        Vorname : string;
+        Name : string;
+        Alter : number;
+        Geschlecht : boolean;
+        Kommentar:string;
+    
     }
+    
     var students: StudentData[] = [];
     var stop: boolean = false;
 
     while (!stop) {
-        var action: string = prompt("Was moechten Sie tun? \n \n - Datensatz anlegen (n) \n - Datensatz abfragen(a) \n - Programm beenden (s) \n \n Bitte waehlen Sie n,a oder s");
+        var action: string = prompt("Datensatz anlegen (n), abfragen(a) oder Programm beenden (s)\nn,a oder s eingeben");
 
         switch (action) {
             case "n":
@@ -35,9 +43,37 @@ namespace StudiVZ {
     }
 
     function saveData(_input: string): string {
-        return "Hier fehlt noch der richtige Code...";
+        
+        let InputArray: string[] = _input.split(",");
+        
+        let studi : StudentData = {
+            
+            Matrikelnummer : parseInt(InputArray[0]),
+            Vorname : InputArray[1],
+            Name : InputArray [2],
+            Alter : parseInt(InputArray[3]), 
+            Geschlecht : parseInt(InputArray[4]) == 0,
+            Kommentar : InputArray [5],
+            
+            }
+        
+         students.push(studi)
+        
+        let Geschlecht: string;
+      
+        if (studi.Geschlecht == true) {
+           Geschlecht = "m";}
+        else {
+           Geschlecht = "w";}
+        
+         return "Ihre Daten wurden gespeichert: \nMatrikel: " +    + "\nVorname:" +   "\nName:" +   + "\nAlter:" +   + "\nGeschlecht"+   +"\nKommentar"
+     
     }
+    
     function queryData(_matrikel: number): string {
-        return "Hier fehlt noch der richtige Code...";
+        
+        
+        
+        return "Folgende Daten sind unter dieser Matrikelnummer gespeichert:  \nMatrikelnummer:" +   + "\nVorname:" +     + "\nAlter:"+     +"\nGeschlecht"+   + "\nKommentar" 
     }
 }
