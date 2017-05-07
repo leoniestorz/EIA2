@@ -79,7 +79,7 @@ namespace StudiVZ {
 
 //Ungueltige Eingabe für Geschlecht, wenn nicht die Zahlen 0 oder 1 eingegeben wurden     
         if (parseInt(InputArray[4]) != 0 && parseInt(InputArray[4]) != 1){
-        return "Ihre Eingabe ist ungeltig.\nBitte geben Sie für das Geschlecht 0 (männlich) oder 1 (weiblich) ein.";}
+        return "Ihre Eingabe ist ungeltig.\nBitte geben Sie fuer das Geschlecht 0 (maennlich) oder 1 (weiblich) ein.";}
 
 //Ungueltige Alterseingabe, wenn dieses nicht in Zahlen eingegeben wurde
         

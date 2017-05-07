@@ -54,7 +54,7 @@ var StudiVZ;
         }
         //Ungueltige Eingabe f�r Geschlecht, wenn nicht die Zahlen 0 oder 1 eingegeben wurden     
         if (parseInt(InputArray[4]) != 0 && parseInt(InputArray[4]) != 1) {
-            return "Ihre Eingabe ist ungeltig.\nBitte geben Sie f�r das Geschlecht 0 (m�nnlich) oder 1 (weiblich) ein.";
+            return "Ihre Eingabe ist ungeltig.\nBitte geben Sie fuer das Geschlecht 0 (maennlich) oder 1 (weiblich) ein.";
         }
         //Ungueltige Alterseingabe, wenn dieses nicht in Zahlen eingegeben wurde
         if (isNaN(parseInt(InputArray[3]))) {
