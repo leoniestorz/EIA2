@@ -11,19 +11,14 @@
 namespace BienenInterface {
     window.addEventListener("load", init);
     
-    interface Biene {
-        x: number;
-        y: number;
-        color: string;
-        stachel:boolean;
-    }
+   
     
-    let crc2: CanvasRenderingContext2D;
+    export let crc2: CanvasRenderingContext2D;
     let canvas: HTMLCanvasElement;
     
     let imgData: ImageData;
     
-    let z: number = 10; 
+    export let z: number = 10; 
     let alleBienen: Biene[] = [];
     
     
@@ -84,7 +79,7 @@ namespace BienenInterface {
         
         for (let i: number = 0; i < z; i++) {
             
-            let b: Biene = {x: 0, y: 0, color: "", stachel: true};
+            let b: Biene = new Biene;
             b.x = 1190; 
             b.y = 475;  
             
@@ -104,49 +99,33 @@ namespace BienenInterface {
     function animate(): void {
         
         crc2.putImageData(imgData, 0, 0); 
-       
-//Flugrichtung der Bienen 
               
         for (let i: number = 0; i < z; i++) {
            
-            let b: Biene = alleBienen[i];
-            b.x += Math.random() * 5 - 4;
-            b.y += Math.random() * 6 - 3;
-            
-//Erscheinen am gegenueberliegenden Rand nach Verlassen des Canvas            
-            
-            if (b.x < 0) {
-                b.x = crc2.canvas.width;
-            }
-            if (b.y < 0) {
-                b.y = crc2.canvas.height;
-            }
-            if (b.y >= crc2.canvas.height) {
-                b.y = 0;
-            }
-            drawBiene(b); 
-        }
+         let b: Biene = alleBienen[i];
+             
+         b.update(); }
+        
         window.setTimeout(animate, 10);
         
 //Bei KLick / Touch auf den Canvas erscheint eine neue Biene am Ausgang des Bienenstocks       
         
-        canvas.addEventListener("touchend", mehrBienen); 
-        canvas.addEventListener("click", mehrBienen);
+//        canvas.addEventListener("touchend", mehrBienen); 
+//        canvas.addEventListener("click", mehrBienen);
 
     }
 
-    function mehrBienen(): void {
-        alleBienen.push({
-            
-            x: 1190, 
-            y: 475, 
-            
-            color: "hsl(" + Math.random() * 60 + ", 100%, 50%)", 
-            stachel: Boolean(Math.round(Math.random()))});
-        
-        z++;
-       
-    }
+//    function mehrBienen(): void {
+//        alleBienen.push({
+//            
+//            x: 1190, 
+//            y: 475, 
+//            color: "hsl(" + Math.random() * 60 + ", 100%, 50%)", 
+//            stachel: Boolean(Math.round(Math.random()))});
+//        
+//        z++;
+//       
+//    }
 
     
 //Funktionen
@@ -551,48 +530,6 @@ namespace BienenInterface {
         crc2.fill();}
 
 
-     function drawBiene(_b: Biene): void {
-        
-        //Koerper
-         
-        crc2.beginPath();
-        crc2.strokeStyle = "#000000";
-        crc2.fillStyle = "#000000";
-        crc2.arc(_b.x,_b.y, 7, 0, 2 * Math.PI);
-        crc2.arc(_b.x - 8 ,_b.y - 3, 4, 0, 2 * Math.PI);
-        
-       
-        if (_b.stachel == true) {
-        crc2.moveTo(_b.x, _b.y);
-        crc2.lineTo(_b.x + 13, _b.y + 3);}
-         
-        else {}
-        
-        crc2.stroke();
-        crc2.fill();
-        
-        //Streifen
-         
-        crc2.beginPath();
-        crc2.fillStyle = _b.color;
-        crc2.rect(_b.x - 6, _b.y - 4, 2.5, 9);
-        crc2.rect(_b.x - 2, _b.y - 6, 2.5, 13);
-        crc2.rect(_b.x + 2, _b.y - 4, 2.5, 10);
-        
-             
-        crc2.stroke;
-        crc2.fill();
-        
-        //Fluegel
-         
-        crc2.beginPath();
-        crc2.fillStyle = "#aFEEEE";
-        crc2.arc(_b.x - 4, _b.y - 15, 10, 0, 1.5);
-        crc2.moveTo(_b.x,_b.y);
-        crc2.arc(_b.x - 1, _b.y - 10, 10, 0, 1.5);
-
-
-        crc2.closePath();
-        crc2.fill();}
-
+     
 }
+
