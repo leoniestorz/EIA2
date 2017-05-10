@@ -327,7 +327,6 @@ aside {display:none;}
 			
 			 transform: rotate(270deg);
 			 height:32em;
-		
 			 z-index:202;
 			 }
 			 					 
@@ -674,34 +673,36 @@ Bildschirmbreite Tablet Portrait <=768px
 			height:18em;
 			width:45%;}
 			
-#hochschulball {width:19.2em;}
 
-#pixplant {
-			height:25em;
-			width:19.25em;}
+
+
 			
 #buchstabe {
-			width:35em;
-			height:16.95em;}
+			width:23em;
+			height:20em;}
 			
 #fuerstenbergplakat {
 				     height:30em;
-				     width:19.25em;}
+				     width:22em;}
 
 #fuerstenbergflasche {
 					  height:30em;
-					  width:19.25em;}
+					  width:22em;}
 			   
 #messenger{height:40em;}
 
-#awareness {height:25em;}
+#awareness {
+			height:25em;
+			margin-top:-3em;
+			margin-left:3em;}
 			
 			  
 .text {
+	   width:95%;
 	   font-size:14pt;
 	   margin-top:3.5em;}
 	   
-#balken2 {margin-top:55em;}	 
+#balken2 {margin-top:75em;}	 
   
 /**************Body**************/
 
@@ -759,22 +760,22 @@ Bildschirmbreite Tablet Portrait <=768px
 #kontaktButton {margin-top:-12em;}
 
 
-#kontaktnameschrift {margin-top:-40em;}
+#kontaktnameschrift {margin-top:-26.5em;}
 
-#kontaktnamefeld {margin-top:-48em;}
+#kontaktnamefeld {margin-top:-32em;}
 									
 
-#kontaktmailschrift { margin-top:-37.5em;}
+#kontaktmailschrift { margin-top:-24em;}
 					   
-#kontaktmailfeld {margin-top:-45em;}
+#kontaktmailfeld {margin-top:-29em;}
 					
 					
 
-#kontaktnachrichtschrift {margin-top:-33em;}
+#kontaktnachrichtschrift {margin-top:-19em;}
 						  
-#kontaktnachrichtfeld {margin-top:-38em;}
+#kontaktnachrichtfeld {margin-top:-21em;}
 
-#hfu {margin-left:45em;}					
+#hfu {margin-left:35em;}					
 									
 }
 
@@ -978,7 +979,9 @@ Bildschirmbreite Desktop >1024px
 		 
 #hintergrund1 {height:130%;}			 
 
-
+#name {
+	  
+	   font-size:120pt;}
 
 /*************Aside***********************/
 
@@ -1050,7 +1053,7 @@ Bildschirmbreite Desktop >1024px
 			width:14em;}
 
 #balken2 {
-	      margin-top:75em;
+	      margin-top:120em;
 }
 
 #hintergrund2 {margin-left:-15em;}
@@ -1070,38 +1073,38 @@ Bildschirmbreite Desktop >1024px
 
 
 #kontaktnameschrift {
-					  margin-top:-26em;
+					  margin-top:-31em;
 					  font-size:14pt;
 					  margin-left:8%;}
 #kontaktnamefeld {
-				  margin-top:-36em;
+				  margin-top:-43.5em;
 				  height:2em;
 				  margin-left:14%;}
 
 #kontaktmailschrift {
 					  font-size:14pt;
 					   margin-left:8%;
-					   margin-top:-23em;}
+					   margin-top:-28em;}
 					   
 #kontaktmailfeld {
 				  height:2em;
 				  margin-left:14%;
-				  margin-top:-32em;}
+				  margin-top:-40em;}
 					
 
 #kontaktnachrichtschrift {
 							font-size:14pt;
 							margin-left:8%;
-							margin-top:-19em;}
+							margin-top:-24em;}
 #kontaktnachrichtfeld {
-						margin-top:-23em;
+						margin-top:-30em;
 						margin-left:8%;
 						height:10em;}
 						
 #kontaktbutton {
 				 font-size:12pt;
 				 margin-left:8%;
-				 margin-top:-9em;}	
+				 margin-top:2em;}	
 #facebook { 
 			   height:40px;
 			   width:40px;
