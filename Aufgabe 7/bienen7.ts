@@ -72,7 +72,7 @@ export class Biene {
         crc2.closePath();
         crc2.fill();}
  
-//Metode 'move'
+//Methode 'move'
     
         move() : void {
            
@@ -91,6 +91,14 @@ export class Biene {
             if (this.y >= crc2.canvas.height) {
                 this.y = 0;
             }}}
+    
+//Methode 'mehrBienen'
+    
+//      mehrBienen(): void {
+//          
+//      alleBienen.push({1190:475:"hsl(" + Math.random() * 60 + ", 100%, 50%)",Boolean(Math.round(Math.random()))});
+//        
+//        z++;}
     
 }
 }

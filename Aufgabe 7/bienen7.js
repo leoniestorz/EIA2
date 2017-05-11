@@ -47,7 +47,7 @@ var BienenInterface;
             BienenInterface.crc2.closePath();
             BienenInterface.crc2.fill();
         };
-        //Metode 'move'
+        //Methode 'move'
         Biene.prototype.move = function () {
             this.x += Math.random() * 5 - 4;
             this.y += Math.random() * 6 - 3;

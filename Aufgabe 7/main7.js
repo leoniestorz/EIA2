@@ -11,7 +11,7 @@ var BienenInterface;
     var canvas;
     var imgData;
     BienenInterface.z = 10;
-    var alleBienen = [];
+    BienenInterface.alleBienen = [];
     function init(_event) {
         canvas = document.getElementsByTagName("canvas")[0];
         BienenInterface.crc2 = canvas.getContext("2d");
@@ -55,32 +55,23 @@ var BienenInterface;
             b.y = 475;
             b.color = "hsl(" + Math.random() * 60 + ", 100%, 50%)";
             b.stachel = Boolean(Math.round(Math.random()));
-            alleBienen[i_1] = b;
+            BienenInterface.alleBienen[i_1] = b;
         }
         window.setTimeout(animate, 10);
     }
     function animate() {
         BienenInterface.crc2.putImageData(imgData, 0, 0);
-        for (var i = 0; i < BienenInterface.z; i++) {
-            var b = alleBienen[i];
-            b.update();
+        for (var i_2 = 0; i_2 < BienenInterface.z; i_2++) {
+            var b_1 = BienenInterface.alleBienen[i_2];
+            b_1.update();
         }
         window.setTimeout(animate, 10);
         //Bei KLick / Touch auf den Canvas erscheint eine neue Biene am Ausgang des Bienenstocks       
-        //        canvas.addEventListener("touchend", mehrBienen); 
-        //        canvas.addEventListener("click", mehrBienen);
+        var i = 0;
+        var b = BienenInterface.alleBienen[i];
+        canvas.addEventListener("touchend", b.mehrBienen);
+        canvas.addEventListener("click", b.mehrBienen);
     }
-    //    function mehrBienen(): void {
-    //        alleBienen.push({
-    //            
-    //            x: 1190, 
-    //            y: 475, 
-    //            color: "hsl(" + Math.random() * 60 + ", 100%, 50%)", 
-    //            stachel: Boolean(Math.round(Math.random()))});
-    //        
-    //        z++;
-    //       
-    //    }
     //Funktionen
     function drawWiese(_x, _y, _strokeColor, _fillColor) {
         BienenInterface.crc2.beginPath();

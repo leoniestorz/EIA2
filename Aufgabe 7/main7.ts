@@ -19,7 +19,7 @@ namespace BienenInterface {
     let imgData: ImageData;
     
     export let z: number = 10; 
-    let alleBienen: Biene[] = [];
+    export let alleBienen: Biene[] = [];
     
     
 
@@ -110,22 +110,16 @@ namespace BienenInterface {
         
 //Bei KLick / Touch auf den Canvas erscheint eine neue Biene am Ausgang des Bienenstocks       
         
-//        canvas.addEventListener("touchend", mehrBienen); 
-//        canvas.addEventListener("click", mehrBienen);
+        let i : number = 0;
+        let b: Biene = alleBienen[i];
+        
+        canvas.addEventListener("touchend", b.mehrBienen); 
+        canvas.addEventListener("click", b.mehrBienen);
 
     }
 
-//    function mehrBienen(): void {
-//        alleBienen.push({
-//            
-//            x: 1190, 
-//            y: 475, 
-//            color: "hsl(" + Math.random() * 60 + ", 100%, 50%)", 
-//            stachel: Boolean(Math.round(Math.random()))});
-//        
-//        z++;
-//       
-//    }
+       
+
 
     
 //Funktionen
