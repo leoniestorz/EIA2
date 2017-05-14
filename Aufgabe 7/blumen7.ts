@@ -29,7 +29,7 @@ export class Blumen {
         
      setRandomFlowers() : void {
          
-         for (var i:number = 0; i < 4; i++) {
+         for (var i:number = 0; i < 40; i++) {
              
          let randomFlower:number = Math.floor((Math.random() * 3));
          this.x = Math.floor((Math.random() * 1100) - 10); 

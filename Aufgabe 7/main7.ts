@@ -52,22 +52,31 @@ namespace BienenInterface {
 //Fest platzierte Blumen 
  
         
-//        let f1: Blumen = alleBlumen.push(new Blumen(725, 600));
-//            f1.drawSonnenblume();
-//        let f2: Blumen = alleBlumen.push(new Blumen(675, 500));
-//            f2.drawMohnblume();
-//        let f3: Blumen = new Blumen(725, 440);
-//            f3.drawTulpe();
-       
-        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); //Speichern des Canvas als Bild
+        let f1: Blumen = new Blumen(100, 400);
+            f1.drawSonnenblume();
+            alleBlumen.push(f1);
         
-
-
-//            alleBlumen.push(new Blumen (100,200));
-//            alleBlumen.push(new Blumen (200,200));
-//            alleBlumen.push(new Blumen (300,200));
-//            alleBlumen.push(new Blumen (400,200));
-
+        let f2: Blumen = new Blumen(1000, 450);
+            f2.drawMohnblume()
+            alleBlumen.push(f2);
+        
+        let f3: Blumen = new Blumen(725, 360);
+            f3.drawTulpe();
+            alleBlumen.push(f3);
+        
+        let f4: Blumen = new Blumen(380, 510);
+            f4.drawTulpe();
+            alleBlumen.push(f4);
+        
+        let f5: Blumen = new Blumen(1030, 550);
+            f5.drawSonnenblume();
+            alleBlumen.push(f5);
+        
+        let f6: Blumen = new Blumen(500, 550);
+            f6.drawMohnblume();
+            alleBlumen.push(f6);
+        
+        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); //Speichern des Canvas als Bild
 
        
 //Erscheinen der 10 Bienen am Ausgang des Bienenstocks

@@ -14,7 +14,7 @@ var BienenInterface;
         }
         //Methode 'setRandomPosition'
         Blumen.prototype.setRandomFlowers = function () {
-            for (var i = 0; i < 4; i++) {
+            for (var i = 0; i < 40; i++) {
                 var randomFlower = Math.floor((Math.random() * 3));
                 this.x = Math.floor((Math.random() * 1100) - 10);
                 this.y = Math.floor((Math.random() * 255) + 380);

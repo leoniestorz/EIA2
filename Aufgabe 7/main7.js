@@ -35,17 +35,25 @@ var BienenInterface;
         var f = new BienenInterface.Blumen(x, y);
         f.setRandomFlowers();
         //Fest platzierte Blumen 
-        //        let f1: Blumen = alleBlumen.push(new Blumen(725, 600));
-        //            f1.drawSonnenblume();
-        //        let f2: Blumen = alleBlumen.push(new Blumen(675, 500));
-        //            f2.drawMohnblume();
-        //        let f3: Blumen = new Blumen(725, 440);
-        //            f3.drawTulpe();
+        var f1 = new BienenInterface.Blumen(100, 400);
+        f1.drawSonnenblume();
+        BienenInterface.alleBlumen.push(f1);
+        var f2 = new BienenInterface.Blumen(1000, 450);
+        f2.drawMohnblume();
+        BienenInterface.alleBlumen.push(f2);
+        var f3 = new BienenInterface.Blumen(725, 360);
+        f3.drawTulpe();
+        BienenInterface.alleBlumen.push(f3);
+        var f4 = new BienenInterface.Blumen(380, 510);
+        f4.drawTulpe();
+        BienenInterface.alleBlumen.push(f4);
+        var f5 = new BienenInterface.Blumen(1030, 550);
+        f5.drawSonnenblume();
+        BienenInterface.alleBlumen.push(f5);
+        var f6 = new BienenInterface.Blumen(500, 550);
+        f6.drawMohnblume();
+        BienenInterface.alleBlumen.push(f6);
         imgData = BienenInterface.crc2.getImageData(0, 0, canvas.width, canvas.height); //Speichern des Canvas als Bild
-        //            alleBlumen.push(new Blumen (100,200));
-        //            alleBlumen.push(new Blumen (200,200));
-        //            alleBlumen.push(new Blumen (300,200));
-        //            alleBlumen.push(new Blumen (400,200));
         //Erscheinen der 10 Bienen am Ausgang des Bienenstocks
         for (var i = 0; i < BienenInterface.z; i++) {
             var b = new BienenInterface.Bienen(1190, 475);
