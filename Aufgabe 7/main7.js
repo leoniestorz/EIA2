@@ -16,6 +16,7 @@ var BienenInterface;
     function init(_event) {
         canvas = document.getElementsByTagName("canvas")[0];
         BienenInterface.crc2 = canvas.getContext("2d");
+        //Hintergund mittels einer Klasse erstellen
         var h = new BienenInterface.Hintergrund;
         //Random Blumen erstellen
         var y = 0;
@@ -23,24 +24,24 @@ var BienenInterface;
         var f = new BienenInterface.Blumen(x, y);
         f.setRandomFlowers();
         //Fest platzierte Blumen 
-        var f1 = new BienenInterface.Blumen(100, 400);
-        f1.drawSonnenblume();
-        BienenInterface.alleBlumen.push(f1);
-        var f2 = new BienenInterface.Blumen(1000, 450);
-        f2.drawMohnblume();
-        BienenInterface.alleBlumen.push(f2);
-        var f3 = new BienenInterface.Blumen(725, 360);
-        f3.drawTulpe();
-        BienenInterface.alleBlumen.push(f3);
-        var f4 = new BienenInterface.Blumen(380, 510);
-        f4.drawTulpe();
-        BienenInterface.alleBlumen.push(f4);
-        var f5 = new BienenInterface.Blumen(1030, 550);
-        f5.drawSonnenblume();
-        BienenInterface.alleBlumen.push(f5);
-        var f6 = new BienenInterface.Blumen(500, 550);
-        f6.drawMohnblume();
-        BienenInterface.alleBlumen.push(f6);
+        var flower1 = new BienenInterface.Blumen(100, 400);
+        flower1.drawSonnenblume();
+        BienenInterface.alleBlumen.push(flower1);
+        var flower2 = new BienenInterface.Blumen(1000, 450);
+        flower2.drawMohnblume();
+        BienenInterface.alleBlumen.push(flower2);
+        var flower3 = new BienenInterface.Blumen(725, 360);
+        flower3.drawTulpe();
+        BienenInterface.alleBlumen.push(flower3);
+        var flower4 = new BienenInterface.Blumen(380, 510);
+        flower4.drawTulpe();
+        BienenInterface.alleBlumen.push(flower4);
+        var flower5 = new BienenInterface.Blumen(1030, 550);
+        flower5.drawSonnenblume();
+        BienenInterface.alleBlumen.push(flower5);
+        var flower6 = new BienenInterface.Blumen(500, 550);
+        flower6.drawMohnblume();
+        BienenInterface.alleBlumen.push(flower6);
         imgData = BienenInterface.crc2.getImageData(0, 0, canvas.width, canvas.height); //Speichern des Canvas als Bild
         //Erscheinen der 10 Bienen am Ausgang des Bienenstocks
         for (var i = 0; i < BienenInterface.z; i++) {
@@ -55,15 +56,6 @@ var BienenInterface;
             var b = BienenInterface.alleBienen[i];
             b.update();
         }
-        //         for (let i: number = 0; i < 5; i++) {
-        //            
-        //            let f: Blumen = new Blumen(200, 200,"");
-        //            alleBlumen.push(f);
-        //}
-        //        for (let i: number = 0; i < alleBlumen.length; i++) {
-        //           
-        //         let f: Blumen = alleBlumen[i];
-        //         alleBlumen[i].drawTulpe();}
         window.setTimeout(animate, 10);
         //Bei KLick / Touch auf den Canvas erscheint eine neue Biene am Ausgang des Bienenstocks       
         canvas.addEventListener("touchend", mehrBienen);

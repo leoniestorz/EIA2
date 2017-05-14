@@ -9,7 +9,7 @@
 
 namespace BienenInterface {
     
-export class Bienen {
+    export class Bienen {
     
         x: number;
         y: number;
@@ -18,7 +18,7 @@ export class Bienen {
 
 
     
-constructor(_x:number,_y:number) {
+        constructor(_x:number,_y:number) {
     
          
             this.x = 1190;
@@ -36,7 +36,7 @@ constructor(_x:number,_y:number) {
  
 //Methode 'draw' - Biene malen
         
-        draw(): void {
+    draw(): void {
         
 //      Koerper
          
@@ -84,7 +84,7 @@ constructor(_x:number,_y:number) {
  
 //Methode 'move' - Biene bewegen
     
-        move() : void {
+      move() : void {
            
 
             this.x += Math.random() * 5 - 4;

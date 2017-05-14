@@ -9,7 +9,7 @@
 
 namespace BienenInterface {
     
-export class Blumen {
+    export class Blumen {
     
         x: number;
         y: number;
@@ -17,19 +17,17 @@ export class Blumen {
  
 
     
-    constructor(_x: number, _y: number) {
+        constructor(_x: number, _y: number) {
         
             this.x = _x;
-            this.y = _y;
-
-    }
+            this.y = _y;}
     
     
 //Methode 'setRandomPosition'
         
      setRandomFlowers() : void {
          
-         for (var i:number = 0; i < 40; i++) {
+         for (var i:number = 0; i < 50; i++) {
              
          let randomFlower:number = Math.floor((Math.random() * 3));
          this.x = Math.floor((Math.random() * 1100) - 10); 

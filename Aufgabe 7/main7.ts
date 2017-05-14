@@ -26,10 +26,9 @@ namespace BienenInterface {
        canvas = document.getElementsByTagName("canvas")[0];
        crc2 = canvas.getContext("2d");
 
-       let h: Hintergrund = new Hintergrund;
+//Hintergund mittels einer Klasse erstellen
         
-  
-
+       let h: Hintergrund = new Hintergrund;
         
 //Random Blumen erstellen
                 
@@ -42,29 +41,29 @@ namespace BienenInterface {
 //Fest platzierte Blumen 
  
         
-        let f1: Blumen = new Blumen(100, 400);
-            f1.drawSonnenblume();
-            alleBlumen.push(f1);
+        let flower1: Blumen = new Blumen(100, 400);
+        flower1.drawSonnenblume();
+        alleBlumen.push(flower1);
         
-        let f2: Blumen = new Blumen(1000, 450);
-            f2.drawMohnblume()
-            alleBlumen.push(f2);
+        let flower2: Blumen = new Blumen(1000, 450);
+        flower2.drawMohnblume()
+        alleBlumen.push(flower2);
         
-        let f3: Blumen = new Blumen(725, 360);
-            f3.drawTulpe();
-            alleBlumen.push(f3);
+        let flower3: Blumen = new Blumen(725, 360);
+        flower3.drawTulpe();
+        alleBlumen.push(flower3);
         
-        let f4: Blumen = new Blumen(380, 510);
-            f4.drawTulpe();
-            alleBlumen.push(f4);
+        let flower4: Blumen = new Blumen(380, 510);
+        flower4.drawTulpe();
+        alleBlumen.push(flower4);
         
-        let f5: Blumen = new Blumen(1030, 550);
-            f5.drawSonnenblume();
-            alleBlumen.push(f5);
+        let flower5: Blumen = new Blumen(1030, 550);
+        flower5.drawSonnenblume();
+        alleBlumen.push(flower5);
         
-        let f6: Blumen = new Blumen(500, 550);
-            f6.drawMohnblume();
-            alleBlumen.push(f6);
+        let flower6: Blumen = new Blumen(500, 550);
+        flower6.drawMohnblume();
+        alleBlumen.push(flower6);
         
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); //Speichern des Canvas als Bild
 
@@ -89,21 +88,8 @@ namespace BienenInterface {
            
          let b: Bienen = alleBienen[i];
          b.update();}
-        
+ 
 
-        
-//         for (let i: number = 0; i < 5; i++) {
-//            
-//            let f: Blumen = new Blumen(200, 200,"");
-//            alleBlumen.push(f);
-//}
-        
-//        for (let i: number = 0; i < alleBlumen.length; i++) {
-//           
-//         let f: Blumen = alleBlumen[i];
-//         alleBlumen[i].drawTulpe();}
-        
-        
         window.setTimeout(animate, 10);
         
 //Bei KLick / Touch auf den Canvas erscheint eine neue Biene am Ausgang des Bienenstocks       
@@ -112,17 +98,12 @@ namespace BienenInterface {
         canvas.addEventListener("touchend",mehrBienen); 
         canvas.addEventListener("click", mehrBienen);}
 
-  
-
-       
+    
     function mehrBienen(_event:Event): void {
         
          let b: Bienen = new Bienen (1190,475);
          b.setRandomStyle;
          alleBienen.push(b);
          z++;}  
-
-     
-
 
 }
