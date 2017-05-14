@@ -7,16 +7,20 @@
 //Er wurde nicht kopiert und auch nicht diktiert. 
 var BienenInterface;
 (function (BienenInterface) {
-    var Biene = (function () {
-        function Biene() {
+    var Bienen = (function () {
+        function Bienen(_x, _y) {
+            this.x = 1190;
+            this.y = 475;
+            this.draw();
+            this.setRandomStyle();
         }
-        //Methode 'update'    
-        Biene.prototype.update = function () {
+        //Methode 'update' - Biene an neuer Position malen 
+        Bienen.prototype.update = function () {
             this.draw();
             this.move();
         };
-        //Methode 'draw'
-        Biene.prototype.draw = function () {
+        //Methode 'draw' - Biene malen
+        Bienen.prototype.draw = function () {
             //      Koerper
             BienenInterface.crc2.beginPath();
             BienenInterface.crc2.strokeStyle = "#000000";
@@ -47,8 +51,8 @@ var BienenInterface;
             BienenInterface.crc2.closePath();
             BienenInterface.crc2.fill();
         };
-        //Methode 'move'
-        Biene.prototype.move = function () {
+        //Methode 'move' - Biene bewegen
+        Bienen.prototype.move = function () {
             this.x += Math.random() * 5 - 4;
             this.y += Math.random() * 6 - 3;
             for (var i = 0; i < BienenInterface.z; i++) {
@@ -63,8 +67,15 @@ var BienenInterface;
                 }
             }
         };
-        return Biene;
+        //Methode 'setRandomStyle' - Zuf�llige Farbe und (k)ein Stachel 
+        Bienen.prototype.setRandomStyle = function () {
+            var randomColor = "hsl(" + Math.random() * 60 + ", 100%, 50%)";
+            var randomStachel = Boolean(Math.round(Math.random()));
+            this.color = randomColor;
+            this.stachel = randomStachel;
+        };
+        return Bienen;
     }());
-    BienenInterface.Biene = Biene;
+    BienenInterface.Bienen = Bienen;
 })(BienenInterface || (BienenInterface = {}));
 //# sourceMappingURL=bienen7.js.map

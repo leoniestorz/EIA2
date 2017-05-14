@@ -9,25 +9,22 @@
 
 
 namespace BienenInterface {
-    window.addEventListener("load", init);
     
-   
+    window.addEventListener("load", init);
     
     export let crc2: CanvasRenderingContext2D;
     let canvas: HTMLCanvasElement;
-    
     let imgData: ImageData;
     
     export let z: number = 10; 
-    export let alleBienen: Biene[] = [];
-    
+    export let alleBienen: Bienen[] = [];
+    export let alleBlumen:Blumen[] = [];
     
 
     function init(_event: Event): void {
         
-        
-        canvas = document.getElementsByTagName("canvas")[0];
-        crc2 = canvas.getContext("2d");
+       canvas = document.getElementsByTagName("canvas")[0];
+       crc2 = canvas.getContext("2d");
 
        drawWiese(0, 0, "#90EE90", "#90EE90");     
        drawHimmel(0, 0, "##48d1CC", "#48d1CC");
@@ -40,92 +37,76 @@ namespace BienenInterface {
        drawBuschKlein(90, 380, "#556B2F");
        drawBuschGross(- 20, 440, "#556B2F");       
        drawWolke(160, 120, "#FFFFFF");
-       drawWolke(750, 180, "#FFFFFF");
-               
-       drawMohnblume(550, 565);
-       drawSonnenblume(760, 465);
-       drawTulpe(900, 600);
-                    
+       drawWolke(750, 180, "#FFFFFF");        
        drawVogel(1042, 315, "#000000", "#000000");
        drawBienenkorb(1200, 440);
         
+//Random Blumen erstellen
+                
+       let y: number = 0;
+       let x: number = 0;    
+       let f: Blumen = new Blumen(x, y);
+       f.setRandomFlowers();
         
+        
+        
+       imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); //Speichern des Canvas als Bild
 
-       for (var i = 0; i < 80; i++) {
-                    
-                    var randomFlower:number = Math.floor((Math.random() * 3));
-                    var height:number = Math.floor((Math.random() * 255) + 380);
-                    var width:number  = Math.floor((Math.random() * 1100) - 10); 
-                   
+//Fest platzierte Blumen im Array speichern
         
-       switch (randomFlower) {
-                        
-                                case 0:
-                                    drawSonnenblume(width,height);
-                                    break;
-                                case 1:
-                                    drawMohnblume(width, height);
-                                    break;
-                                case 2:
-                                    drawTulpe(width, height);
-                                    break;} 
-           }
-        
-        
-
-        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); //Speichern des Canvas als Bild
-
+//        alleBlumen.push(new Blumen (660, 410,));
+       
 //Erscheinen der 10 Bienen am Ausgang des Bienenstocks
         
         for (let i: number = 0; i < z; i++) {
             
-            let b: Biene = new Biene;
-            b.x = 1190; 
-            b.y = 475;  
-            
-            b.color = "hsl(" + Math.random() * 60 + ", 100%, 50%)";
-            b.stachel = Boolean(Math.round(Math.random()));
-            
-            alleBienen[i] = b;
-        }
+            let b: Bienen = new Bienen (1190,475);
+            alleBienen[i] = b;}
 
-        
-      
-        window.setTimeout(animate, 10);
-    }
+            window.setTimeout(animate, 10);}
 
     
 
+    
     function animate(): void {
         
         crc2.putImageData(imgData, 0, 0); 
               
-        for (let i: number = 0; i < z; i++) {
+        for (let i: number = 0; i < alleBienen.length; i++) {
            
-         let b: Biene = alleBienen[i];
-             
-         b.update(); }
+         let b: Bienen = alleBienen[i];
+         b.update();}
+        
+//        for (let i: number = 0; i < alleBlumen.length; i++) {
+//           
+//         let f: Blumen = alleBlumen[i];
+//         alleBlumen[i].drawTulpe();}
+        
         
         window.setTimeout(animate, 10);
         
 //Bei KLick / Touch auf den Canvas erscheint eine neue Biene am Ausgang des Bienenstocks       
+    
         
-        let i : number = 0;
-        let b: Biene = alleBienen[i];
-        
-        canvas.addEventListener("touchend", b.mehrBienen); 
-        canvas.addEventListener("click", b.mehrBienen);
+        canvas.addEventListener("touchend",mehrBienen); 
+        canvas.addEventListener("click", mehrBienen);}
 
-    }
-
-       
-
-
+    
+    
+    
+    
     
 //Funktionen
-    
+       
+    function mehrBienen(_event:Event): void {
+        
+         let b: Bienen = new Bienen (1190,475);
+         b.setRandomStyle;
+         alleBienen.push(b);
+         z++;}  
+     
    
- function drawWiese (_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
+    function drawWiese (_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
          
         crc2.beginPath();
         crc2.strokeStyle = _strokeColor;
@@ -314,147 +295,8 @@ namespace BienenInterface {
         crc2.closePath();
         crc2.fill();}
         
-     function drawMohnblume(_x: number, _y: number): void {
-         
-        //Stiel
-         
-        crc2.beginPath();
-        crc2.strokeStyle = "#556B2F";
-        crc2.fillStyle = "#556B2F";
-       
-        crc2.fillRect(_x - 10,_y + 5, 4, 55);
-         
-        //Blätter 
-         
-        crc2.moveTo(_x - 10, _y + 30);
-        crc2.lineTo(_x + 5, _y + 15);
-        crc2.moveTo(_x - 10, _y + 40);
-        crc2.lineTo(_x - 20, _y + 30);
-        crc2.moveTo(_x - 10, _y + 55);
-        crc2.lineTo(_x + 2, _y + 40);
         
-        crc2.stroke();
-        crc2.fill();
-   
-        //Blueten
-         
-        crc2.beginPath();
-        crc2.fillStyle = "#8B0000";
-         
-        crc2.moveTo(_x, _y);
-        crc2.arc(_x - 5, _y - 20, 10, 0, 2 * Math.PI);
-        crc2.arc(_x + 4, _y - 8, 10, 0, 2 * Math.PI);
-        crc2.arc(_x - 10, _y + 2, 10, 0, 2 * Math.PI);
-        crc2.arc(_x - 20, _y - 10, 10, 0, 2 * Math.PI);
-         
-        crc2.fill();
-       
-        //Bluetenmitte
-         
-        crc2.beginPath();
-        crc2.fillStyle = "#000000";
-        crc2.arc(_x - 8, _y - 7, 5, 0, 2 * Math.PI);
-       
-        crc2.closePath();
-        crc2.fill();}
-        
-     function drawSonnenblume(_x: number, _y: number): void {
-         
-        //Stiel
-         
-        crc2.beginPath();
-        crc2.strokeStyle = "#556B2F";
-        crc2.fillStyle = "#556B2F";
-      
-        crc2.fillRect(_x + 68,_y + 30, 3, 55);
-         
-        //Blätter
-         
-        crc2.lineTo(_x + 70, _y + 50);
-        crc2.lineTo(_x + 60, _y + 50);
-        crc2.lineTo(_x + 70, _y + 70);
-         
-        crc2.stroke();
-        crc2.fill();
-        
-   
-        //Blueten
-         
-        crc2.beginPath();
-        crc2.fillStyle = "#FFD700";
-         
-        crc2.moveTo(_x + 62, _y + 24);
-        crc2.lineTo(_x + 50,_y + 15);
-        crc2.lineTo(_x + 60,_y + 28);
-        crc2.lineTo(_x + 45,_y + 25);
-        crc2.lineTo(_x + 58,_y + 33);
-        crc2.lineTo(_x + 48,_y + 40);
-        crc2.lineTo(_x + 61,_y + 37);
-        crc2.lineTo(_x + 55,_y + 50);
-        crc2.lineTo(_x + 65,_y + 38);
-        crc2.lineTo(_x + 66,_y + 52);
-        crc2.lineTo(_x + 70,_y + 39);
-        crc2.lineTo(_x + 76,_y + 50);
-        crc2.lineTo(_x + 75,_y + 37);
-        crc2.lineTo(_x + 85,_y + 45);
-        crc2.lineTo(_x + 78,_y + 33);
-        crc2.lineTo(_x + 90,_y + 36);
-        crc2.lineTo(_x + 79,_y + 28);
-        crc2.lineTo(_x + 92,_y + 24);
-        crc2.lineTo(_x + 78,_y + 23);
-        crc2.lineTo(_x + 88,_y + 14);
-        crc2.lineTo(_x + 75,_y + 20);
-        crc2.lineTo(_x + 78,_y + 8);
-        crc2.lineTo(_x + 70,_y + 20);
-        crc2.lineTo(_x + 69,_y + 5);
-        crc2.lineTo(_x + 65,_y + 20);
-        crc2.lineTo(_x + 58,_y + 8);
-        crc2.lineTo(_x + 62,_y + 24);
-        
-        crc2.fill();
-       
-        //Bluetenmitte
-         
-        crc2.beginPath();
-        crc2.fillStyle = "#000000";
-         
-        crc2.arc(_x  + 70, _y + 30, 5, 0, 2 * Math.PI);
-       
-        crc2.closePath();
-        crc2.fill();}
-        
-        
-     function drawTulpe(_x: number, _y: number): void {
-         
-        //Stiel
-         
-        crc2.beginPath();
-        crc2.fillStyle = "#556B2F";
-         
-        crc2.fillRect(_x + 9,_y + 28, 3, 40);
-         
-        //Blatt
-         
-        crc2.arc(_x + 8, _y + 30, 20, 0, 1.5);
-         
-        crc2.fill();
-   
-        //Bluete
-          
-        crc2.beginPath();
-        crc2.fillStyle = "#FF1493";
-         
-        crc2.arc(_x  + 10, _y + 20, 10, 0, 1 * Math.PI);
-        crc2.moveTo(_x ,_y + 22);
-        crc2.lineTo(_x ,_y + 7);
-        crc2.lineTo(_x + 6 ,_y + 14);
-        crc2.lineTo(_x + 10.5 ,_y + 4);
-        crc2.lineTo(_x + 15 ,_y + 14);
-        crc2.lineTo(_x + 20 ,_y + 7);
-        crc2.lineTo(_x + 20 ,_y + 21);
-       
-        crc2.closePath();
-        crc2.fill();}
+     
         
     function drawVogel (_x: number, _y: number, _strokeColor: string, _fillColor:string) : void {
          
@@ -525,5 +367,6 @@ namespace BienenInterface {
 
 
      
-}
 
+
+}

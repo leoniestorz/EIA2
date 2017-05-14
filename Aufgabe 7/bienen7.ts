@@ -9,23 +9,32 @@
 
 namespace BienenInterface {
     
-export class Biene {
+export class Bienen {
     
         x: number;
         y: number;
         color: string;
         stachel:boolean;
-    
 
-//Methode 'update'    
+
+    
+constructor(_x:number,_y:number) {
+    
+         
+            this.x = 1190;
+            this.y = 475;
+            this.draw()
+            this.setRandomStyle();}
+    
+//Methode 'update' - Biene an neuer Position malen 
         
     update () : void {
             
         this.draw ();
-        this.move ();
-        }
-    
-//Methode 'draw'
+        this.move ();}
+
+ 
+//Methode 'draw' - Biene malen
         
         draw(): void {
         
@@ -71,8 +80,9 @@ export class Biene {
 
         crc2.closePath();
         crc2.fill();}
+    
  
-//Methode 'move'
+//Methode 'move' - Biene bewegen
     
         move() : void {
            
@@ -92,13 +102,18 @@ export class Biene {
                 this.y = 0;
             }}}
     
-//Methode 'mehrBienen'
     
-//      mehrBienen(): void {
-//          
-//      alleBienen.push({1190:475:"hsl(" + Math.random() * 60 + ", 100%, 50%)",Boolean(Math.round(Math.random()))});
-//        
-//        z++;}
+//Methode 'setRandomStyle' - Zufällige Farbe und (k)ein Stachel 
+    
+    setRandomStyle(): void {
+     
+    let randomColor: string = "hsl(" + Math.random() * 60 + ", 100%, 50%)";
+    let randomStachel : boolean = Boolean(Math.round(Math.random()));  
+    
+    this.color = randomColor;
+    this.stachel = randomStachel;}
+    
+
     
 }
 }
