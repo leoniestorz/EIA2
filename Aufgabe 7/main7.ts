@@ -48,13 +48,27 @@ namespace BienenInterface {
        let f: Blumen = new Blumen(x, y);
        f.setRandomFlowers();
         
-        
-        
-       imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); //Speichern des Canvas als Bild
 
-//Fest platzierte Blumen im Array speichern
+//Fest platzierte Blumen 
+ 
         
-//        alleBlumen.push(new Blumen (660, 410,));
+//        let f1: Blumen = alleBlumen.push(new Blumen(725, 600));
+//            f1.drawSonnenblume();
+//        let f2: Blumen = alleBlumen.push(new Blumen(675, 500));
+//            f2.drawMohnblume();
+//        let f3: Blumen = new Blumen(725, 440);
+//            f3.drawTulpe();
+       
+        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); //Speichern des Canvas als Bild
+        
+
+
+//            alleBlumen.push(new Blumen (100,200));
+//            alleBlumen.push(new Blumen (200,200));
+//            alleBlumen.push(new Blumen (300,200));
+//            alleBlumen.push(new Blumen (400,200));
+
+
        
 //Erscheinen der 10 Bienen am Ausgang des Bienenstocks
         
@@ -77,6 +91,14 @@ namespace BienenInterface {
          let b: Bienen = alleBienen[i];
          b.update();}
         
+
+        
+//         for (let i: number = 0; i < 5; i++) {
+//            
+//            let f: Blumen = new Blumen(200, 200,"");
+//            alleBlumen.push(f);
+//}
+        
 //        for (let i: number = 0; i < alleBlumen.length; i++) {
 //           
 //         let f: Blumen = alleBlumen[i];
@@ -91,11 +113,7 @@ namespace BienenInterface {
         canvas.addEventListener("touchend",mehrBienen); 
         canvas.addEventListener("click", mehrBienen);}
 
-    
-    
-    
-    
-    
+  
 //Funktionen
        
     function mehrBienen(_event:Event): void {

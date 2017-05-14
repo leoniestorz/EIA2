@@ -13,13 +13,16 @@ export class Blumen {
     
         x: number;
         y: number;
-        type:string;
+
+ 
 
     
     constructor(_x: number, _y: number) {
         
             this.x = _x;
-            this.y = _y;}
+            this.y = _y;
+
+    }
     
     
 //Methode 'setRandomPosition'
@@ -49,7 +52,8 @@ export class Blumen {
 
      }
     
-
+ 
+    
     
 //Methode 'drawSonnenblume'
    

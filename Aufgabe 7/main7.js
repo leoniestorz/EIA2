@@ -34,9 +34,18 @@ var BienenInterface;
         var x = 0;
         var f = new BienenInterface.Blumen(x, y);
         f.setRandomFlowers();
+        //Fest platzierte Blumen 
+        //        let f1: Blumen = alleBlumen.push(new Blumen(725, 600));
+        //            f1.drawSonnenblume();
+        //        let f2: Blumen = alleBlumen.push(new Blumen(675, 500));
+        //            f2.drawMohnblume();
+        //        let f3: Blumen = new Blumen(725, 440);
+        //            f3.drawTulpe();
         imgData = BienenInterface.crc2.getImageData(0, 0, canvas.width, canvas.height); //Speichern des Canvas als Bild
-        //Fest platzierte Blumen im Array speichern
-        //        alleBlumen.push(new Blumen (660, 410,));
+        //            alleBlumen.push(new Blumen (100,200));
+        //            alleBlumen.push(new Blumen (200,200));
+        //            alleBlumen.push(new Blumen (300,200));
+        //            alleBlumen.push(new Blumen (400,200));
         //Erscheinen der 10 Bienen am Ausgang des Bienenstocks
         for (var i = 0; i < BienenInterface.z; i++) {
             var b = new BienenInterface.Bienen(1190, 475);
@@ -50,6 +59,11 @@ var BienenInterface;
             var b = BienenInterface.alleBienen[i];
             b.update();
         }
+        //         for (let i: number = 0; i < 5; i++) {
+        //            
+        //            let f: Blumen = new Blumen(200, 200,"");
+        //            alleBlumen.push(f);
+        //}
         //        for (let i: number = 0; i < alleBlumen.length; i++) {
         //           
         //         let f: Blumen = alleBlumen[i];
