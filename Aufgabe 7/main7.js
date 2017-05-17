@@ -25,17 +25,7 @@ var A7Classes;
             var f = new A7Classes.Blume(x, y);
             var randomFlower = Math.floor((Math.random() * 3));
             f.setRandomPosition();
-            switch (randomFlower) {
-                case 0:
-                    f.drawSonnenblume();
-                    break;
-                case 1:
-                    f.drawMohnblume();
-                    break;
-                case 2:
-                    f.drawTulpe();
-                    break;
-            }
+            f.draw();
         }
         //Fest platzierte Blumen 
         for (var i_1 = 0; i_1 < 10; i_1++) {

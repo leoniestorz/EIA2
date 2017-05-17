@@ -40,7 +40,7 @@ namespace A7Classes {
        let f: Blume = new Blume(x, y);
        var randomFlower:number = Math.floor((Math.random() * 3));
        f.setRandomPosition();
-       f.draw();
+       f.draw();}
 
 
 //Fest platzierte Blumen 
@@ -66,6 +66,8 @@ for (let i:number = 0; i < 10; i++){
             alleBienen[i] = b;}
 
             window.setTimeout(animate, 10);}
+    
+    
 
     
 
