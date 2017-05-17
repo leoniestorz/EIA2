@@ -41,20 +41,6 @@ namespace A7Classes {
        var randomFlower:number = Math.floor((Math.random() * 3));
        f.setRandomPosition();
        f.draw();
-           
-//       switch (randomFlower) {
-//                        
-//                                case 0:
-//                                    f.drawSonnenblume();
-//                                    break;
-//                                case 1:
-//                                    f.drawMohnblume();
-//                                    break;
-//                                case 2:
-//                                    f.drawTulpe();
-//                                    break;} 
-//           }
-//        
 
 
 //Fest platzierte Blumen 
