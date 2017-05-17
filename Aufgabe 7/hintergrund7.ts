@@ -10,9 +10,7 @@
 namespace A7Classes {
     
     export class Hintergrund {
-    
-        x: number;
-        y: number;
+
 
     
      
