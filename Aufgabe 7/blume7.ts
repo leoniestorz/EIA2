@@ -7,34 +7,34 @@
 //Hiermit versichere ich, dass ich diesen Code selbst erstellt habe. 
 //Er wurde nicht kopiert und auch nicht diktiert. 
 
-namespace BienenInterface {
+namespace A7Classes {
     
-    export class Blumen {
+    export class Blume {
     
         x: number;
         y: number;
 
  
-
-    
         constructor(_x: number, _y: number) {
         
             this.x = _x;
             this.y = _y;}
-    
-    
+        
 //Methode 'setRandomPosition'
         
-     setRandomFlowers() : void {
-         
-         for (var i:number = 0; i < 50; i++) {
+   setRandomPosition(): void {
+       
+            this.x = Math.floor((Math.random() * 1100) - 10); 
+            this.y = Math.floor((Math.random() * 255) + 380);
+       
+}       
+        
+//Methode 'draw'
+        
+        draw(): void {
+            
+           let randomFlower = Math.floor(Math.random() * 3);
              
-         let randomFlower:number = Math.floor((Math.random() * 3));
-         this.x = Math.floor((Math.random() * 1100) - 10); 
-         this.y = Math.floor((Math.random() * 255) + 380);
-         
-         
-         
            switch (randomFlower) {
                         
                                 case 0:
@@ -45,14 +45,8 @@ namespace BienenInterface {
                                     break;
                                 case 2:
                                     this.drawTulpe();
-                                    break;} 
-           }
-
-     }
-    
- 
-    
-    
+                                    break;}}
+        
 //Methode 'drawSonnenblume'
    
         drawSonnenblume(): void {

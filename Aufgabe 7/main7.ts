@@ -8,7 +8,7 @@
 //Er wurde nicht kopiert und auch nicht diktiert. 
 
 
-namespace BienenInterface {
+namespace A7Classes {
     
     window.addEventListener("load", init);
     
@@ -17,8 +17,9 @@ namespace BienenInterface {
     let imgData: ImageData;
     
     export let z: number = 10; 
-    export let alleBienen: Bienen[] = [];
-    export let alleBlumen:Blumen[] = [];
+    export let alleBienen: Biene[] = [];
+    export let nektarBlumen:Blume[] = [];
+
     
 
     function init(_event: Event): void {
@@ -29,41 +30,44 @@ namespace BienenInterface {
 //Hintergund mittels einer Klasse erstellen
         
        let h: Hintergrund = new Hintergrund;
-        
-//Random Blumen erstellen
-                
+
+//Blumenwiese
+
+       for (var i = 0; i < 80; i++) {    
+           
        let y: number = 0;
        let x: number = 0;    
-       let f: Blumen = new Blumen(x, y);
-       f.setRandomFlowers();
-        
+       let f: Blume = new Blume(x, y);
+       var randomFlower:number = Math.floor((Math.random() * 3));
+       f.setRandomPosition();
+       f.draw();
+           
+//       switch (randomFlower) {
+//                        
+//                                case 0:
+//                                    f.drawSonnenblume();
+//                                    break;
+//                                case 1:
+//                                    f.drawMohnblume();
+//                                    break;
+//                                case 2:
+//                                    f.drawTulpe();
+//                                    break;} 
+//           }
+//        
+
 
 //Fest platzierte Blumen 
  
-        
-        let flower1: Blumen = new Blumen(100, 400);
-        flower1.drawSonnenblume();
-        alleBlumen.push(flower1);
-        
-        let flower2: Blumen = new Blumen(1000, 450);
-        flower2.drawMohnblume()
-        alleBlumen.push(flower2);
-        
-        let flower3: Blumen = new Blumen(725, 360);
-        flower3.drawTulpe();
-        alleBlumen.push(flower3);
-        
-        let flower4: Blumen = new Blumen(380, 510);
-        flower4.drawTulpe();
-        alleBlumen.push(flower4);
-        
-        let flower5: Blumen = new Blumen(1030, 550);
-        flower5.drawSonnenblume();
-        alleBlumen.push(flower5);
-        
-        let flower6: Blumen = new Blumen(500, 550);
-        flower6.drawMohnblume();
-        alleBlumen.push(flower6);
+for (let i:number = 0; i < 10; i++){ 
+
+         let y: number = 0;
+         let x: number = 0;  
+         let f: Blume = new Blume(x, y);
+         f.setRandomPosition();
+         nektarBlumen.push(f);}
+
+        console.log(nektarBlumen);
         
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); //Speichern des Canvas als Bild
 
@@ -72,7 +76,7 @@ namespace BienenInterface {
         
         for (let i: number = 0; i < z; i++) {
             
-            let b: Bienen = new Bienen (1190,475);
+            let b: Biene = new Biene (1190,475);
             alleBienen[i] = b;}
 
             window.setTimeout(animate, 10);}
@@ -86,7 +90,7 @@ namespace BienenInterface {
               
         for (let i: number = 0; i < alleBienen.length; i++) {
            
-         let b: Bienen = alleBienen[i];
+         let b: Biene = alleBienen[i];
          b.update();}
  
 
@@ -101,7 +105,7 @@ namespace BienenInterface {
     
     function mehrBienen(_event:Event): void {
         
-         let b: Bienen = new Bienen (1190,475);
+         let b: Biene = new Biene (1190,475);
          b.setRandomStyle;
          alleBienen.push(b);
          z++;}  

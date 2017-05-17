@@ -5,55 +5,59 @@
 //    
 //Hiermit versichere ich, dass ich diesen Code selbst erstellt habe. 
 //Er wurde nicht kopiert und auch nicht diktiert. 
-var BienenInterface;
-(function (BienenInterface) {
+var A7Classes;
+(function (A7Classes) {
     window.addEventListener("load", init);
     var canvas;
     var imgData;
-    BienenInterface.z = 10;
-    BienenInterface.alleBienen = [];
-    BienenInterface.alleBlumen = [];
+    A7Classes.z = 10;
+    A7Classes.alleBienen = [];
+    A7Classes.nektarBlumen = [];
     function init(_event) {
         canvas = document.getElementsByTagName("canvas")[0];
-        BienenInterface.crc2 = canvas.getContext("2d");
+        A7Classes.crc2 = canvas.getContext("2d");
         //Hintergund mittels einer Klasse erstellen
-        var h = new BienenInterface.Hintergrund;
-        //Random Blumen erstellen
-        var y = 0;
-        var x = 0;
-        var f = new BienenInterface.Blumen(x, y);
-        f.setRandomFlowers();
+        var h = new A7Classes.Hintergrund;
+        //Blumenwiese
+        for (var i = 0; i < 80; i++) {
+            var y = 0;
+            var x = 0;
+            var f = new A7Classes.Blume(x, y);
+            var randomFlower = Math.floor((Math.random() * 3));
+            f.setRandomPosition();
+            switch (randomFlower) {
+                case 0:
+                    f.drawSonnenblume();
+                    break;
+                case 1:
+                    f.drawMohnblume();
+                    break;
+                case 2:
+                    f.drawTulpe();
+                    break;
+            }
+        }
         //Fest platzierte Blumen 
-        var flower1 = new BienenInterface.Blumen(100, 400);
-        flower1.drawSonnenblume();
-        BienenInterface.alleBlumen.push(flower1);
-        var flower2 = new BienenInterface.Blumen(1000, 450);
-        flower2.drawMohnblume();
-        BienenInterface.alleBlumen.push(flower2);
-        var flower3 = new BienenInterface.Blumen(725, 360);
-        flower3.drawTulpe();
-        BienenInterface.alleBlumen.push(flower3);
-        var flower4 = new BienenInterface.Blumen(380, 510);
-        flower4.drawTulpe();
-        BienenInterface.alleBlumen.push(flower4);
-        var flower5 = new BienenInterface.Blumen(1030, 550);
-        flower5.drawSonnenblume();
-        BienenInterface.alleBlumen.push(flower5);
-        var flower6 = new BienenInterface.Blumen(500, 550);
-        flower6.drawMohnblume();
-        BienenInterface.alleBlumen.push(flower6);
-        imgData = BienenInterface.crc2.getImageData(0, 0, canvas.width, canvas.height); //Speichern des Canvas als Bild
+        for (var i_1 = 0; i_1 < 10; i_1++) {
+            var y = 0;
+            var x = 0;
+            var f = new A7Classes.Blume(x, y);
+            f.setRandomPosition();
+            A7Classes.nektarBlumen.push(f);
+        }
+        console.log(A7Classes.nektarBlumen);
+        imgData = A7Classes.crc2.getImageData(0, 0, canvas.width, canvas.height); //Speichern des Canvas als Bild
         //Erscheinen der 10 Bienen am Ausgang des Bienenstocks
-        for (var i = 0; i < BienenInterface.z; i++) {
-            var b = new BienenInterface.Bienen(1190, 475);
-            BienenInterface.alleBienen[i] = b;
+        for (var i_2 = 0; i_2 < A7Classes.z; i_2++) {
+            var b = new A7Classes.Biene(1190, 475);
+            A7Classes.alleBienen[i_2] = b;
         }
         window.setTimeout(animate, 10);
     }
     function animate() {
-        BienenInterface.crc2.putImageData(imgData, 0, 0);
-        for (var i = 0; i < BienenInterface.alleBienen.length; i++) {
-            var b = BienenInterface.alleBienen[i];
+        A7Classes.crc2.putImageData(imgData, 0, 0);
+        for (var i = 0; i < A7Classes.alleBienen.length; i++) {
+            var b = A7Classes.alleBienen[i];
             b.update();
         }
         window.setTimeout(animate, 10);
@@ -62,10 +66,10 @@ var BienenInterface;
         canvas.addEventListener("click", mehrBienen);
     }
     function mehrBienen(_event) {
-        var b = new BienenInterface.Bienen(1190, 475);
+        var b = new A7Classes.Biene(1190, 475);
         b.setRandomStyle;
-        BienenInterface.alleBienen.push(b);
-        BienenInterface.z++;
+        A7Classes.alleBienen.push(b);
+        A7Classes.z++;
     }
-})(BienenInterface || (BienenInterface = {}));
+})(A7Classes || (A7Classes = {}));
 //# sourceMappingURL=main7.js.map
