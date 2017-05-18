@@ -19,11 +19,10 @@ var A7Classes;
         //Hintergund mittels einer Klasse erstellen
         var h = new A7Classes.Hintergrund;
         //Blumenwiese
-        for (var i = 0; i < 80; i++) {
+        for (var i = 0; i < 50; i++) {
             var y = 0;
             var x = 0;
             var f = new A7Classes.Blume(x, y);
-            var randomFlower = Math.floor((Math.random() * 3));
             f.setRandomPosition();
             f.draw();
         }

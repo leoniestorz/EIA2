@@ -33,12 +33,11 @@ namespace A7Classes {
 
 //Blumenwiese
 
-       for (var i = 0; i < 80; i++) {    
+       for (var i = 0; i < 50; i++) {    
            
        let y: number = 0;
        let x: number = 0;    
        let f: Blume = new Blume(x, y);
-       var randomFlower:number = Math.floor((Math.random() * 3));
        f.setRandomPosition();
        f.draw();}
 
