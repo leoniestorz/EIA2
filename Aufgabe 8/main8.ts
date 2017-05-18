@@ -124,10 +124,27 @@ for (let i: number = 0; i < z; i++) {
     function mehrBienen(_event:Event): void {
         
         
-         let b: normaleBiene = new normaleBiene (1190,475);
-         b.setRandomStyle;
-         alleBienen.push(b);
-         z++;}  
+//         let b: normaleBiene = new normaleBiene (1190,475);
+//         b.setRandomStyle;
+//         alleBienen.push(b);
+//         z++;
+
+           let randomBiene = Math.floor(Math.random() * 2); 
+        
+           switch (randomBiene) {
+                        
+                                case 0:
+                                    let b:normaleBiene = new normaleBiene(1190,475);
+                                    alleBienen.push(b);
+                                    z++;
+                                    break;
+                                case 1:
+                                    let h:Honigbiene = new Honigbiene(1190,475);
+                                    alleBienen.push(h);
+                                    z++;
+                                    break;
+                                }}
+      
 
 
         

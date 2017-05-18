@@ -74,10 +74,23 @@ var A8Inheritance;
         canvas.addEventListener("click", mehrBienen);
     }
     function mehrBienen(_event) {
-        var b = new A8Inheritance.normaleBiene(1190, 475);
-        b.setRandomStyle;
-        A8Inheritance.alleBienen.push(b);
-        A8Inheritance.z++;
+        //         let b: normaleBiene = new normaleBiene (1190,475);
+        //         b.setRandomStyle;
+        //         alleBienen.push(b);
+        //         z++;
+        var randomBiene = Math.floor(Math.random() * 2);
+        switch (randomBiene) {
+            case 0:
+                var b = new A8Inheritance.normaleBiene(1190, 475);
+                A8Inheritance.alleBienen.push(b);
+                A8Inheritance.z++;
+                break;
+            case 1:
+                var h = new A8Inheritance.Honigbiene(1190, 475);
+                A8Inheritance.alleBienen.push(h);
+                A8Inheritance.z++;
+                break;
+        }
     }
     //Funktionen f�r den Hintergrund
     function drawWiese(_x, _y, _strokeColor, _fillColor) {
