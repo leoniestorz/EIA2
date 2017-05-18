@@ -7,134 +7,30 @@
 //Hiermit versichere ich, dass ich diesen Code selbst erstellt habe. 
 //Er wurde nicht kopiert und auch nicht diktiert.
 
-namespace A8Inheritance {
+namespace A7Classes {
     
-    window.addEventListener("load", init);
-    
-    export let crc2: CanvasRenderingContext2D;
-    let canvas: HTMLCanvasElement;
-    let imgData: ImageData;
-    
-    export let z: number = 10; 
-    export let alleBienen:SuperKlasseBiene[] = [];
-    export let alleBlumen:SuperKlasseBlume[]=[];
-    export let nektarBlumen: SuperKlasseBlume[] = [];
+    export class Background {
 
-    
-
-    function init(_event: Event): void {
-        
-       canvas = document.getElementsByTagName("canvas")[0];
-       crc2 = canvas.getContext("2d");
-
-//Aufruf der Funktionen für den Hintergund 
-
-       drawWiese(0, 0, "#90EE90", "#90EE90");     
-       drawHimmel(0, 0, "##48d1CC", "#48d1CC");
-
-       drawBergGross(500, 400, "#a9a9a9");
-       drawBergKlein(250, 400); 
-       drawSonne(560, 120, "#FFFF00", "#FFFF00");
-       drawBaum(750, 300);
-       drawBuschGross(860, 380, "#556B2F");
-       drawBuschKlein(90, 380, "#556B2F");
-       drawBuschGross(- 20, 440, "#556B2F");       
-       drawWolke(160, 120, "#FFFFFF");
-       drawWolke(750, 180, "#FFFFFF");
-
-                    
-       drawVogel(1042, 315, "#000000", "#000000");
-       drawBienenkorb(1200, 440);
-
-//Blumenwiese
-
-       for (var i = 0; i < 40; i++) {    
-           
-       let y: number = 0;
-       let x: number = 0;    
-       let f: SuperKlasseBlume = new SuperKlasseBlume(x, y);
-      
-       let t:Tulpe = new Tulpe (x,y);
-       alleBlumen.push(t);
-    
-       let m:Mohnblume = new Mohnblume (x,y);
-       alleBlumen.push(m);
-    
-       let s:Sonnenblume = new Sonnenblume (x,y);
-       alleBlumen.push(s);   
-           
-           
-       f.setRandomPosition();
-       f.draw();
-       }
-
-
-//Fest platzierte Blumen 
+     
+        constructor (){
  
-    for (let i:number = 0; i < 10; i++){ 
-
-         let y: number = 0;
-         let x: number = 0;  
-         let f: SuperKlasseBlume = new SuperKlasseBlume(x, y);
-         
-         f.setRandomPosition();
-         nektarBlumen.push(f);
-
-
-}
-
-        console.log(nektarBlumen);
-        
-        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); //Speichern des Canvas als Bild
-
-       
-//Erscheinen der 10 Bienen am Ausgang des Bienenstocks
-        
-for (let i: number = 0; i < z; i++) {
-            
-            let b: normaleBiene = new normaleBiene (1190,475);
-            alleBienen[i] = b;}
-
-            window.setTimeout(animate, 10);}
+            this.drawWiese(0, 0, "#90EE90", "#90EE90"); 
+            this.drawHimmel(0, 0, "##48d1CC", "#48d1CC");
+            this.drawBergGross(500, 400, "#a9a9a9");
+            this.drawBergKlein(250, 400); 
+            this.drawSonne(560, 120, "#FFFF00", "#FFFF00");
+            this.drawBaum(750, 300);
+            this.drawBuschGross(860, 380, "#556B2F");
+            this.drawBuschKlein(90, 380, "#556B2F");
+            this.drawBuschGross(- 20, 440, "#556B2F");       
+            this.drawWolke(160, 120, "#FFFFFF");
+            this.drawWolke(750, 180, "#FFFFFF");        
+            this.drawVogel(1042, 315, "#000000", "#000000");
+            this.drawBienenkorb(1200, 440); }
     
+//Methoden    
     
-
-    
-
-    
-   function animate(): void {
-        
-        crc2.putImageData(imgData, 0, 0); 
-              
-        for (let i: number = 0; i < alleBienen.length; i++) {
-           
-         let b: normaleBiene = alleBienen[i];
-         b.update();}
- 
-
-        window.setTimeout(animate, 10);
-        
-//Bei KLick / Touch auf den Canvas erscheint eine neue Biene am Ausgang des Bienenstocks       
-    
-        
-        canvas.addEventListener("touchend",mehrBienen); 
-        canvas.addEventListener("click", mehrBienen);}
-
-    
-    function mehrBienen(_event:Event): void {
-        
-        
-         let b: normaleBiene = new normaleBiene (1190,475);
-         b.setRandomStyle;
-         alleBienen.push(b);
-         z++;}  
-
-
-        
-
-//Funktionen für den Hintergrund
-    
-    function drawWiese (_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
+     drawWiese (_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
          
         crc2.beginPath();
         crc2.strokeStyle = _strokeColor;
@@ -149,7 +45,10 @@ for (let i: number = 0; i < z; i++) {
         crc2.stroke();
         crc2.fill();}
     
-     function drawHimmel (_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
+    
+    
+    
+     drawHimmel (_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
          
         crc2.beginPath();
         crc2.strokeStyle = _strokeColor;
@@ -167,7 +66,7 @@ for (let i: number = 0; i < z; i++) {
     
     
     
-    function drawBergGross(_x: number, _y: number, _fillColor: string): void {
+    drawBergGross(_x: number, _y: number, _fillColor: string): void {
        
        
         crc2.beginPath();
@@ -180,7 +79,7 @@ for (let i: number = 0; i < z; i++) {
         crc2.closePath();
         crc2.fill();}
         
-     function drawBergKlein(_x: number, _y: number): void {
+     drawBergKlein(_x: number, _y: number): void {
        
         //Berg
          
@@ -218,7 +117,7 @@ for (let i: number = 0; i < z; i++) {
     
     
     
-    function drawSonne(_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
+    drawSonne(_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
        
         //Sonne
           
@@ -257,7 +156,7 @@ for (let i: number = 0; i < z; i++) {
         crc2.stroke();
         crc2.fill();}
     
-    function drawBaum(_x: number, _y: number): void {
+    drawBaum(_x: number, _y: number): void {
          
         //Baumstamm
          
@@ -281,7 +180,7 @@ for (let i: number = 0; i < z; i++) {
         crc2.closePath();
         crc2.fill();}
         
-     function drawBuschGross(_x: number, _y: number,_fillColor: string): void {
+    drawBuschGross(_x: number, _y: number,_fillColor: string): void {
          
 
         crc2.beginPath();
@@ -295,7 +194,7 @@ for (let i: number = 0; i < z; i++) {
         crc2.closePath();
         crc2.fill();}
         
-     function drawBuschKlein(_x: number, _y: number, _fillColor: string): void {
+     drawBuschKlein(_x: number, _y: number, _fillColor: string): void {
          
    
         crc2.beginPath();
@@ -309,7 +208,7 @@ for (let i: number = 0; i < z; i++) {
         crc2.closePath();
         crc2.fill();}
         
-      function drawWolke(_x: number, _y: number,_fillColor: string): void {
+      drawWolke(_x: number, _y: number,_fillColor: string): void {
          
 
         crc2.beginPath();
@@ -322,8 +221,11 @@ for (let i: number = 0; i < z; i++) {
         
         crc2.closePath();
         crc2.fill();}
-       
-    function drawVogel (_x: number, _y: number, _strokeColor: string, _fillColor:string) : void {
+        
+        
+     
+        
+     drawVogel (_x: number, _y: number, _strokeColor: string, _fillColor:string) : void {
          
         
         crc2.beginPath();
@@ -359,7 +261,7 @@ for (let i: number = 0; i < z; i++) {
     
 
 
-     function drawBienenkorb  (_x: number, _y: number): void {
+     drawBienenkorb  (_x: number, _y: number): void {
          
         //Bienenkorb
          
@@ -390,7 +292,4 @@ for (let i: number = 0; i < z; i++) {
         crc2.closePath();
         crc2.fill();}
 
-
-
-
-}
+    }}
