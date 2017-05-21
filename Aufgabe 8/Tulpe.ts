@@ -10,16 +10,13 @@
 namespace A8Inheritance {
     
     export class Tulpe extends SuperKlasseBlume{
-      
-        x: number;
-        y: number;
 
  
-        constructor(_x: number, _y: number) {
-            super(_x,_y);
+        constructor() {
+            super();
             console.log("Create Tulpe");
-            this.x = _x;
-            this.y = _y;}
+            this.drawTulpe();
+        }
         
 //Methode 'drawTulpe'    
  

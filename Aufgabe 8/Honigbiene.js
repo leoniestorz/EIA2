@@ -17,24 +17,26 @@ var A8Inheritance;
         function Honigbiene(_x, _y) {
             _super.call(this, _x, _y);
             console.log("Create Honigbiene");
-            this.x = 1190;
-            this.y = 475;
             this.setRandomStyle();
+            this.speed = 0.008;
+            this.getRandomFlowerPosition();
+            this.setStartPosition();
         }
-        //Methode 'move' (ueberschrieben) - Biene bewegen
+        //zuf�llige Position x,y aus dem Blumenarray holen 
+        Honigbiene.prototype.getRandomFlowerPosition = function () {
+            var i = Math.floor(Math.random() * (A8Inheritance.alleBlumen.length - 1));
+            this.xTarget = A8Inheritance.alleBlumen[i].x;
+            this.yTarget = A8Inheritance.alleBlumen[i].y;
+        };
+        //Biene zu dieser Position x,y bewegen 
         Honigbiene.prototype.move = function () {
-            this.x += Math.random() * 5 - 4;
-            this.y += Math.random() * 6 - 3;
-            for (var i = 0; i < A8Inheritance.z; i++) {
-                if (this.x < 0) {
-                    this.x = A8Inheritance.crc2.canvas.width;
-                }
-                if (this.y < 0) {
-                    this.y = A8Inheritance.crc2.canvas.height;
-                }
-                if (this.y >= A8Inheritance.crc2.canvas.height) {
-                    this.y = 0;
-                }
+            var xDiff = this.xTarget - this.x;
+            var yDiff = this.yTarget - this.y;
+            if (Math.abs(xDiff) < 1 && Math.abs(yDiff) < 1)
+                this.getRandomFlowerPosition();
+            else {
+                this.x += xDiff * this.speed;
+                this.y += yDiff * this.speed;
             }
         };
         return Honigbiene;

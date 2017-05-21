@@ -11,15 +11,13 @@ namespace A8Inheritance {
     
     export class Mohnblume extends SuperKlasseBlume {
     
-        x: number;
-        y: number;
 
  
-        constructor(_x: number, _y: number) {
-            super(_x,_y);
-              console.log("Create Mohnblume");
-            this.x = _x;
-            this.y = _y;
+        constructor() {
+            super();
+            console.log("Create Mohnblume");
+            this.drawMohnblume();
+           
         }
         
 //Methode 'drawMohnblume'

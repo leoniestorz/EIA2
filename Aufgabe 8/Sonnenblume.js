@@ -14,11 +14,10 @@ var A8Inheritance;
 (function (A8Inheritance) {
     var Sonnenblume = (function (_super) {
         __extends(Sonnenblume, _super);
-        function Sonnenblume(_x, _y) {
-            _super.call(this, _x, _y);
+        function Sonnenblume() {
+            _super.call(this);
             console.log("Create Sonnenblume");
-            this.x = _x;
-            this.y = _y;
+            this.drawSonnenblume();
         }
         //Methode 'drawSonnenblume'
         Sonnenblume.prototype.drawSonnenblume = function () {

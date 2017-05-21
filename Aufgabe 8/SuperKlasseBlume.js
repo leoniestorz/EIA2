@@ -8,9 +8,8 @@
 var A8Inheritance;
 (function (A8Inheritance) {
     var SuperKlasseBlume = (function () {
-        function SuperKlasseBlume(_x, _y) {
-            this.x = _x;
-            this.y = _y;
+        function SuperKlasseBlume() {
+            this.setRandomPosition();
         }
         //Methode 'setRandomPosition'
         SuperKlasseBlume.prototype.setRandomPosition = function () {
@@ -19,21 +18,23 @@ var A8Inheritance;
         };
         //Methode 'draw'
         SuperKlasseBlume.prototype.draw = function () {
-            var randomFlower = Math.floor(Math.random() * 3);
-            var s = new A8Inheritance.Sonnenblume(this.x, this.y);
-            var m = new A8Inheritance.Mohnblume(this.x, this.y);
-            var t = new A8Inheritance.Tulpe(this.x, this.y);
-            switch (randomFlower) {
-                case 0:
-                    s.drawSonnenblume();
-                    break;
-                case 1:
-                    m.drawMohnblume();
-                    break;
-                case 2:
-                    t.drawTulpe();
-                    break;
-            }
+            //           let randomFlower = Math.floor(Math.random() * 3);
+            //            
+            //           let s: Sonnenblume = new Sonnenblume(this.x,this.y); 
+            //           let m: Mohnblume = new Mohnblume(this.x,this.y); 
+            //           let t: Tulpe = new Tulpe(this.x,this.y); 
+            //            
+            //           switch (randomFlower) {
+            //                        
+            //                                case 0:
+            //                                    s.drawSonnenblume();
+            //                                    break;
+            //                                case 1:
+            //                                    m.drawMohnblume();
+            //                                    break;
+            //                                case 2:
+            //                                    t.drawTulpe();
+            //                                    break;}
         };
         return SuperKlasseBlume;
     }());

@@ -13,7 +13,6 @@ var A8Inheritance;
     A8Inheritance.z = 10;
     A8Inheritance.alleBienen = [];
     A8Inheritance.alleBlumen = [];
-    A8Inheritance.nektarBlumen = [];
     function init(_event) {
         canvas = document.getElementsByTagName("canvas")[0];
         A8Inheritance.crc2 = canvas.getContext("2d");
@@ -31,53 +30,68 @@ var A8Inheritance;
         drawWolke(750, 180, "#FFFFFF");
         drawVogel(1042, 315, "#000000", "#000000");
         drawBienenkorb(1200, 440);
-        //Blumenwiese
-        for (var i = 0; i < 40; i++) {
-            var y = 0;
-            var x = 0;
-            var f = new A8Inheritance.SuperKlasseBlume(x, y);
-            var t = new A8Inheritance.Tulpe(x, y);
-            A8Inheritance.alleBlumen.push(t);
-            var m = new A8Inheritance.Mohnblume(x, y);
+        //Blumenwiese aus Tulpen
+        for (var i = 0; i < 20; i++) {
+            var t = new A8Inheritance.Tulpe();
+            t.draw();
+        }
+        //       let y: number = 0;
+        //       let x: number = 0;    
+        //       let f: SuperKlasseBlume = new SuperKlasseBlume(x, y);
+        //    
+        //       let m:Mohnblume = new Mohnblume (x,y);
+        //       alleBlumen.push(m);
+        //    
+        //       let s:Sonnenblume = new Sonnenblume (x,y);
+        //       alleBlumen.push(s);   
+        //           
+        //       f.setRandomPosition();
+        //       f.draw();
+        //Spezielle Blumen (Sonnenblumen und Mohnblumen, jeweils 5) im Array speichern 
+        for (var i_1 = 0; i_1 < 5; i_1++) {
+            //         let y: number = 0;
+            //         let x: number = 0;  
+            //         let f: SuperKlasseBlume = new SuperKlasseBlume(x, y);
+            //        let t:Tulpe = new Tulpe (x,y);
+            //        alleBlumen.push(t);
+            //    
+            var m = new A8Inheritance.Mohnblume();
             A8Inheritance.alleBlumen.push(m);
-            var s = new A8Inheritance.Sonnenblume(x, y);
+            console.log(m);
+            A8Inheritance.alleBlumen[i_1].draw();
+            var s = new A8Inheritance.Sonnenblume();
             A8Inheritance.alleBlumen.push(s);
-            f.setRandomPosition();
-            f.draw();
+            console.log(s);
+            A8Inheritance.alleBlumen[i_1].draw();
         }
-        //Fest platzierte Blumen 
-        for (var i_1 = 0; i_1 < 10; i_1++) {
-            var y = 0;
-            var x = 0;
-            var f = new A8Inheritance.SuperKlasseBlume(x, y);
-            f.setRandomPosition();
-            A8Inheritance.nektarBlumen.push(f);
-        }
-        console.log(A8Inheritance.nektarBlumen);
         imgData = A8Inheritance.crc2.getImageData(0, 0, canvas.width, canvas.height); //Speichern des Canvas als Bild
         //Erscheinen der 10 Bienen am Ausgang des Bienenstocks
         for (var i_2 = 0; i_2 < A8Inheritance.z; i_2++) {
             var b = new A8Inheritance.normaleBiene(1190, 475);
-            A8Inheritance.alleBienen[i_2] = b;
+            A8Inheritance.alleBienen.push(b);
+            var h = new A8Inheritance.Honigbiene(1190, 475);
+            A8Inheritance.alleBienen.push(h);
         }
         window.setTimeout(animate, 10);
     }
+    //Bienen bewegen
     function animate() {
         A8Inheritance.crc2.putImageData(imgData, 0, 0);
+        //      for (let i: number = 0; i < alleBlumen.length; i++) {
+        //            let f: SuperKlasseBlume = alleBlumen[i];
+        //            f.draw();
+        //} 
         for (var i = 0; i < A8Inheritance.alleBienen.length; i++) {
-            var b = A8Inheritance.alleBienen[i];
-            b.update();
+            var nb = A8Inheritance.alleBienen[i];
+            nb.update();
         }
         window.setTimeout(animate, 10);
         //Bei KLick / Touch auf den Canvas erscheint eine neue Biene am Ausgang des Bienenstocks       
         canvas.addEventListener("touchend", mehrBienen);
         canvas.addEventListener("click", mehrBienen);
     }
+    //eine weitere Biene hinzufuegen (zufaellig ob normaleBiene oder Honigbiene)    
     function mehrBienen(_event) {
-        //         let b: normaleBiene = new normaleBiene (1190,475);
-        //         b.setRandomStyle;
-        //         alleBienen.push(b);
-        //         z++;
         var randomBiene = Math.floor(Math.random() * 2);
         switch (randomBiene) {
             case 0:

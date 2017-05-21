@@ -14,11 +14,10 @@ var A8Inheritance;
 (function (A8Inheritance) {
     var Mohnblume = (function (_super) {
         __extends(Mohnblume, _super);
-        function Mohnblume(_x, _y) {
-            _super.call(this, _x, _y);
+        function Mohnblume() {
+            _super.call(this);
             console.log("Create Mohnblume");
-            this.x = _x;
-            this.y = _y;
+            this.drawMohnblume();
         }
         //Methode 'drawMohnblume'
         Mohnblume.prototype.drawMohnblume = function () {

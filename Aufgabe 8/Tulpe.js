@@ -14,11 +14,10 @@ var A8Inheritance;
 (function (A8Inheritance) {
     var Tulpe = (function (_super) {
         __extends(Tulpe, _super);
-        function Tulpe(_x, _y) {
-            _super.call(this, _x, _y);
+        function Tulpe() {
+            _super.call(this);
             console.log("Create Tulpe");
-            this.x = _x;
-            this.y = _y;
+            this.drawTulpe();
         }
         //Methode 'drawTulpe'    
         Tulpe.prototype.drawTulpe = function () {

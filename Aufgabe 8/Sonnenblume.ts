@@ -10,16 +10,15 @@
 namespace A8Inheritance {
     
     export class Sonnenblume extends SuperKlasseBlume{
-    
-        x: number;
-        y: number;
+
 
  
-     constructor(_x: number, _y: number) {
-                super(_x,_y);
-                console.log("Create Sonnenblume");
-                this.x = _x;
-                this.y = _y;}
+   constructor() {
+            super();
+            console.log("Create Sonnenblume");
+            this.drawSonnenblume();
+           
+        }
             
 //Methode 'drawSonnenblume'
    

@@ -16,9 +16,9 @@ namespace A8Inheritance {
     let imgData: ImageData;
     
     export let z: number = 10; 
-    export let alleBienen:SuperKlasseBiene[] = [];
-    export let alleBlumen:SuperKlasseBlume[]=[];
-    export let nektarBlumen: SuperKlasseBlume[] = [];
+    export let alleBienen: SuperKlasseBiene[] = [];
+    export let alleBlumen: SuperKlasseBlume[] = [];
+
 
     
 
@@ -46,44 +46,62 @@ namespace A8Inheritance {
        drawVogel(1042, 315, "#000000", "#000000");
        drawBienenkorb(1200, 440);
 
-//Blumenwiese
+//Blumenwiese aus Tulpen
 
-       for (var i = 0; i < 40; i++) {    
+       for (var i = 0; i < 20; i++) {    
            
-       let y: number = 0;
-       let x: number = 0;    
-       let f: SuperKlasseBlume = new SuperKlasseBlume(x, y);
-      
-       let t:Tulpe = new Tulpe (x,y);
-       alleBlumen.push(t);
-    
-       let m:Mohnblume = new Mohnblume (x,y);
-       alleBlumen.push(m);
-    
-       let s:Sonnenblume = new Sonnenblume (x,y);
-       alleBlumen.push(s);   
-           
-           
-       f.setRandomPosition();
-       f.draw();
-       }
-
-
-//Fest platzierte Blumen 
+          let t:Tulpe = new Tulpe();
+          t.draw(); }
  
-    for (let i:number = 0; i < 10; i++){ 
+//       let y: number = 0;
+//       let x: number = 0;    
+//       let f: SuperKlasseBlume = new SuperKlasseBlume(x, y);
+      
 
-         let y: number = 0;
-         let x: number = 0;  
-         let f: SuperKlasseBlume = new SuperKlasseBlume(x, y);
+//    
+//       let m:Mohnblume = new Mohnblume (x,y);
+//       alleBlumen.push(m);
+//    
+//       let s:Sonnenblume = new Sonnenblume (x,y);
+//       alleBlumen.push(s);   
+           
+//           
+//       f.setRandomPosition();
+//       f.draw();
+       
+
+
+//Spezielle Blumen (Sonnenblumen und Mohnblumen, jeweils 5) im Array speichern 
+ 
+    for (let i:number = 0; i < 5; i++){ 
+
+//         let y: number = 0;
+//         let x: number = 0;  
+//         let f: SuperKlasseBlume = new SuperKlasseBlume(x, y);
          
-         f.setRandomPosition();
-         nektarBlumen.push(f);
+//        let t:Tulpe = new Tulpe (x,y);
+//        alleBlumen.push(t);
+//    
+        let m:Mohnblume = new Mohnblume ();
+        alleBlumen.push(m);
+        console.log(m);
+        alleBlumen[i].draw();
+   
+       let s:Sonnenblume = new Sonnenblume ();
+       alleBlumen.push(s); 
+        console.log(s);
+        alleBlumen[i].draw();   
+//            
+//       console.log(alleBlumen);
+        
+        
+//         f.setRandomPosition();
+//         alleBlumen.push(f);
 
 
 }
 
-        console.log(nektarBlumen);
+        
         
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); //Speichern des Canvas als Bild
 
@@ -91,25 +109,70 @@ namespace A8Inheritance {
 //Erscheinen der 10 Bienen am Ausgang des Bienenstocks
         
 for (let i: number = 0; i < z; i++) {
-            
-            let b: normaleBiene = new normaleBiene (1190,475);
-            alleBienen[i] = b;}
+
+    
+    
+            let b: normaleBiene = new normaleBiene(1190,475);
+            alleBienen.push(b);
+    
+            var h: Honigbiene = new Honigbiene(1190, 475);
+            alleBienen.push(h);
+
+    
+    
+//    let randomBiene = Math.floor(Math.random() * 2); 
+////        
+//           switch (randomBiene) {
+//                        
+//                                case 0:
+//                                    let b:normaleBiene = new normaleBiene(1190,475);
+//                                    alleBienen.push(b);
+//                                    console.log(alleBienen)
+//                                    z++;
+//                                    break;
+//                                case 1:
+//                                    let h:Honigbiene = new Honigbiene(1190,475);
+//                                    alleBienen.push(h);
+//                                    z++;
+//                                    break;
+//                                }
+//            let nb: normaleBiene = new normaleBiene (1190,475);
+//            alleBienen.push(nb);
+//            alleBienen[i] = nb;
+
+//            let hb: Honigbiene = new Honigbiene (1190,475);
+//            alleBienen.push(hb);
+//            alleBienen[i] = hb;
+}
 
             window.setTimeout(animate, 10);}
     
     
 
     
-
+//Bienen bewegen
     
    function animate(): void {
         
         crc2.putImageData(imgData, 0, 0); 
               
-        for (let i: number = 0; i < alleBienen.length; i++) {
-           
-         let b: normaleBiene = alleBienen[i];
-         b.update();}
+        
+//      for (let i: number = 0; i < alleBlumen.length; i++) {
+//            let f: SuperKlasseBlume = alleBlumen[i];
+//            f.draw();
+//} 
+       
+       
+       for (let i: number = 0; i < alleBienen.length; i++) {
+       
+
+         let nb: normaleBiene = alleBienen[i];
+         nb.update();
+         
+        
+//         let hb: Honigbiene = alleBienen[i];
+//         hb.move();
+        }
  
 
         window.setTimeout(animate, 10);
@@ -120,14 +183,10 @@ for (let i: number = 0; i < z; i++) {
         canvas.addEventListener("touchend",mehrBienen); 
         canvas.addEventListener("click", mehrBienen);}
 
-    
+//eine weitere Biene hinzufuegen (zufaellig ob normaleBiene oder Honigbiene)    
+   
     function mehrBienen(_event:Event): void {
         
-        
-//         let b: normaleBiene = new normaleBiene (1190,475);
-//         b.setRandomStyle;
-//         alleBienen.push(b);
-//         z++;
 
            let randomBiene = Math.floor(Math.random() * 2); 
         
