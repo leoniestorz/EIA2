@@ -17,8 +17,6 @@ var A8Inheritance;
         function normaleBiene(_x, _y) {
             _super.call(this, _x, _y);
             console.log("Create normaleBiene");
-            this.x = 1190;
-            this.y = 475;
             this.setRandomStyle();
         }
         return normaleBiene;

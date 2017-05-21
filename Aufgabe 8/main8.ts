@@ -91,8 +91,7 @@ namespace A8Inheritance {
        alleBlumen.push(s); 
         console.log(s);
         alleBlumen[i].draw();   
-//            
-//       console.log(alleBlumen);
+
         
         
 //         f.setRandomPosition();

@@ -15,8 +15,6 @@ namespace A8Inheritance {
     
             super(_x,_y);
             console.log("Create normaleBiene");
-            this.x = 1190;
-            this.y = 475;
             this.setRandomStyle();}
    
 

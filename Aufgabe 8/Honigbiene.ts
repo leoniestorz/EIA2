@@ -16,48 +16,38 @@ namespace A8Inheritance {
         speed:number;
 
 
-    
         constructor(_x:number,_y:number) {
     
             super(_x,_y);
             console.log("Create Honigbiene");
             this.setRandomStyle();
-            this.speed = 0.008;
-            this.getRandomFlowerPosition();
+            this.speed = 0.003;
+            this.setRandomFlowerPosition();
             this.setStartPosition();}
-        
-
  
-
-    
- 
-//zufällige Position x,y aus dem Blumenarray holen 
+//zufällige Position x,y aus dem Blumenarray 
         
-        getRandomFlowerPosition(): void {
+        setRandomFlowerPosition(): void {
             
-            let i:number = Math.floor(Math.random() * (alleBlumen.length - 1));
+            let i:number = Math.round(Math.random() * (alleBlumen.length - 1));
             this.xTarget = alleBlumen[i].x;
             this.yTarget = alleBlumen[i].y;
             
         }
 
         
-//Biene zu dieser Position x,y bewegen 
+//Honigbiene zu dieser Position x,y bewegen 
         
         move(): void {
-            
-     
 
             let xDiff: number = this.xTarget - this.x;
             let yDiff: number = this.yTarget - this.y;
             
             if (Math.abs(xDiff) < 1 && Math.abs(yDiff) < 1)
-                this.getRandomFlowerPosition();
+                this.setRandomFlowerPosition();
             else {
                 this.x += xDiff * this.speed;
                 this.y += yDiff * this.speed;}
-
-      
 
 
 
