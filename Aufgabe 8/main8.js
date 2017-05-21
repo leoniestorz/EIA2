@@ -35,12 +35,19 @@ var A8Inheritance;
             A8Inheritance.alleBlumen[i_1].draw();
         }
         imgData = A8Inheritance.crc2.getImageData(0, 0, canvas.width, canvas.height); //Speichern des Canvas als Bild
-        //Erscheinen der 10 Bienen am Ausgang des Bienenstocks
+        //Erscheinen der Bienen am Ausgang des Bienenstocks
         for (var i_2 = 0; i_2 < A8Inheritance.z; i_2++) {
-            var b = new A8Inheritance.normaleBiene(1190, 475);
-            A8Inheritance.alleBienen.push(b);
-            var h = new A8Inheritance.Honigbiene(1190, 475);
-            A8Inheritance.alleBienen.push(h);
+            var randomBiene = Math.floor(Math.random() * 2);
+            switch (randomBiene) {
+                case 0:
+                    var b = new A8Inheritance.normaleBiene(1190, 475);
+                    A8Inheritance.alleBienen.push(b);
+                    break;
+                case 1:
+                    var h = new A8Inheritance.Honigbiene(1190, 475);
+                    A8Inheritance.alleBienen.push(h);
+                    break;
+            }
         }
         window.setTimeout(animate, 10);
     }

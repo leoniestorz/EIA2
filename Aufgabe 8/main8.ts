@@ -32,7 +32,6 @@ namespace A8Inheritance {
        let hg: Hintergrund = new Hintergrund;
         
 
-
 //Blumenwiese aus Tulpen
 
        for (var i = 0; i < 30; i++) {    
@@ -60,36 +59,23 @@ namespace A8Inheritance {
  imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); //Speichern des Canvas als Bild
 
        
-//Erscheinen der 10 Bienen am Ausgang des Bienenstocks
+//Erscheinen der Bienen am Ausgang des Bienenstocks
         
     for (let i: number = 0; i < z; i++) {
 
-    
-    
-            let b: normaleBiene = new normaleBiene(1190,475);
-            alleBienen.push(b);
-    
-            var h: Honigbiene = new Honigbiene(1190, 475);
-            alleBienen.push(h);
-
-    
-    
-//    let randomBiene = Math.floor(Math.random() * 2); 
-//       
-//           switch (randomBiene) {
-//                        
-//                                case 0:
-//                                    let b:normaleBiene = new normaleBiene(1190,475);
-//                                    alleBienen.push(b);
-//                                    console.log(alleBienen)
-//                                    z++;
-//                                    break;
-//                                case 1:
-//                                    let h:Honigbiene = new Honigbiene(1190,475);
-//                                    alleBienen.push(h);
-//                                    z++;
-//                                    break;
-//                                }
+    let randomBiene = Math.floor(Math.random() * 2); 
+       
+           switch (randomBiene) {
+                        
+                                case 0:
+                                     let b: normaleBiene = new normaleBiene(1190,475);
+                                       alleBienen.push(b);
+                                    break;
+                                case 1:
+                                     let h: Honigbiene = new Honigbiene(1190, 475);
+                                         alleBienen.push(h);
+                                    break;
+                                }
 
 }
 
@@ -109,6 +95,7 @@ namespace A8Inheritance {
 
          let nb: normaleBiene = alleBienen[i];
          nb.update();
+           
 
         }
  

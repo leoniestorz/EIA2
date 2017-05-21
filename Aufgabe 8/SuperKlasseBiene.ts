@@ -11,6 +11,7 @@ namespace A8Inheritance {
     
     export class SuperKlasseBiene {
     
+
         x: number;
         y: number;
         color: string;

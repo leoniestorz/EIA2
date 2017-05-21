@@ -48,7 +48,7 @@ namespace A8Inheritance {
         move(): void {
 
             let xDiff: number = this.xTarget - this.x - 10;
-            let yDiff: number = this.yTarget - this.y -20;
+            let yDiff: number = this.yTarget - this.y - 20;
             
             if (Math.abs(xDiff) < 1 && Math.abs(yDiff) < 1)
                 this.setRandomFlowerPosition();
