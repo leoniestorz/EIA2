@@ -21,10 +21,17 @@ namespace A8Inheritance {
             super(_x,_y);
             console.log("Create Honigbiene");
             this.setRandomStyle();
-            this.speed = 0.003;
+            this.speed = 0.005;
             this.setRandomFlowerPosition();
             this.setStartPosition();}
- 
+        
+//Methode 'setStart'
+        
+        setStartPosition():void {
+                    
+        this.x = 1190;
+        this.y = 475;}
+         
 //zufällige Position x,y aus dem Blumenarray 
         
         setRandomFlowerPosition(): void {
@@ -40,8 +47,8 @@ namespace A8Inheritance {
         
         move(): void {
 
-            let xDiff: number = this.xTarget - this.x;
-            let yDiff: number = this.yTarget - this.y;
+            let xDiff: number = this.xTarget - this.x - 10;
+            let yDiff: number = this.yTarget - this.y -20;
             
             if (Math.abs(xDiff) < 1 && Math.abs(yDiff) < 1)
                 this.setRandomFlowerPosition();

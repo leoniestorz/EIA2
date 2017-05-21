@@ -31,30 +31,12 @@ var A8Inheritance;
         drawVogel(1042, 315, "#000000", "#000000");
         drawBienenkorb(1200, 440);
         //Blumenwiese aus Tulpen
-        for (var i = 0; i < 20; i++) {
+        for (var i = 0; i < 30; i++) {
             var t = new A8Inheritance.Tulpe();
             t.draw();
         }
-        //       let y: number = 0;
-        //       let x: number = 0;    
-        //       let f: SuperKlasseBlume = new SuperKlasseBlume(x, y);
-        //    
-        //       let m:Mohnblume = new Mohnblume (x,y);
-        //       alleBlumen.push(m);
-        //    
-        //       let s:Sonnenblume = new Sonnenblume (x,y);
-        //       alleBlumen.push(s);   
-        //           
-        //       f.setRandomPosition();
-        //       f.draw();
         //Spezielle Blumen (Sonnenblumen und Mohnblumen, jeweils 5) im Array speichern 
         for (var i_1 = 0; i_1 < 5; i_1++) {
-            //         let y: number = 0;
-            //         let x: number = 0;  
-            //         let f: SuperKlasseBlume = new SuperKlasseBlume(x, y);
-            //        let t:Tulpe = new Tulpe (x,y);
-            //        alleBlumen.push(t);
-            //    
             var m = new A8Inheritance.Mohnblume();
             A8Inheritance.alleBlumen.push(m);
             console.log(m);
@@ -77,10 +59,6 @@ var A8Inheritance;
     //Bienen bewegen
     function animate() {
         A8Inheritance.crc2.putImageData(imgData, 0, 0);
-        //      for (let i: number = 0; i < alleBlumen.length; i++) {
-        //            let f: SuperKlasseBlume = alleBlumen[i];
-        //            f.draw();
-        //} 
         for (var i = 0; i < A8Inheritance.alleBienen.length; i++) {
             var nb = A8Inheritance.alleBienen[i];
             nb.update();

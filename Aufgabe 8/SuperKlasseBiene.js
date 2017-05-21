@@ -19,11 +19,6 @@ var A8Inheritance;
             this.draw();
             this.move();
         };
-        //Methode 'setStart'
-        SuperKlasseBiene.prototype.setStartPosition = function () {
-            this.x = 1190;
-            this.y = 475;
-        };
         //Methode 'draw' - Biene malen
         SuperKlasseBiene.prototype.draw = function () {
             //      Koerper

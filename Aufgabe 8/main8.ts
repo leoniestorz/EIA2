@@ -48,66 +48,34 @@ namespace A8Inheritance {
 
 //Blumenwiese aus Tulpen
 
-       for (var i = 0; i < 20; i++) {    
+       for (var i = 0; i < 30; i++) {    
            
           let t:Tulpe = new Tulpe();
           t.draw(); }
  
-//       let y: number = 0;
-//       let x: number = 0;    
-//       let f: SuperKlasseBlume = new SuperKlasseBlume(x, y);
-      
-
-//    
-//       let m:Mohnblume = new Mohnblume (x,y);
-//       alleBlumen.push(m);
-//    
-//       let s:Sonnenblume = new Sonnenblume (x,y);
-//       alleBlumen.push(s);   
-           
-//           
-//       f.setRandomPosition();
-//       f.draw();
-       
-
 
 //Spezielle Blumen (Sonnenblumen und Mohnblumen, jeweils 5) im Array speichern 
  
     for (let i:number = 0; i < 5; i++){ 
 
-//         let y: number = 0;
-//         let x: number = 0;  
-//         let f: SuperKlasseBlume = new SuperKlasseBlume(x, y);
-         
-//        let t:Tulpe = new Tulpe (x,y);
-//        alleBlumen.push(t);
-//    
+
         let m:Mohnblume = new Mohnblume ();
         alleBlumen.push(m);
         console.log(m);
         alleBlumen[i].draw();
    
-       let s:Sonnenblume = new Sonnenblume ();
-       alleBlumen.push(s); 
+        let s:Sonnenblume = new Sonnenblume ();
+        alleBlumen.push(s); 
         console.log(s);
         alleBlumen[i].draw();   
-
-        
-        
-//         f.setRandomPosition();
-//         alleBlumen.push(f);
-
-
 }
 
-        
-        
-        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); //Speichern des Canvas als Bild
+ imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); //Speichern des Canvas als Bild
 
        
 //Erscheinen der 10 Bienen am Ausgang des Bienenstocks
         
-for (let i: number = 0; i < z; i++) {
+    for (let i: number = 0; i < z; i++) {
 
     
     
@@ -120,7 +88,7 @@ for (let i: number = 0; i < z; i++) {
     
     
 //    let randomBiene = Math.floor(Math.random() * 2); 
-////        
+//       
 //           switch (randomBiene) {
 //                        
 //                                case 0:
@@ -135,13 +103,7 @@ for (let i: number = 0; i < z; i++) {
 //                                    z++;
 //                                    break;
 //                                }
-//            let nb: normaleBiene = new normaleBiene (1190,475);
-//            alleBienen.push(nb);
-//            alleBienen[i] = nb;
 
-//            let hb: Honigbiene = new Honigbiene (1190,475);
-//            alleBienen.push(hb);
-//            alleBienen[i] = hb;
 }
 
             window.setTimeout(animate, 10);}
@@ -154,23 +116,13 @@ for (let i: number = 0; i < z; i++) {
    function animate(): void {
         
         crc2.putImageData(imgData, 0, 0); 
-              
-        
-//      for (let i: number = 0; i < alleBlumen.length; i++) {
-//            let f: SuperKlasseBlume = alleBlumen[i];
-//            f.draw();
-//} 
-       
-       
+    
        for (let i: number = 0; i < alleBienen.length; i++) {
        
 
          let nb: normaleBiene = alleBienen[i];
          nb.update();
-         
-        
-//         let hb: Honigbiene = alleBienen[i];
-//         hb.move();
+
         }
  
 
@@ -202,10 +154,7 @@ for (let i: number = 0; i < z; i++) {
                                     z++;
                                     break;
                                 }}
-      
-
-
-        
+   
 
 //Funktionen für den Hintergrund
     

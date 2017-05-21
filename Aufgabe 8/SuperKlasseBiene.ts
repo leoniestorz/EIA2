@@ -33,12 +33,7 @@ namespace A8Inheritance {
         this.draw ();
         this.move ();}
 
-//Methode 'setStart'
-        
-        setStartPosition():void {
-                    
-        this.x = 1190;
-        this.y = 475;}
+
         
 //Methode 'draw' - Biene malen
         
