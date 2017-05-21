@@ -7,10 +7,12 @@
 //Hiermit versichere ich, dass ich diesen Code selbst erstellt habe. 
 //Er wurde nicht kopiert und auch nicht diktiert.
 
-namespace A7Classes {
+namespace A8Inheritance {
     
-    export class Background {
+    export class Hintergrund {
 
+
+    
      
         constructor (){
  
