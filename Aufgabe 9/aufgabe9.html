@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<!-- Aufgabe: 9 - FormElements
+Name: Leonie Storz
+Matrikel: 255077
+Datum: 04.06.17
+   
+Hiermit versichere ich, dass ich diesen Code selbst erstellt habe. 
+Er wurde nicht kopiert und auch nicht diktiert.  -->
+
+
+
+<html lang="en">
+
+<head>
+<meta charset="utf-8" />
+<title>Eisdealer</title>
+<link rel="stylesheet" href="aufgabe9.css" type="text/css" media="screen"/>
+<script src="aufgabe9.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+<!--Anzahl Eiskugeln -->
+
+	<fieldset id="Eiskugelzahl">
+		<legend class="titel">Wie viele Kugeln möchten Sie?</legend>
+        <input class="zahlenfelder" type="number" name="Stepper" step="1" min="0" max="10" value="0"/>	
+	</fieldset>	
+	
+<!-- Wahl der Eiskugeln-->
+
+	<fieldset id="Eiskugelart">
+		<legend class="titel"> Wahl der Eiskugeln </legend>
+		<input type="checkbox" name="Checkbox1" value="check1" id="check1"/>
+		<label for="check1">Vanille</label>
+		<input type="checkbox" name="Checkbox2" value="check2" id="check2"/>
+		<label for="check2">Schokolade</label>
+		<input type="checkbox" name="Checkbox3" value="check3" id="check3"/>
+		<label for="check3">Erdbeer</label>
+		<input type="checkbox" name="Checkbox4" value="check1" id="check4"/>
+		<label for="check4">Cookies</label>
+		<input type="checkbox" name="Checkbox5" value="check2" id="check5"/>
+		<label for="check5">Mango</label>
+		<input type="checkbox" name="Checkbox6" value="check3" id="check6"/>
+		<label for="check6">Himbeer</label>
+		<input type="checkbox" name="Checkbox7" value="check1" id="check7"/>
+		<label for="check7">Straciatella</label>
+		<input type="checkbox" name="Checkbox8" value="check2" id="check8"/>
+		<label for="check8">Apfel</label>
+		<input type="checkbox" name="Checkbox9" value="check3" id="check9"/>
+		<label for="check9">Kiwi</label>
+		<input type="checkbox" name="Checkbox10" value="check1" id="check10"/>
+		<label for="check10">Melone</label>
+		<input type="checkbox" name="Checkbox11" value="check2" id="check11"/>
+		<label for="check11">Kirsch</label>
+		<input type="checkbox" name="Checkbox12" value="check3" id="check12"/>
+		<label for="check12">Jogurt</label>
+	</fieldset>	
+	
+<!--Anzahl Toppings -->
+
+	<fieldset id="Toppingszahl">
+		<legend class="titel">Wie viele Toppings möchten Sie?</legend>
+        <input class="zahlenfelder" type="number" name="Stepper" step="1" min="0" max="5" value="0"/>	
+	</fieldset>	
+	
+<!-- Wahl der Toppings -->
+
+	<fieldset id="Toppingsart">
+		<legend class="titel"> Toppings </legend>
+		<input type="radio" name="Radiogroup" value="radio1" id="radio1" />
+		<label for="radio1">Bunte Streusel</label>
+		<input type="radio" name="Radiogroup" value="radio2" id="radio2"/>
+		<label for="radio2">Schokostreusel</label>
+		<input type="radio" name="Radiogroup" value="radio3" id="radio3"/>
+		<label for="radio3">Kokosraspeln</label>
+		<input type="radio" name="Radiogroup" value="radio3" id="radio3"/>
+		<label for="radio3">Erdbeersoße</label>
+		<input type="radio" name="Radiogroup" value="radio3" id="radio3"/>
+		<label for="radio3">Schokosoße</label>
+	</fieldset>
+	
+<!--Wahl der Lieferoption-->
+
+	<fieldset id="Lieferoptionen">
+		<legend class="titel">Wählen Sie eine Lieferoption</legend>
+		<select name="Select" id="select">
+			<option value="option1" selected>Standardversand</option>
+			<option value="option2">Express Lieferung</option>
+			<option value="option3">Third Option</option>
+			<option value="option4">Fourth Option</option>
+		</select>
+	</fieldset>
+	
+<!--Eingabe persönlicher Daten-->	
+
+	<fieldset id="Daten">
+		<legend class="titel"> Ihre Daten </legend>
+		Name			
+		<input class="textfelder" type="name" name="Name" placeholder="Name"/>
+		<hr/>
+		Vorname
+		<input class="textfelder" type="vorname" name="Vorname" placeholder="Vorname"/>
+		<hr/>
+		Mail
+		<input class="textfelder" type="email" name="Mail" placeholder="Mail"/>
+		<hr/>
+		Straße
+		<input class="textfelder" type="straße" name="Straße" placeholder="Straße und Hausnummer"/>
+		<hr/>
+		Posteitzahl
+		<input class="textfelder" type="postleitzahl" name="Postleitzahl" placeholder="Postleitzahl"/>
+		<hr/>
+	    Ort
+		<input class="textfelder" type="ort" name="Ort" placeholder="Ort"/>
+		<hr/>
+		Land
+		<input class="textfelder" type="land" name="Land" placeholder="Land"/>
+	</fieldset>
+	
+
+<!-- -->
+	<!-- <fieldset id="select">
+		<legend> Selection &amp; Interaction </legend>
+		Slider
+		<input type="range" name="Slider" min="0" max="1" step="0.1" value="0"/>
+		<hr/>
+		Stepper
+		<input type="number" name="Stepper" step="0.1" min="-1" max="1" value="0"/>
+		<hr/>
+		Datalist
+		<input type="text" name="Datalist" list="options" placeholder="what to buy?"/>
+		<datalist id="options">
+			<option value="Butter"> </option>
+			<option value="Milk"> </option>
+			<option value="Flour"> </option>
+			<option value="Sugar"> </option>
+			<option value="Eggs"> </option>
+			<option value="Salt"> </option>
+			<option value="Bread"> </option>
+		</datalist>
+		<hr/>
+		Select Box
+		<select name="Select" id="select">
+			<optgroup label="OptGroup1"></optgroup>
+			<option value="option1">First Option</option>
+			<option value="option2" selected>Second Option</option>
+			<optgroup label="OptGroup2"></optgroup>
+			<option value="option3">Third Option</option>
+			<option value="option4">Fourth Option</option>
+		</select>
+		<hr/>
+		Button
+		<button name="Button" type="button">Click me!</button>
+	</fieldset>
+
+	<fieldset id="output">
+		<legend> Output </legend>
+		Output
+		<output name="out">---	Here's a result</output>
+		<hr/>
+		Progress
+		<progress value="0" max="1"> </progress>
+		<hr/>
+		Meter
+		<meter value="0" min="-1" max="1"> </meter>
+	</fieldset>
+ --><!-- -->
+</body>
+</html>
