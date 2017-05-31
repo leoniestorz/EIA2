@@ -8,7 +8,7 @@
 
 
 
-namespace Form {
+namespace FormElements {
     window.addEventListener("load", init);
 
     function init(_event: Event): void {
@@ -22,26 +22,39 @@ namespace Form {
     }
 
     function handleChange(_event: Event): void {
-        //console.log(_event);
-        //*/
+       
         let target: HTMLInputElement = <HTMLInputElement>_event.target;
         console.log("Changed " + target.name + " to " + target.value);
-        //*/
+     
         //*/ note: this == _event.currentTarget in an event-handler
-        if (this.id == "checkbox")
+        if (this.id == "Eiskugelart")
             console.log("Changed " + target.name + " to " + target.checked);
-        //*/
-        //*/
-        if (target.name == "Slider") {
-            let progress: HTMLProgressElement = <HTMLProgressElement>document.getElementsByTagName("progress")[0];
-            progress.value = parseFloat(target.value);
-        }
-        //*/
-        //*/
+        
+//        if (target.name == "Slider") {
+//            let progress: HTMLProgressElement = <HTMLProgressElement>document.getElementsByTagName("progress")[0];
+//            progress.value = parseFloat(target.value);
+//        }
+       
         if (target.name == "Stepper") {
             let progress: HTMLProgressElement = <HTMLProgressElement>document.getElementsByTagName("meter")[0];
             progress.value = parseFloat(target.value);
         }
-        //*/
+       
+        
     }
+    
+    function move() {
+    var elem = document.getElementById("myBar");
+    var width = 10;
+    var id = setInterval(frame, 10);
+    function frame() {
+        if (width >= 100) {
+            clearInterval(id);
+        } else {
+            width++;
+            elem.style.width = width + '%';
+            elem.innerHTML = width * 1 + '%';
+        }
+    }
+} 
 }
