@@ -13,29 +13,31 @@ Er wurde nicht kopiert und auch nicht diktiert.  */
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
+
 body {
 	  background-color: #FFdEAD;
 	  font-family: 'Indie Flower';
 	 }
 	  
 h1 {
-	position:fixed;
+	
 	width:10em;
-	margin-left:9em;
-	margin-top:0.25em;
-	margin-bottom:10em;	font-size: 40pt;
+	margin-top:2em;
+		
+	font-size: 30pt;
 	font-family:'Indie Flower';
 	text-align:center;
+
 	}
 	
 head {display:none;}
 
 header div{
-	position:fiexd;
+	
 	margin-top: -3em;
 	padding: 0;
 	width: 97%;
-	height: 5em;
+	height: 10em;
 	background-color: #FFdEAD;
 } 
 
@@ -44,7 +46,7 @@ header div{
 
 
 #Lieferoption {
-				 width:15%;
+				 width:30%;
 				 font-family:'Nunito';
 				 margin-left:1.5em;}
 				 
@@ -72,13 +74,13 @@ header div{
 
 
 #Bestellung{
-	           position:fixed;
+	          
 	           width:30%;
 	           height:26em;
 	           font-family:'Indie Flower';
-	           float:right;
-	          margin-top:3em;
-	           margin-left:50em;}
+	        
+	           margin-top:2em;
+	           margin-left:3em;}
 	           
 .text {
 	   font-family:'Nunito';
@@ -170,5 +172,56 @@ section {
 	margin-right: 3%;
 }
 
+@media screen and (min-width:850px) {
+	
+
+	  
+h1 {
+	position:fixed;
+	width:10em;
+	margin-left:9em;
+	margin-top:0.25em;
+	margin-bottom:10em;	font-size: 40pt;
+	font-family:'Indie Flower';
+	text-align:center;
+	}
+	
 
 
+header div{
+	position:fiexd;
+	margin-top: -3em;
+	padding: 0;
+	width: 97%;
+	height: 5em;
+	background-color: #FFdEAD;
+} 
+
+
+
+
+
+#Lieferoption {
+				 width:15%;
+				 font-family:'Nunito';
+				 margin-left:1.5em;}
+				 
+
+
+
+
+#Bestellung{
+	           position:fixed;
+	           width:30%;
+	           height:26em;
+	           font-family:'Indie Flower';
+	           float:right;
+	          margin-top:3em;
+	           margin-left:50em;}
+	           
+
+
+
+	      
+
+	      
