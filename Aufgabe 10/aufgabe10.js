@@ -123,25 +123,27 @@ var FormElements;
         var PLZ = document.getElementById("PLZ");
         var Ort = document.getElementById("Ort");
         var Land = document.getElementById("Land");
-        var ungueltig = [];
+        var ungueltig = ["Nicht alle Ihrer Angaben sind gueltig. Bitte pruefen Sie folgende Eingaben erneut: \n"];
         if (Vorname.validity.valid != true)
-            ungueltig.push("Vorname");
+            ungueltig.push("Vorname\n");
         if (Nachname.validity.valid != true)
-            ungueltig.push("Nachname");
+            ungueltig.push("Nachname\n");
         if (Mail.validity.valid != true)
-            ungueltig.push("Mail");
+            ungueltig.push("Mail\n");
         if (Strasse.validity.valid != true)
-            ungueltig.push("Strasse");
+            ungueltig.push("Strasse\n");
         if (PLZ.validity.valid != true)
-            ungueltig.push("PLZ");
+            ungueltig.push("PLZ\n");
         if (Ort.validity.valid != true)
-            ungueltig.push("Ort");
+            ungueltig.push("Ort\n");
         if (Telefon.validity.valid != true)
-            ungueltig.push("Telefon");
-        if (Land.validity.valid != true)
-            ungueltig.push("Land");
+            ungueltig.push("Telefon\n");
+        if (Land.validity.valid != true) {
+            ungueltig.push("Land\n");
+            alert(ungueltig.join(""));
+        }
         else {
-            alert("Ihre Angaben bei " + ungueltig + " sind ungueltig. Bitte pruefen Sie diese erneut!");
+            alert("Danke fuer Ihre Bestellung");
         }
     }
 })(FormElements || (FormElements = {}));

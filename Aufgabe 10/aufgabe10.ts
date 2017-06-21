@@ -159,35 +159,38 @@ namespace FormElements {
         
    function DatenPruefen(): void {
        
-        let Vorname = <HTMLInputElement> document.getElementById("Vorname");
-        let Nachname= <HTMLInputElement> document.getElementById("Nachname");
-        let Mail = <HTMLInputElement> document.getElementById("Mail");
-        let Telefon = <HTMLInputElement> document.getElementById("Telefon");
-        let Strasse = <HTMLInputElement> document.getElementById("Strasse");
-        let PLZ = <HTMLInputElement> document.getElementById("PLZ");
-        let Ort= <HTMLInputElement> document.getElementById("Ort");
-        let Land = <HTMLInputElement> document.getElementById("Land");
+        let Vorname: HTMLInputElement = <HTMLInputElement>document.getElementById("Vorname");
+        let Nachname: HTMLInputElement = <HTMLInputElement>document.getElementById("Nachname");
+        let Mail: HTMLInputElement = <HTMLInputElement>document.getElementById("Mail");
+        let Telefon: HTMLInputElement = <HTMLInputElement>document.getElementById("Telefon");
+        let Strasse: HTMLInputElement = <HTMLInputElement>document.getElementById("Strasse");
+        let PLZ: HTMLInputElement = <HTMLInputElement>document.getElementById("PLZ");
+        let Ort: HTMLInputElement = <HTMLInputElement>document.getElementById("Ort");
+        let Land: HTMLInputElement = <HTMLInputElement>document.getElementById("Land");
 
-        let ungueltig: string[] = [];
+        let ungueltig: string[] = ["Nicht alle Ihrer Angaben sind gueltig. Bitte pruefen Sie folgende Eingaben erneut: \n"];
        
-         if(Vorname.validity.valid != true)
-            ungueltig.push("Vorname");
+        if(Vorname.validity.valid != true)
+            ungueltig.push("Vorname\n");
         if (Nachname.validity.valid != true)
-            ungueltig.push("Nachname");
+            ungueltig.push("Nachname\n");
         if (Mail.validity.valid != true)
-            ungueltig.push("Mail");
+            ungueltig.push("Mail\n");
         if (Strasse.validity.valid != true)
-            ungueltig.push("Strasse");
+            ungueltig.push("Strasse\n");
         if (PLZ.validity.valid != true)
-            ungueltig.push("PLZ");
+            ungueltig.push("PLZ\n");
         if (Ort.validity.valid != true)
-            ungueltig.push("Ort");
+            ungueltig.push("Ort\n");
         if (Telefon.validity.valid != true)
-            ungueltig.push("Telefon");
-        if (Land.validity.valid != true)
-            ungueltig.push("Land");
+            ungueltig.push("Telefon\n");
+        if (Land.validity.valid != true){
+            ungueltig.push("Land\n");
+       
+             alert(ungueltig.join(""));}
+       
         else {
-            alert("Ihre Angaben bei " + ungueltig + " sind ungueltig. Bitte pruefen Sie diese erneut!");
+            alert("Danke fuer Ihre Bestellung");
         }
   
     }
