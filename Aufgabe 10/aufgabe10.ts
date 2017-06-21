@@ -190,7 +190,7 @@ namespace FormElements {
              alert(ungueltig.join(""));}
        
         else {
-            alert("Danke fuer Ihre Bestellung");
+            alert("Ihre Bestellung wird bearbeitet. Bitte warten ...");
         }
   
     }
