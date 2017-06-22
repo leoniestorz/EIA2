@@ -143,7 +143,7 @@ var FormElements;
             alert(ungueltig.join(""));
         }
         else {
-            alert("Ihre Bestellung wird bearbeitet. Bitte warten ...");
+            alert("Ihre Bestellung wird bearbeitet.");
         }
     }
 })(FormElements || (FormElements = {}));
