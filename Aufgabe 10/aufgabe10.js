@@ -1,7 +1,7 @@
 //Aufgabe: 10 - ClientServer
 //Name: Leonie Storz
 //Matrikel: 255077
-//Datum: 18.06.17
+//Datum: 22.06.17
 //    
 //Hiermit versichere ich, dass ich diesen Code selbst erstellt habe. 
 //Er wurde nicht kopiert und auch nicht diktiert.
@@ -56,6 +56,7 @@ var FormElements;
         input.type = "number";
         input.min = "0";
         input.value = "0";
+        input.name = _eis;
         Eissorten.appendChild(label);
         eisInput.push(input);
     }
@@ -65,6 +66,7 @@ var FormElements;
         label.innerText = _topping;
         label.appendChild(input);
         input.type = "checkbox";
+        input.name = _topping;
         Toppings.appendChild(label);
         toppingsInput.push(input);
     }
@@ -75,6 +77,8 @@ var FormElements;
         label.appendChild(input);
         input.type = "radio";
         input.required = true;
+        input.name = "behaelter";
+        input.value = _behaelter;
         Behaelter.appendChild(label);
         behaelterInput.push(input);
     }

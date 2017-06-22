@@ -3,7 +3,7 @@
 <!-- Aufgabe: 10 - ClientServer
 Name: Leonie Storz
 Matrikel: 255077
-Datum: 18.06.17
+Datum: 22.06.17
    
 Hiermit versichere ich, dass ich diesen Code selbst erstellt habe. 
 Er wurde nicht kopiert und auch nicht diktiert.  -->
@@ -19,9 +19,9 @@ Er wurde nicht kopiert und auch nicht diktiert.  -->
 
 <body>
 
- <form action="http://localhost:8100" method="get">   
+<!--  <form action="http://localhost:8100" method="get">   --> 
 	
-<!--       <form action="https://eia2-eisdealer.herokuapp.com" method="get"> --> 
+<form action="https://eia2-eisdealer.herokuapp.com" method="get"> 
 		
 	<header>
 		<div>
@@ -41,7 +41,7 @@ Er wurde nicht kopiert und auch nicht diktiert.  -->
 			<p id="Behaelterwahl"></p>
 			<h2>Gesamtsumme:</h2>
 			<p id="Summe"></p>
-			<button name="button" type="submit" id="Button">Bestellung abschicken</button>
+			<button type="submit" id="Button">Bestellung abschicken</button>
 		</fieldset>
 	
 	
@@ -83,7 +83,7 @@ Er wurde nicht kopiert und auch nicht diktiert.  -->
 		</select>
 		
 		Name			
-		<input required id="Nachname" class="textfelder" type="text" name="Name" placeholder="Name"/>
+		<input required id="Nachname" class="textfelder" type="text" name="Nachname" placeholder="Name"/>
 		
 		Vorname
 		<input  required id="Vorname" class="textfelder" type="text" name="Vorname" placeholder="Vorname"/>
@@ -95,7 +95,7 @@ Er wurde nicht kopiert und auch nicht diktiert.  -->
 		<input  required id="Telefon" class="textfelder" type="text" name="Telefon" placeholder="Telefon"/>
 		
 		Straße
-		<input  required id="Strasse" class="textfelder" type="text" name="Straße" placeholder="Straße und Hausnummer"/>
+		<input  required id="Strasse" class="textfelder" type="text" name="Strasse" placeholder="Straße und Hausnummer"/>
 	
 		Posteitzahl
 		<input  required id="PLZ" class="textfelder" type="text" name="Postleitzahl" placeholder="Postleitzahl"/>
@@ -106,9 +106,10 @@ Er wurde nicht kopiert und auch nicht diktiert.  -->
 		Land
 		<input  required id="Land" class="textfelder" type="text" name="Land" placeholder="Land"/>
 		
-	    <textarea name="Area" cols="33" rows="4" placeholder="Kommentar"></textarea>
+	    <textarea name="Kommentar" cols="33" rows="4" placeholder="Kommentar"></textarea>
 	</fieldset>
 
 	</main>
+	</form>
 </body>
 </html>
