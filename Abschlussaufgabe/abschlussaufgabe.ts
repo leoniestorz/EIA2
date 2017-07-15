@@ -12,7 +12,7 @@ namespace Abschlussaufgabe {
     
     
     
-    let crc2: CanvasRenderingContext2D;
+    export let crc2: CanvasRenderingContext2D;
     let canvas: HTMLCanvasElement;
     
     let imgData: ImageData;
