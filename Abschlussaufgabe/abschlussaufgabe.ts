@@ -55,7 +55,13 @@ namespace Abschlussaufgabe {
       div.addEventListener("touchend", changeScreen); 
       div.addEventListener("click", changeScreen); 
       
-      clickEvent ();
+      canvas.addEventListener("touchend", addCircle);
+      canvas.addEventListener("click", addCircle);
+        
+//      canvas.addEventListener("touchend", removeCircle);
+//      canvas.addEventListener("click", removeCircle); 
+        
+        
 //      
 //        
 //        
@@ -212,19 +218,22 @@ namespace Abschlussaufgabe {
    
  };  
     
- function clickEvent () : void {
-     
-      canvas.addEventListener("touchend", addCircle);
-      canvas.addEventListener("click", addCircle);
- 
- }
     
-    function addCircle (): void {
+    function addCircle(_event:Event): void {
         
          let c: Circle = new Circle (1190,475);
-         c.setRandomStyle;
+         c.draw;
          allCircles.push(c);
          z++;}  
+
+
+    
+//    function removeCircle () : void {
+//        
+//         allCircles.pop();
+//         z--;
+//    
+//    }
 
 
     

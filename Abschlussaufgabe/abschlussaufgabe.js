@@ -8,15 +8,12 @@
 var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
     window.addEventListener("load", init);
-    var crc2;
     var canvas;
     var imgData;
-    //    
-    //    let z: number = 10; 
-    //    let alleBienen: Biene[] = [];
+    Abschlussaufgabe.allCircles = [];
     function init(_event) {
         canvas = document.getElementsByTagName("canvas")[0];
-        crc2 = canvas.getContext("2d");
+        Abschlussaufgabe.crc2 = canvas.getContext("2d");
         drawStartscreen("#E9967A");
         drawStarttext("#000000");
         //      drawButton("red", "blue");    
@@ -36,7 +33,10 @@ var Abschlussaufgabe;
         s.borderTopRightRadius = "100px";
         div.addEventListener("touchend", changeScreen);
         div.addEventListener("click", changeScreen);
-        removeCircle();
+        canvas.addEventListener("touchend", addCircle);
+        canvas.addEventListener("click", addCircle);
+        //      canvas.addEventListener("touchend", removeCircle);
+        //      canvas.addEventListener("click", removeCircle); 
         //      
         //        
         //        
@@ -121,10 +121,10 @@ var Abschlussaufgabe;
     //    }
     //Funktionen
     function drawStartscreen(_fillStyle) {
-        crc2.beginPath();
-        crc2.fillStyle = _fillStyle;
-        crc2.fillRect(0, 0, canvas.width, canvas.height);
-        crc2.closePath();
+        Abschlussaufgabe.crc2.beginPath();
+        Abschlussaufgabe.crc2.fillStyle = _fillStyle;
+        Abschlussaufgabe.crc2.fillRect(0, 0, canvas.width, canvas.height);
+        Abschlussaufgabe.crc2.closePath();
         //       var image = new Image();
         //       image.src = 'Images/pfeilbutton.png';
         //       crc2.drawImage(image, 700, 350, 100, 100)
@@ -133,18 +133,18 @@ var Abschlussaufgabe;
         ////       i.position = "fixed";
     }
     function drawStarttext(_fillStyle) {
-        crc2.beginPath();
-        crc2.fillStyle = _fillStyle;
-        crc2.font = "50px Georgia";
-        crc2.fillText("Titel der Anwendung", 460, 300);
-        crc2.closePath();
-        crc2.fill();
+        Abschlussaufgabe.crc2.beginPath();
+        Abschlussaufgabe.crc2.fillStyle = _fillStyle;
+        Abschlussaufgabe.crc2.font = "50px Georgia";
+        Abschlussaufgabe.crc2.fillText("Titel der Anwendung", 460, 300);
+        Abschlussaufgabe.crc2.closePath();
+        Abschlussaufgabe.crc2.fill();
     }
     function changeScreen() {
-        crc2.beginPath();
-        crc2.fillStyle = "#FF7F50";
-        crc2.fillRect(0, 0, canvas.width, canvas.height);
-        crc2.closePath();
+        Abschlussaufgabe.crc2.beginPath();
+        Abschlussaufgabe.crc2.fillStyle = "#FF7F50";
+        Abschlussaufgabe.crc2.fillRect(0, 0, canvas.width, canvas.height);
+        Abschlussaufgabe.crc2.closePath();
         showWelcomeText();
     }
     ;
@@ -152,7 +152,11 @@ var Abschlussaufgabe;
         var action = prompt("Bitte Ihren Namen eingeben");
     }
     ;
-    function removeCircle() {
+    function addCircle(_event) {
+        var c = new Abschlussaufgabe.Circle(1190, 475);
+        c.draw;
+        Abschlussaufgabe.allCircles.push(c);
+        Abschlussaufgabe.z++;
     }
 })(Abschlussaufgabe || (Abschlussaufgabe = {}));
 ;
