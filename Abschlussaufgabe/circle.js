@@ -8,10 +8,11 @@
 var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
     var Circle = (function () {
+        //        stachel:boolean;
         function Circle(_x, _y) {
             this.x = 1190;
             this.y = 475;
-            this.draw(100, 100, "red");
+            this.draw(100, 100, "hsl(" + Math.random() * 360 + ", 100%, 50%)");
             this.setRandomStyle();
         }
         //Methode 'update' - Biene an neuer Position malen 
@@ -51,7 +52,7 @@ var Abschlussaufgabe;
             var randomColor = "hsl(" + Math.random() * 60 + ", 100%, 50%)";
             var randomStachel = Boolean(Math.round(Math.random()));
             this.color = randomColor;
-            this.stachel = randomStachel;
+            //    this.stachel = randomStachel;
         };
         return Circle;
     }());

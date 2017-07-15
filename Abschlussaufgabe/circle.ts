@@ -11,12 +11,14 @@
 
 namespace Abschlussaufgabe {
     
+
+    
     export class Circle {
     
         x: number;
         y: number;
         color: string;
-        stachel:boolean;
+//        stachel:boolean;
 
 
     
@@ -25,7 +27,7 @@ namespace Abschlussaufgabe {
          
             this.x = 1190;
             this.y = 475;
-            this.draw(100,100,"red")
+            this.draw(100,100,"hsl(" + Math.random() * 360 + ", 100%, 50%)")
             this.setRandomStyle();}
     
 //Methode 'update' - Biene an neuer Position malen 
@@ -77,7 +79,8 @@ namespace Abschlussaufgabe {
     let randomStachel : boolean = Boolean(Math.round(Math.random()));  
     
     this.color = randomColor;
-    this.stachel = randomStachel;}
+//    this.stachel = randomStachel;
+    }
     
 
     

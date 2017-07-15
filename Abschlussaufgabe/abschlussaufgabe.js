@@ -37,6 +37,7 @@ var Abschlussaufgabe;
         canvas.addEventListener("click", addCircle);
         //      canvas.addEventListener("touchend", removeCircle);
         //      canvas.addEventListener("click", removeCircle); 
+        console.log(Abschlussaufgabe.allCircles);
         //      
         //        
         //        
@@ -153,8 +154,9 @@ var Abschlussaufgabe;
     }
     ;
     function addCircle(_event) {
-        var c = new Abschlussaufgabe.Circle(1190, 475);
-        c.draw;
+        var c = new Abschlussaufgabe.Circle(10, 10);
+        //        c.draw;
+        c.setRandomStyle;
         Abschlussaufgabe.allCircles.push(c);
         Abschlussaufgabe.z++;
     }

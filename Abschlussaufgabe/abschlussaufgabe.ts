@@ -61,7 +61,7 @@ namespace Abschlussaufgabe {
 //      canvas.addEventListener("touchend", removeCircle);
 //      canvas.addEventListener("click", removeCircle); 
         
-        
+      console.log(allCircles);  
 //      
 //        
 //        
@@ -221,8 +221,9 @@ namespace Abschlussaufgabe {
     
     function addCircle(_event:Event): void {
         
-         let c: Circle = new Circle (1190,475);
-         c.draw;
+         let c: Circle = new Circle (10,10);
+//        c.draw;
+         c.setRandomStyle;
          allCircles.push(c);
          z++;}  
 
