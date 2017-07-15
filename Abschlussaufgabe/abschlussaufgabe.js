@@ -36,6 +36,7 @@ var Abschlussaufgabe;
         s.borderTopRightRadius = "100px";
         div.addEventListener("touchend", changeScreen);
         div.addEventListener("click", changeScreen);
+        removeCircle();
         //      
         //        
         //        
@@ -151,6 +152,8 @@ var Abschlussaufgabe;
         var action = prompt("Bitte Ihren Namen eingeben");
     }
     ;
+    function removeCircle() {
+    }
 })(Abschlussaufgabe || (Abschlussaufgabe = {}));
 ;
 //# sourceMappingURL=abschlussaufgabe.js.map

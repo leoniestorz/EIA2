@@ -10,20 +10,15 @@
 namespace Abschlussaufgabe {
     window.addEventListener("load", init);
     
-    interface Biene {
-        x: number;
-        y: number;
-        color: string;
-        stachel:boolean;
-    }
+    
     
     let crc2: CanvasRenderingContext2D;
     let canvas: HTMLCanvasElement;
     
     let imgData: ImageData;
-//    
-//    let z: number = 10; 
-//    let alleBienen: Biene[] = [];
+  
+    export let z: number;
+    export let allCircles: Circle[] = [];
     
     
 
@@ -34,7 +29,7 @@ namespace Abschlussaufgabe {
         crc2 = canvas.getContext("2d");
 
        drawStartscreen("#E9967A"); 
-      drawStarttext("#000000"); 
+       drawStarttext("#000000"); 
 //      drawButton("red", "blue");    
 
         
@@ -60,7 +55,7 @@ namespace Abschlussaufgabe {
       div.addEventListener("touchend", changeScreen); 
       div.addEventListener("click", changeScreen); 
       
-
+      clickEvent ();
 //      
 //        
 //        
@@ -214,11 +209,24 @@ namespace Abschlussaufgabe {
      
  
      var action: string = prompt("Bitte Ihren Namen eingeben");
-
- 
- 
+   
+ };  
+    
+ function clickEvent () : void {
      
- };   
+      canvas.addEventListener("touchend", addCircle);
+      canvas.addEventListener("click", addCircle);
+ 
+ }
+    
+    function addCircle (): void {
+        
+         let c: Circle = new Circle (1190,475);
+         c.setRandomStyle;
+         allCircles.push(c);
+         z++;}  
+
+
     
 //    function drawButton(_color:string, _farbe:string): void {
 //        
