@@ -13,11 +13,11 @@ namespace Abschlussaufgabe {
     
     
     export let crc2: CanvasRenderingContext2D;
-    let canvas: HTMLCanvasElement;
+    export let canvas: HTMLCanvasElement;
     
     let imgData: ImageData;
   
-    export let z: number;
+    export let z: number = 0;
     export let allCircles: Circle[] = [];
     
     
@@ -52,16 +52,16 @@ namespace Abschlussaufgabe {
         s.borderTopLeftRadius = "100px";
         s.borderTopRightRadius = "100px";
         
-      div.addEventListener("touchend", changeScreen); 
-      div.addEventListener("click", changeScreen); 
+//      div.addEventListener("touchend", changeScreen); 
+//      div.addEventListener("click", changeScreen); 
       
       canvas.addEventListener("touchend", addCircle);
       canvas.addEventListener("click", addCircle);
         
-//      canvas.addEventListener("touchend", removeCircle);
-//      canvas.addEventListener("click", removeCircle); 
+      div.addEventListener("touchend", removeCircle);
+      div.addEventListener("click", removeCircle); 
         
-      console.log(allCircles);  
+//      console.log(allCircles);  
 //      
 //        
 //        
@@ -207,34 +207,42 @@ namespace Abschlussaufgabe {
         crc2.closePath();
      
    
-     
-      showWelcomeText();
+    
+//      showWelcomeText();
  };
   
- function showWelcomeText () : void {
-     
- 
-     var action: string = prompt("Bitte Ihren Namen eingeben");
-   
- };  
+// function showWelcomeText () : void {
+//     
+// 
+//     var action: string = prompt("Bitte Ihren Namen eingeben");
+//   
+// };  
     
     
     function addCircle(_event:Event): void {
         
          let c: Circle = new Circle (10,10);
-//        c.draw;
-         c.setRandomStyle;
+         c.draw;
+//       c.setRandomStyle;
          allCircles.push(c);
-         z++;}  
+         z++;
+         console.log(z)
+       
+    
+    
+    }  
 
 
     
-//    function removeCircle () : void {
-//        
-//         allCircles.pop();
-//         z--;
-//    
-//    }
+    function removeCircle () : void {
+         
+        this.parentNode.removeChild(this);
+//        this.makeCircleInvisible;
+         allCircles.push();
+         z--
+         console.log(z);
+    
+    }
 
 
     

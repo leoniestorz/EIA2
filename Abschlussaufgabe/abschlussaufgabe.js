@@ -8,12 +8,12 @@
 var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
     window.addEventListener("load", init);
-    var canvas;
     var imgData;
+    Abschlussaufgabe.z = 0;
     Abschlussaufgabe.allCircles = [];
     function init(_event) {
-        canvas = document.getElementsByTagName("canvas")[0];
-        Abschlussaufgabe.crc2 = canvas.getContext("2d");
+        Abschlussaufgabe.canvas = document.getElementsByTagName("canvas")[0];
+        Abschlussaufgabe.crc2 = Abschlussaufgabe.canvas.getContext("2d");
         drawStartscreen("#E9967A");
         drawStarttext("#000000");
         //      drawButton("red", "blue");    
@@ -31,13 +31,13 @@ var Abschlussaufgabe;
         s.borderBottomRightRadius = "100px";
         s.borderTopLeftRadius = "100px";
         s.borderTopRightRadius = "100px";
-        div.addEventListener("touchend", changeScreen);
-        div.addEventListener("click", changeScreen);
-        canvas.addEventListener("touchend", addCircle);
-        canvas.addEventListener("click", addCircle);
-        //      canvas.addEventListener("touchend", removeCircle);
-        //      canvas.addEventListener("click", removeCircle); 
-        console.log(Abschlussaufgabe.allCircles);
+        //      div.addEventListener("touchend", changeScreen); 
+        //      div.addEventListener("click", changeScreen); 
+        Abschlussaufgabe.canvas.addEventListener("touchend", addCircle);
+        Abschlussaufgabe.canvas.addEventListener("click", addCircle);
+        div.addEventListener("touchend", removeCircle);
+        div.addEventListener("click", removeCircle);
+        //      console.log(allCircles);  
         //      
         //        
         //        
@@ -124,7 +124,7 @@ var Abschlussaufgabe;
     function drawStartscreen(_fillStyle) {
         Abschlussaufgabe.crc2.beginPath();
         Abschlussaufgabe.crc2.fillStyle = _fillStyle;
-        Abschlussaufgabe.crc2.fillRect(0, 0, canvas.width, canvas.height);
+        Abschlussaufgabe.crc2.fillRect(0, 0, Abschlussaufgabe.canvas.width, Abschlussaufgabe.canvas.height);
         Abschlussaufgabe.crc2.closePath();
         //       var image = new Image();
         //       image.src = 'Images/pfeilbutton.png';
@@ -144,21 +144,31 @@ var Abschlussaufgabe;
     function changeScreen() {
         Abschlussaufgabe.crc2.beginPath();
         Abschlussaufgabe.crc2.fillStyle = "#FF7F50";
-        Abschlussaufgabe.crc2.fillRect(0, 0, canvas.width, canvas.height);
+        Abschlussaufgabe.crc2.fillRect(0, 0, Abschlussaufgabe.canvas.width, Abschlussaufgabe.canvas.height);
         Abschlussaufgabe.crc2.closePath();
-        showWelcomeText();
+        //      showWelcomeText();
     }
     ;
-    function showWelcomeText() {
-        var action = prompt("Bitte Ihren Namen eingeben");
-    }
-    ;
+    // function showWelcomeText () : void {
+    //     
+    // 
+    //     var action: string = prompt("Bitte Ihren Namen eingeben");
+    //   
+    // };  
     function addCircle(_event) {
         var c = new Abschlussaufgabe.Circle(10, 10);
-        //        c.draw;
-        c.setRandomStyle;
+        c.draw;
+        //       c.setRandomStyle;
         Abschlussaufgabe.allCircles.push(c);
         Abschlussaufgabe.z++;
+        console.log(Abschlussaufgabe.z);
+    }
+    function removeCircle() {
+        this.parentNode.removeChild(this);
+        //        this.makeCircleInvisible;
+        Abschlussaufgabe.allCircles.push();
+        Abschlussaufgabe.z--;
+        console.log(Abschlussaufgabe.z);
     }
 })(Abschlussaufgabe || (Abschlussaufgabe = {}));
 ;
