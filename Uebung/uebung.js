@@ -1,34 +1,30 @@
-var L5_Animation;
-(function (L5_Animation) {
-    window.addEventListener("load", init);
-    var crc2;
-    var x = [];
-    var y = [];
-    var n = 30;
-    function init(_event) {
-        var canvas;
-        canvas = document.getElementsByTagName("canvas")[0];
-        crc2 = canvas.getContext("2d");
-        for (var i = 0; i < n; i++) {
-            x[i] = Math.random() * 200;
-            y[i] = Math.random() * 200;
+var StudiVZ;
+(function (StudiVZ) {
+    var students = [];
+    var stop = false;
+    while (!stop) {
+        var action = prompt("Datensatz anlegen (n), abfragen(a) oder Programm beenden (s)\nn,a oder s eingeben");
+        switch (action) {
+            case "n":
+            case "N":
+                var input = prompt("Eingabe (jeweils mit Komma getrennt) von\nMatrikelnummer, Name, Vorname, Alter, Geschlecht (0 oder 1) und Kommentar");
+                alert(saveData(input));
+                break;
+            case "a":
+            case "A":
+                var matrikel = parseInt(prompt("Eingabe Matrikelnummer"));
+                alert(queryData(matrikel));
+                break;
+            case "s":
+            case "S":
+                stop = true;
         }
-        window.setTimeout(animate, 20);
     }
-    function animate() {
-        console.log("Animate called");
-        crc2.fillStyle = "#ff0000";
-        crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
-        for (var i = 0; i < n; i++) {
-            x[i] += Math.random() * 4 - 2;
-            y[i] += Math.random() * 4 - 2;
-            drawObject(x[i], y[i]);
-        }
-        window.setTimeout(animate);
+    function saveData(_input) {
+        return "Hier fehlt noch der richtige Code...";
     }
-    function drawObject(_x, _y) {
-        crc2.fillStyle = "#000000";
-        crc2.fillRect(_x, _y, 10, 10);
+    function queryData(_matrikel) {
+        return "Hier fehlt noch der richtige Code...";
     }
-})(L5_Animation || (L5_Animation = {}));
+})(StudiVZ || (StudiVZ = {}));
 //# sourceMappingURL=uebung.js.map

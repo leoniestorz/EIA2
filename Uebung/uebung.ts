@@ -1,42 +1,34 @@
-namespace L5_Animation {
-    window.addEventListener("load", init);
+namespace StudiVZ {
+    interface StudentData {
+        // hier ist noch die richtige Datenstruktur festzulegen
+    }
+    var students: StudentData[] = [];
+    var stop: boolean = false;
 
-    let crc2: CanvasRenderingContext2D;
-    let x: number[] = [];
-    let y: number[] = [];
-    let n: number = 30;
+    while (!stop) {
+        var action: string = prompt("Datensatz anlegen (n), abfragen(a) oder Programm beenden (s)\nn,a oder s eingeben");
 
-
-    function init(_event: Event): void {
-        let canvas: HTMLCanvasElement;
-        canvas = document.getElementsByTagName("canvas")[0];
-        crc2 = canvas.getContext("2d");
-
-        for (let i: number = 0; i < n; i++) {
-            x[i] = Math.random() * 200;
-            y[i] = Math.random() * 200;
+        switch (action) {
+            case "n":
+            case "N":
+                var input: string = prompt("Eingabe (jeweils mit Komma getrennt) von\nMatrikelnummer, Name, Vorname, Alter, Geschlecht (0 oder 1) und Kommentar");
+                alert(saveData(input));
+                break;
+            case "a":
+            case "A":
+                var matrikel: number = parseInt(prompt("Eingabe Matrikelnummer"));
+                alert(queryData(matrikel));
+                break;
+            case "s":
+            case "S":
+                stop = true;
         }
-
-        window.setTimeout(animate, 20);
     }
 
-    function animate(): void {
-        console.log("Animate called");
-
-        crc2.fillStyle = "#ff0000";
-        crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
-
-        for (let i: number = 0; i < n; i++) {
-            x[i] += Math.random() * 4 - 2;
-            y[i] += Math.random() * 4 - 2;
-            drawObject(x[i], y[i]);
-        }
-
-        window.setTimeout(animate);
+    function saveData(_input: string): string {
+        return "Hier fehlt noch der richtige Code...";
     }
-
-    function drawObject(_x: number, _y: number): void {
-        crc2.fillStyle = "#000000";
-        crc2.fillRect(_x, _y, 10, 10);
+    function queryData(_matrikel: number): string {
+        return "Hier fehlt noch der richtige Code...";
     }
 }
