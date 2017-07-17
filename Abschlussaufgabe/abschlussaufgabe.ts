@@ -10,16 +10,16 @@
 namespace Abschlussaufgabe {
     window.addEventListener("load", init);
     
-    
+//    alert("Bubble Casher\n\nFangen Sie so viele Baelle wie moeglich um Punkte zu sammeln! Bevor die Zeit abgelaufen ist!");
     
     export let crc2: CanvasRenderingContext2D;
     export let canvas: HTMLCanvasElement;
     
-    let imgData: ImageData;
+
   
     export let z: number = 0;
     export let allCircles: Circle[] = [];
-    
+     let imgData: ImageData;
     
 
     function init(_event: Event): void {
@@ -28,6 +28,8 @@ namespace Abschlussaufgabe {
         canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
 
+        
+        
        drawStartscreen("#E9967A"); 
        drawStarttext("#000000"); 
 //      drawButton("red", "blue");    
@@ -52,114 +54,64 @@ namespace Abschlussaufgabe {
         s.borderTopLeftRadius = "100px";
         s.borderTopRightRadius = "100px";
         
+        
+        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); //Speichern des Canvas als Bild
+
 //      div.addEventListener("touchend", changeScreen); 
 //      div.addEventListener("click", changeScreen); 
       
-      canvas.addEventListener("touchend", addCircle);
-      canvas.addEventListener("click", addCircle);
+//      canvas.addEventListener("touchend", addCircle);
+//      canvas.addEventListener("click", addCircle);
         
-      div.addEventListener("touchend", removeCircle);
-      div.addEventListener("click", removeCircle); 
+//      div.addEventListener("touchend", removeCircle);
+//      div.addEventListener("click", removeCircle); 
         
 //      console.log(allCircles);  
-//      
-//        
-//        
-//
-//       for (var i = 0; i < 80; i++) {
-//                    
-//                    var randomFlower:number = Math.floor((Math.random() * 3));
-//                    var height:number = Math.floor((Math.random() * 255) + 380);
-//                    var width:number  = Math.floor((Math.random() * 1100) - 10); 
-                   
-        
-//       switch (randomFlower) {
-//                        
-//                                case 0:
-//                                    drawSonnenblume(width,height);
-//                                    break;
-//                                case 1:
-//                                    drawMohnblume(width, height);
-//                                    break;
-//                                case 2:
-//                                    drawTulpe(width, height);
-//                                    break;} 
-         }
-        
-        
 
-//        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); //Speichern des Canvas als Bild
 
-//Erscheinen der 10 Bienen am Ausgang des Bienenstocks
-        
-//        for (let i: number = 0; i < z; i++) {
-//            
-//            let b: Biene = {x: 0, y: 0, color: "", stachel: true};
-//            b.x = 1190; 
-//            b.y = 475;  
-//            
-//            b.color = "hsl(" + Math.random() * 60 + ", 100%, 50%)";
-//            b.stachel = Boolean(Math.round(Math.random()));
-//            
-//            alleBienen[i] = b;
-//        }
-//
-//        
-//      
-//        window.setTimeout(animate, 10);
-//    }
-//
-//    
-//
-//    function animate(): void {
-//        
-//        crc2.putImageData(imgData, 0, 0); 
+       for (var i = 0; i < 50; i++) {    
+           
+       let y: number = 0;
+       let x: number = 0;    
+       let f: Circle = new Circle(x, y);
+       allCircles[i] = f;
+       f.draw();
+       f.setRandomPosition();
+       f.setRandomStyle();
+       console.log(f)
        
-//Flugrichtung der Bienen 
+       }
+    
+       window.setTimeout(animate, 20);}
+           
+
+
+
+   function animate(): void {
+        
+       crc2.putImageData(imgData, 0, 0); 
               
-//        for (let i: number = 0; i < z; i++) {
-//           
-//            let b: Biene = alleBienen[i];
-//            b.x += Math.random() * 5 - 4;
-//            b.y += Math.random() * 6 - 3;
-            
-//Erscheinen am gegenueberliegenden Rand nach Verlassen des Canvas            
-            
-//            if (b.x < 0) {
-//                b.x = crc2.canvas.width;
-//            }
-//            if (b.y < 0) {
-//                b.y = crc2.canvas.height;
-//            }
-//            if (b.y >= crc2.canvas.height) {
-//                b.y = 0;
-//            }
-//            drawBiene(b); 
-//        }
-//        window.setTimeout(animate, 10);
+       for (let i: number = 0; i < allCircles.length; i++) {
+           
+       let b: Circle = allCircles[i];
+       b.update();
+       
+      
+       }
+       
+       window.setTimeout(animate, 20);
+
+                  
         
-//Bei KLick / Touch auf den Canvas erscheint eine neue Biene am Ausgang des Bienenstocks       
+//        canvas.addEventListener("touchend",addCircle); 
+//        canvas.addEventListener("click", addCircle);
+    }    
         
-//        canvas.addEventListener("touchend", mehrBienen); 
-//        canvas.addEventListener("click", mehrBienen);
-//
-//    }
-//
-//    function mehrBienen(): void {
-//        alleBienen.push({
-//            
-//            x: 1190, 
-//            y: 475, 
-//            
-//            color: "hsl(" + Math.random() * 60 + ", 100%, 50%)", 
-//            stachel: Boolean(Math.round(Math.random()))});
-//        
-//        z++;
-//       
-//    }
+     
+
 
     
-//Funktionen
+//--------------------------------------Funktionen---------------------------------------------------------------------------
     
    
  function drawStartscreen (_fillStyle:string): void {
@@ -175,9 +127,6 @@ namespace Abschlussaufgabe {
 ////       image.id += "button";
 //       let i: CSSStyleDeclaration = image.style;
 ////       i.position = "fixed";
-     
-
-        
       
 }
     
@@ -191,9 +140,6 @@ namespace Abschlussaufgabe {
         crc2.fillText("Titel der Anwendung",460,300);
         crc2.closePath();
         crc2.fill();
-     
-
-         
      
 }    
      
@@ -209,7 +155,7 @@ namespace Abschlussaufgabe {
    
     
 //      showWelcomeText();
- };
+ }
   
 // function showWelcomeText () : void {
 //     
@@ -221,7 +167,7 @@ namespace Abschlussaufgabe {
     
     function addCircle(_event:Event): void {
         
-         let c: Circle = new Circle (10,10);
+         let c: Circle = new Circle (500,1000);
          c.draw;
 //       c.setRandomStyle;
          allCircles.push(c);
@@ -344,6 +290,12 @@ namespace Abschlussaufgabe {
 //
 //
 //        crc2.closePath();
-//        crc2.fill();}    
+//        crc2.fill();}  
+     
+
+
+
+
+
 
 };

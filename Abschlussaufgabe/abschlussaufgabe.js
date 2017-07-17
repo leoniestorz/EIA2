@@ -8,9 +8,9 @@
 var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
     window.addEventListener("load", init);
-    var imgData;
     Abschlussaufgabe.z = 0;
     Abschlussaufgabe.allCircles = [];
+    var imgData;
     function init(_event) {
         Abschlussaufgabe.canvas = document.getElementsByTagName("canvas")[0];
         Abschlussaufgabe.crc2 = Abschlussaufgabe.canvas.getContext("2d");
@@ -31,96 +31,37 @@ var Abschlussaufgabe;
         s.borderBottomRightRadius = "100px";
         s.borderTopLeftRadius = "100px";
         s.borderTopRightRadius = "100px";
+        imgData = Abschlussaufgabe.crc2.getImageData(0, 0, Abschlussaufgabe.canvas.width, Abschlussaufgabe.canvas.height); //Speichern des Canvas als Bild
         //      div.addEventListener("touchend", changeScreen); 
         //      div.addEventListener("click", changeScreen); 
-        Abschlussaufgabe.canvas.addEventListener("touchend", addCircle);
-        Abschlussaufgabe.canvas.addEventListener("click", addCircle);
-        div.addEventListener("touchend", removeCircle);
-        div.addEventListener("click", removeCircle);
+        //      canvas.addEventListener("touchend", addCircle);
+        //      canvas.addEventListener("click", addCircle);
+        //      div.addEventListener("touchend", removeCircle);
+        //      div.addEventListener("click", removeCircle); 
         //      console.log(allCircles);  
-        //      
-        //        
-        //        
-        //
-        //       for (var i = 0; i < 80; i++) {
-        //                    
-        //                    var randomFlower:number = Math.floor((Math.random() * 3));
-        //                    var height:number = Math.floor((Math.random() * 255) + 380);
-        //                    var width:number  = Math.floor((Math.random() * 1100) - 10); 
-        //       switch (randomFlower) {
-        //                        
-        //                                case 0:
-        //                                    drawSonnenblume(width,height);
-        //                                    break;
-        //                                case 1:
-        //                                    drawMohnblume(width, height);
-        //                                    break;
-        //                                case 2:
-        //                                    drawTulpe(width, height);
-        //                                    break;} 
+        for (var i = 0; i < 50; i++) {
+            var y = 0;
+            var x = 0;
+            var f = new Abschlussaufgabe.Circle(x, y);
+            Abschlussaufgabe.allCircles[i] = f;
+            f.draw();
+            f.setRandomPosition();
+            f.setRandomStyle();
+            console.log(f);
+        }
+        window.setTimeout(animate, 20);
     }
-    //        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); //Speichern des Canvas als Bild
-    //Erscheinen der 10 Bienen am Ausgang des Bienenstocks
-    //        for (let i: number = 0; i < z; i++) {
-    //            
-    //            let b: Biene = {x: 0, y: 0, color: "", stachel: true};
-    //            b.x = 1190; 
-    //            b.y = 475;  
-    //            
-    //            b.color = "hsl(" + Math.random() * 60 + ", 100%, 50%)";
-    //            b.stachel = Boolean(Math.round(Math.random()));
-    //            
-    //            alleBienen[i] = b;
-    //        }
-    //
-    //        
-    //      
-    //        window.setTimeout(animate, 10);
-    //    }
-    //
-    //    
-    //
-    //    function animate(): void {
-    //        
-    //        crc2.putImageData(imgData, 0, 0); 
-    //Flugrichtung der Bienen 
-    //        for (let i: number = 0; i < z; i++) {
-    //           
-    //            let b: Biene = alleBienen[i];
-    //            b.x += Math.random() * 5 - 4;
-    //            b.y += Math.random() * 6 - 3;
-    //Erscheinen am gegenueberliegenden Rand nach Verlassen des Canvas            
-    //            if (b.x < 0) {
-    //                b.x = crc2.canvas.width;
-    //            }
-    //            if (b.y < 0) {
-    //                b.y = crc2.canvas.height;
-    //            }
-    //            if (b.y >= crc2.canvas.height) {
-    //                b.y = 0;
-    //            }
-    //            drawBiene(b); 
-    //        }
-    //        window.setTimeout(animate, 10);
-    //Bei KLick / Touch auf den Canvas erscheint eine neue Biene am Ausgang des Bienenstocks       
-    //        canvas.addEventListener("touchend", mehrBienen); 
-    //        canvas.addEventListener("click", mehrBienen);
-    //
-    //    }
-    //
-    //    function mehrBienen(): void {
-    //        alleBienen.push({
-    //            
-    //            x: 1190, 
-    //            y: 475, 
-    //            
-    //            color: "hsl(" + Math.random() * 60 + ", 100%, 50%)", 
-    //            stachel: Boolean(Math.round(Math.random()))});
-    //        
-    //        z++;
-    //       
-    //    }
-    //Funktionen
+    function animate() {
+        Abschlussaufgabe.crc2.putImageData(imgData, 0, 0);
+        for (var i = 0; i < Abschlussaufgabe.allCircles.length; i++) {
+            var b = Abschlussaufgabe.allCircles[i];
+            b.update();
+        }
+        window.setTimeout(animate, 20);
+        //        canvas.addEventListener("touchend",addCircle); 
+        //        canvas.addEventListener("click", addCircle);
+    }
+    //--------------------------------------Funktionen---------------------------------------------------------------------------
     function drawStartscreen(_fillStyle) {
         Abschlussaufgabe.crc2.beginPath();
         Abschlussaufgabe.crc2.fillStyle = _fillStyle;
@@ -148,7 +89,6 @@ var Abschlussaufgabe;
         Abschlussaufgabe.crc2.closePath();
         //      showWelcomeText();
     }
-    ;
     // function showWelcomeText () : void {
     //     
     // 
@@ -156,7 +96,7 @@ var Abschlussaufgabe;
     //   
     // };  
     function addCircle(_event) {
-        var c = new Abschlussaufgabe.Circle(10, 10);
+        var c = new Abschlussaufgabe.Circle(500, 1000);
         c.draw;
         //       c.setRandomStyle;
         Abschlussaufgabe.allCircles.push(c);

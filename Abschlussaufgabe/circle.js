@@ -10,54 +10,52 @@ var Abschlussaufgabe;
     var Circle = (function () {
         //        stachel:boolean;
         function Circle(_x, _y) {
-            this.x = 1190;
-            this.y = 475;
-            this.draw(Math.floor((Math.random() * Abschlussaufgabe.canvas.width) + 50), Math.floor((Math.random() * 500) + 50), "hsl(" + Math.random() * 360 + ", 100%, 50%)");
-            //            this.setRandomStyle();
+            this.x = Math.floor((Math.random() * Abschlussaufgabe.canvas.width) + 50);
+            this.y = Math.floor((Math.random() * Abschlussaufgabe.canvas.height) + 50);
+            this.draw();
+            this.setRandomStyle();
             //            this.makeCircleInvisible;
         }
         //Methode 'update' - Biene an neuer Position malen 
-        //    update () : void {
-        //            
-        //        this.draw ();
-        //        this.move ();}
+        Circle.prototype.update = function () {
+            this.draw();
+            this.move();
+        };
         //Methode 'draw' - Biene malen
-        Circle.prototype.draw = function (_x, _y, _fillStyle) {
+        Circle.prototype.draw = function () {
             Abschlussaufgabe.crc2.beginPath();
-            Abschlussaufgabe.crc2.fillStyle = _fillStyle;
-            Abschlussaufgabe.crc2.arc(_x, _y, 15, 0, 2 * Math.PI);
+            Abschlussaufgabe.crc2.fillStyle = this.color;
+            Abschlussaufgabe.crc2.arc(this.x, this.y, 15, 0, 2 * Math.PI);
             Abschlussaufgabe.crc2.closePath();
             Abschlussaufgabe.crc2.fill();
         };
         //Methode 'move' - Biene bewegen
-        //      move() : void {
-        //           
-        //
-        //            this.x += Math.random() * 5 - 4;
-        //            this.y += Math.random() * 6 - 3;
-        //            
-        //            for (let i: number = 0; i < z; i++) {
-        //        
-        //            if (this.x < 0) {
-        //                this.x = crc2.canvas.width;
-        //            }
-        //            if (this.y < 0) {
-        //                this.y = crc2.canvas.height;
-        //            }
-        //            if (this.y >= crc2.canvas.height) {
-        //                this.y = 0;
-        //            }}}
-        //    
+        Circle.prototype.move = function () {
+            this.x += Math.random() * 5 - 4;
+            this.y += Math.random() * 6 - 3;
+            for (var i = 0; i < Abschlussaufgabe.z; i++) {
+                if (this.x < 0) {
+                    this.x = Abschlussaufgabe.crc2.canvas.width;
+                }
+                if (this.y < 0) {
+                    this.y = Abschlussaufgabe.crc2.canvas.height;
+                }
+                if (this.y >= Abschlussaufgabe.crc2.canvas.height) {
+                    this.y = 0;
+                }
+            }
+        };
+        //Methode 'setRandomPosition'
+        Circle.prototype.setRandomPosition = function () {
+            this.x = Math.floor((Math.random() * Abschlussaufgabe.canvas.width) - 10);
+            this.y = Math.floor((Math.random() * Abschlussaufgabe.canvas.height) + 380);
+        };
         //Methode 'setRandomStyle' - Zuf�llige Farbe und (k)ein Stachel 
-        //    setRandomStyle(): void {
-        //     
-        //    let randomColor: string = "hsl(" + Math.random() * 60 + ", 100%, 50%)";
-        //    let randomStachel : boolean = Boolean(Math.round(Math.random()));  
-        //    
-        //    this.color = randomColor;
-        ////    this.stachel = randomStachel;
-        //    }
-        Circle.prototype.makeCircleInvisible = function (_x, _y, _fillStyle) {
+        Circle.prototype.setRandomStyle = function () {
+            var randomColor = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
+            this.color = randomColor;
+        };
+        Circle.prototype.makeCircleInvisible = function (_x, _y) {
             //    let randomColor: string = "#F000000";
             //     
             //    this.color = randomColor;
