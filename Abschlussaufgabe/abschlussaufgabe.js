@@ -10,8 +10,7 @@ var Abschlussaufgabe;
     window.addEventListener("load", init);
     Abschlussaufgabe.z = 0;
     var v = 0;
-    var r = 31;
-    var e = true;
+    var r = 11;
     Abschlussaufgabe.allCircles = [];
     var imgData;
     function init(_event) {
@@ -57,13 +56,48 @@ var Abschlussaufgabe;
         //      EventListener 
         //      div.addEventListener("touchend", changeScreen); 
         //      div.addEventListener("click", changeScreen); 
-        //      canvas.addEventListener("touchend", addCircle);
-        //      canvas.addEventListener("click", addCircle);
         Abschlussaufgabe.canvas.addEventListener("touchend", removeCircle);
         Abschlussaufgabe.canvas.addEventListener("click", removeCircle);
         //      div.addEventListener("touchend", removeCircle);
         //      div.addEventListener("click", removeCircle); 
-        //      console.log(allCircles);  
+    }
+    var interval = setInterval(function () {
+        if (Abschlussaufgabe.z > 0) {
+            Abschlussaufgabe.z++;
+            var b = new Abschlussaufgabe.ColourCircle(500, 0);
+            Abschlussaufgabe.e = 0;
+            Abschlussaufgabe.z++;
+            Abschlussaufgabe.allCircles.push(b);
+            console.log(b);
+            console.log(Abschlussaufgabe.z + " " + "Circles");
+        }
+    }, 2000);
+    function startGame() {
+        for (var i = 0; i < 10; i++) {
+            var randomCircle = Math.floor(Math.random() * 2);
+            switch (randomCircle) {
+                case 0:
+                    var b = new Abschlussaufgabe.ColourCircle(this.x, this.y);
+                    Abschlussaufgabe.e = 0;
+                    Abschlussaufgabe.z++;
+                    Abschlussaufgabe.allCircles.push(b);
+                    //                                       console.log(b)
+                    console.log(Abschlussaufgabe.z + " " + "Circles");
+                    console.log(Abschlussaufgabe.e);
+                    break;
+                case 1:
+                    var q = new Abschlussaufgabe.BlackCircle(this.x, this.y);
+                    Abschlussaufgabe.j = 0;
+                    Abschlussaufgabe.z++;
+                    Abschlussaufgabe.allCircles.push(q);
+                    //                                         console.log(q)
+                    console.log(Abschlussaufgabe.z + " " + "Circles");
+                    console.log(Abschlussaufgabe.j);
+                    break;
+            }
+            removeStarttext();
+        }
+        window.setTimeout(animate, 20);
     }
     function removeCircle(event) {
         for (var i = 0; i < Abschlussaufgabe.allCircles.length; i++) {
@@ -74,13 +108,11 @@ var Abschlussaufgabe;
             var differenceY = Math.abs(d.positionY - clickY);
             if (differenceX <= 40 && differenceY <= 40) {
                 Abschlussaufgabe.allCircles.splice(i, 1);
-                if (e == false) {
+                if (Abschlussaufgabe.j == 0)
                     v--;
-                }
-                else {
+                else
                     v++;
-                }
-                console.log(v + " " + "catched ball(s)");
+                console.log(v + " " + "Punkte");
             }
             //      Punkteanzeige
             var punkte = document.createElement("div");
@@ -112,36 +144,6 @@ var Abschlussaufgabe;
         ;
     }
     ;
-    function startGame() {
-        //bunte Kreise
-        for (var i = 0; i < 10; i++) {
-            //       let y: number = 0;
-            //       let x: number = 0;    
-            //       let f: ColourCircle = new ColourCircle(x, y);
-            //       allCircles[i] = f;
-            //       f.draw();
-            //       f.setRandomPosition();
-            //       f.setRandomStyle();
-            //       allCircles.push();
-            var randomBiene = Math.floor(Math.random() * 2);
-            switch (randomBiene) {
-                case 0:
-                    var b = new Abschlussaufgabe.ColourCircle(this.x, this.y);
-                    Abschlussaufgabe.allCircles.push(b);
-                    e == false;
-                    console.log(b);
-                    break;
-                case 1:
-                    var q = new Abschlussaufgabe.BlackCircle(this.x, this.y);
-                    Abschlussaufgabe.allCircles.push(q);
-                    e == true;
-                    console.log(q);
-                    break;
-            }
-            removeStarttext();
-        }
-        window.setTimeout(animate, 20);
-    }
     function animate() {
         Abschlussaufgabe.crc2.putImageData(imgData, 0, 0);
         for (var i = 0; i < Abschlussaufgabe.allCircles.length; i++) {
@@ -204,12 +206,52 @@ var Abschlussaufgabe;
         Abschlussaufgabe.crc2.closePath();
         Abschlussaufgabe.crc2.fill();
     }
+    //Fuegt bei jedem Kick neue Kreise hinzu, 
+    //damit der Spieler weiterhin Punkte erzielen kann
     function addCircle(_event) {
-        var c = new Abschlussaufgabe.ColourCircle(500, 1000);
-        c.draw;
-        Abschlussaufgabe.allCircles.push(c);
-        Abschlussaufgabe.z++;
-        console.log(Abschlussaufgabe.z);
+        //        setInterval(
+        //   
+        //       function(){ if (z > 0) {
+        //        z++;
+        //        let b: ColourCircle = new ColourCircle(500, 0);
+        //                                       e = 0;
+        //                                        z++;
+        //                                       allCircles.push(b);
+        //                                       console.log(b)
+        //                                       console.log(z); }}, 1000
+        //       
+        //       ); 
+        //         for (var i = 0; i < 2; i++) {    
+        //
+        //           
+        //            
+        //
+        //    let randomCircle = Math.floor(Math.random() * 2); 
+        //       
+        //           switch (randomCircle) {
+        //                        
+        //                                case 0:
+        //                                     let b: ColourCircle = new ColourCircle(500, 0);
+        //                                       e = 0;
+        //                                        z++;
+        //                                       allCircles.push(b);
+        //                                       console.log(b)
+        //                                       console.log(z);
+        //                                    break;
+        //                                case 1:
+        //                                     let q: BlackCircle = new BlackCircle(500, 0);
+        //                                        e = 1;
+        //                                          z++;
+        //                                        allCircles.push(q);
+        //                                         console.log(q)
+        //                                        console.log(z);
+        //                                    break;
+        //                                }   
+        //   
+        //        removeStarttext();   
+        //
+        //       }
+        //  
     }
     function setCounter() {
         var timer = document.createElement("div");
@@ -228,26 +270,59 @@ var Abschlussaufgabe;
         setInterval(function () {
             if (r > 0) {
                 r--;
-                console.log(r);
+                console.log("noch" + " " + r + " " + "Sekunden");
                 timer.innerHTML = "noch" + " " + r + " " + "Sekunden";
             }
         }, 1000);
     }
     function endGame() {
-        //   Hintergrund
         Abschlussaufgabe.crc2.beginPath();
         Abschlussaufgabe.crc2.fillStyle = "black";
         Abschlussaufgabe.crc2.fillRect(0, 0, Abschlussaufgabe.canvas.width, Abschlussaufgabe.canvas.height);
         Abschlussaufgabe.crc2.closePath();
-        //    Textfeld    
         Abschlussaufgabe.crc2.beginPath();
         Abschlussaufgabe.crc2.fillStyle = "white";
         Abschlussaufgabe.crc2.font = "50px Georgia";
-        Abschlussaufgabe.crc2.fillText("Game Over", 480, 100);
-        Abschlussaufgabe.crc2.fillText("You reached" + " " + v + " " + "points!", 400, 200);
-        Abschlussaufgabe.crc2.fillText("Refresh to play again", 400, 300);
+        Abschlussaufgabe.crc2.fillText("Game Over - Deine Zeit ist abgelaufen", 350, 200);
+        Abschlussaufgabe.crc2.fillText("You reached" + " " + v + " " + "points!", 400, 300);
+        Abschlussaufgabe.crc2.fillText("Refresh to play again", 400, 400);
         Abschlussaufgabe.crc2.closePath();
         Abschlussaufgabe.crc2.fill();
+        clearInterval(interval);
+        //        if (v > 10){
+        //     
+        //     crc2.beginPath();
+        //     crc2.fillStyle = "black";
+        //     crc2.fillRect(0,0,canvas.width,canvas.height);
+        //     crc2.closePath();
+        //     
+        //     crc2.beginPath();
+        //     crc2.fillStyle = "white";
+        //      crc2.font="50px Georgia";
+        //     crc2.fillText("Game Over",480,100);
+        //     crc2.fillText("Good! You reached" + " " + v + " " + "points!", 400, 200);  
+        //     crc2.fillText("Refresh to play again", 400, 300)  
+        //     crc2.closePath();
+        //     crc2.fill();
+        //     }
+        //        
+        //      
+        //      if ( v = 5) {
+        //     
+        //     crc2.beginPath();
+        //     crc2.fillStyle = "black";
+        //     crc2.fillRect(0,0,canvas.width,canvas.height);
+        //     crc2.closePath();
+        //     
+        //     crc2.beginPath();
+        //     crc2.fillStyle = "white";
+        //      crc2.font="50px Georgia";
+        //     crc2.fillText("Game Over",480,100);
+        //     crc2.fillText("Wow! You reached" + " " + v + " " + "points!", 400, 200);  
+        //     crc2.fillText("Refresh to play again", 400, 300)  
+        //     crc2.closePath();
+        //     crc2.fill();
+        //     }    
     }
 })(Abschlussaufgabe || (Abschlussaufgabe = {}));
 ;

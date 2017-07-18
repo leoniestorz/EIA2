@@ -20,7 +20,7 @@ namespace Abschlussaufgabe {
         color: string;
         positionY:number;
         positionX:number;
-        points:boolean;
+      
 
 
     
@@ -91,10 +91,10 @@ namespace Abschlussaufgabe {
         
 //Methode 'setRandomStyle'
     
-//    setRandomStyle(): void {
-//     
-//    let randomColor: string = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
-//    this.color = randomColor;}
+    setRandomStyle(): void {
+     
+    let randomColor: string = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
+    this.color = randomColor;}
 //   
-//
+
         }}

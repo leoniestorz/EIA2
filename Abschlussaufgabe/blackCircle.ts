@@ -20,8 +20,7 @@ namespace Abschlussaufgabe {
         color: string;
         positionY:number;
         positionX:number;
-        
-
+        j:number = 0;
 
     
         constructor(_x:number,_y:number) {
@@ -30,6 +29,7 @@ namespace Abschlussaufgabe {
             this.x = Math.floor((Math.random() * canvas.width) + 50);
             this.y = Math.floor((Math.random() * canvas.height) + 50);
             this.draw();
+            this.j = 0;
            
 
 
@@ -45,11 +45,13 @@ namespace Abschlussaufgabe {
         crc2.arc(this.x,this.y,15, 0, 2 * Math.PI);
         crc2.closePath();
         crc2.fill();
+        
+        j=0;
     }
-    
+  
 
   } 
 
    
-}}
+}
 

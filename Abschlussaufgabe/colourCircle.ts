@@ -21,7 +21,7 @@ namespace Abschlussaufgabe {
         color: string;
         positionY:number;
         positionX:number;
-      
+        e:number = 0;
 
 
 
@@ -33,7 +33,7 @@ namespace Abschlussaufgabe {
             this.y = Math.floor((Math.random() * canvas.height) + 50);
             this.draw();
             this.setRandomStyle();
-           
+            this.e = 0;
 
         }
  
@@ -48,6 +48,10 @@ namespace Abschlussaufgabe {
         crc2.arc(this.x,this.y,15, 0, 2 * Math.PI);
         crc2.closePath();
         crc2.fill();
+        
+        e=0;
+        
+        
     }
     
 

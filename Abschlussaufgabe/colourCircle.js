@@ -16,10 +16,12 @@ var Abschlussaufgabe;
         __extends(ColourCircle, _super);
         function ColourCircle(_x, _y) {
             _super.call(this, _x, _y);
+            this.e = 0;
             this.x = Math.floor((Math.random() * Abschlussaufgabe.canvas.width) + 50);
             this.y = Math.floor((Math.random() * Abschlussaufgabe.canvas.height) + 50);
             this.draw();
             this.setRandomStyle();
+            this.e = 0;
         }
         //Methode 'draw' 
         ColourCircle.prototype.draw = function () {
@@ -28,6 +30,7 @@ var Abschlussaufgabe;
             Abschlussaufgabe.crc2.arc(this.x, this.y, 15, 0, 2 * Math.PI);
             Abschlussaufgabe.crc2.closePath();
             Abschlussaufgabe.crc2.fill();
+            Abschlussaufgabe.e = 0;
         };
         //Methode 'setRandomStyle'
         ColourCircle.prototype.setRandomStyle = function () {

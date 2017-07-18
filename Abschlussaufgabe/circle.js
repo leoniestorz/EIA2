@@ -53,6 +53,11 @@ var Abschlussaufgabe;
             this.x = Math.floor((Math.random() * Abschlussaufgabe.canvas.width) - 50);
             this.y = Math.floor((Math.random() * Abschlussaufgabe.canvas.height) - 50);
         };
+        //Methode 'setRandomStyle'
+        Circle.prototype.setRandomStyle = function () {
+            var randomColor = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
+            this.color = randomColor;
+        };
         return Circle;
     }());
     Abschlussaufgabe.Circle = Circle;

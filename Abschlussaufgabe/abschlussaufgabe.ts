@@ -18,17 +18,14 @@ namespace Abschlussaufgabe {
   
     export let z: number = 0;
     let v: number = 0;
-    let r:number = 31;
-    let e:boolean = true;
+    let r:number = 11;
+    export let e:number;
+    export let j:number;
     
     export let allCircles: Circle[] = [];
    
-    
-    let imgData: ImageData;
 
-    
-    
-   
+    let imgData: ImageData;
 
     function init(_event: Event): void {
        
@@ -90,9 +87,7 @@ namespace Abschlussaufgabe {
         
 //      div.addEventListener("touchend", changeScreen); 
 //      div.addEventListener("click", changeScreen); 
-      
-//      canvas.addEventListener("touchend", addCircle);
-//      canvas.addEventListener("click", addCircle);
+     
         
         canvas.addEventListener("touchend", removeCircle);
         canvas.addEventListener("click", removeCircle);   
@@ -100,11 +95,72 @@ namespace Abschlussaufgabe {
 //      div.addEventListener("touchend", removeCircle);
 //      div.addEventListener("click", removeCircle); 
         
-//      console.log(allCircles);  
+ 
         
-
+     
     
- }   
+ } 
+      let interval =  setInterval(
+   
+       function(){ if (z > 0) {
+        z++;
+        let b: ColourCircle = new ColourCircle(500, 0);
+                                       e = 0;
+                                        z++;
+                                       allCircles.push(b);
+                                       console.log(b)
+                                       console.log(z + " " + "Circles"); }}, 2000
+       
+       ); 
+     
+    function startGame(): void {
+         
+
+        
+       for (var i = 0; i < 10; i++) {    
+
+           
+            
+
+       let randomCircle = Math.floor(Math.random() * 2); 
+       
+           switch (randomCircle) {
+                        
+                                case 0:
+                                     let b: ColourCircle = new ColourCircle(this.x, this.y);
+                                        e = 0;
+                                        z++;
+                                       allCircles.push(b);
+//                                       console.log(b)
+                                       console.log(z + " " + "Circles");
+                  
+                                       console.log(e);
+                                    break;
+                                case 1:
+                                     let q: BlackCircle = new BlackCircle(this.x, this.y);
+                                        j = 0;
+                                        z++;
+                                        allCircles.push(q);
+//                                         console.log(q)
+                                        console.log(z + " " + "Circles");
+                                         console.log(j);
+                                    break;
+                  
+                   
+                   }   
+   
+        removeStarttext(); 
+           
+     
+
+       }
+        
+               
+  
+      window.setTimeout(animate, 20);
+  }    
+    
+    
         function removeCircle(event : MouseEvent): void {
             
             for (let i: number = 0; i < allCircles.length; i++) {
@@ -121,12 +177,16 @@ namespace Abschlussaufgabe {
                 if (differenceX <= 40 && differenceY <= 40) {
                     allCircles.splice(i, 1);
                    
-                    if (e == false){
-                        v--;}
-                    else {v++;}
-               
+                  
+               if (j == 0)
+                   v--;
+                  else
+                    v++;
                     
-                    console.log(v + " " + "catched ball(s)")}
+                    console.log(v + " " + "Punkte")
+                
+                   
+               }
          
 //      Punkteanzeige
         
@@ -144,7 +204,13 @@ namespace Abschlussaufgabe {
         p.marginTop = " -585px"
         p.fontSize = "20px"; 
         
-        punkte.innerText = "Punkte: " + v; }
+        punkte.innerText = "Punkte: " + v; 
+            
+            }
+            
+            
+            
+            
 
 }
 
@@ -166,55 +232,7 @@ namespace Abschlussaufgabe {
             };
         }; 
         
-  function startGame(): void {
-         
-    //bunte Kreise
-        
-       for (var i = 0; i < 10; i++) {    
-           
-//       let y: number = 0;
-//       let x: number = 0;    
-//       let f: ColourCircle = new ColourCircle(x, y);
-//       allCircles[i] = f;
-//       f.draw();
-//       f.setRandomPosition();
-//       f.setRandomStyle();
-//       allCircles.push();
-           
-            
 
-    let randomBiene = Math.floor(Math.random() * 2); 
-       
-           switch (randomBiene) {
-                        
-                                case 0:
-                                     let b: ColourCircle = new ColourCircle(this.x, this.y);
-                                      
-                                       allCircles.push(b);
-                                       e == false;
-                                       console.log(b)
-                                    break;
-                                case 1:
-                                     let q: BlackCircle = new BlackCircle(this.x, this.y);
-                                         
-                                        allCircles.push(q);
-                                      e == true;
-                                         console.log(q)
-                                    break;
-                                }
-
-
-           
-        removeStarttext();   
-
-       }
-  
-     
-      
-      
-    
-      window.setTimeout(animate, 20);
-  }  
         
         
       function animate(): void {
@@ -326,14 +344,57 @@ namespace Abschlussaufgabe {
  }
      
   
-    
+//Fuegt bei jedem Kick neue Kreise hinzu, 
+//damit der Spieler weiterhin Punkte erzielen kann
+        
     function addCircle(_event:Event): void {
         
-         let c: ColourCircle = new ColourCircle (500,1000);
-         c.draw;
-         allCircles.push(c);
-         z++;
-         console.log(z)
+//        setInterval(
+//   
+//       function(){ if (z > 0) {
+//        z++;
+//        let b: ColourCircle = new ColourCircle(500, 0);
+//                                       e = 0;
+//                                        z++;
+//                                       allCircles.push(b);
+//                                       console.log(b)
+//                                       console.log(z); }}, 1000
+//       
+//       ); 
+        
+        
+        
+//         for (var i = 0; i < 2; i++) {    
+//
+//           
+//            
+//
+//    let randomCircle = Math.floor(Math.random() * 2); 
+//       
+//           switch (randomCircle) {
+//                        
+//                                case 0:
+//                                     let b: ColourCircle = new ColourCircle(500, 0);
+//                                       e = 0;
+//                                        z++;
+//                                       allCircles.push(b);
+//                                       console.log(b)
+//                                       console.log(z);
+//                                    break;
+//                                case 1:
+//                                     let q: BlackCircle = new BlackCircle(500, 0);
+//                                        e = 1;
+//                                          z++;
+//                                        allCircles.push(q);
+//                                         console.log(q)
+//                                        console.log(z);
+//                                    break;
+//                                }   
+//   
+//        removeStarttext();   
+//
+//       }
+//  
        
  }  
      
@@ -359,9 +420,10 @@ namespace Abschlussaufgabe {
    
        function(){ if (r > 0) {
         r--;
-        console.log (r);
+        console.log ("noch" + " " + r + " " + "Sekunden");
         timer.innerHTML = "noch" + " " + r + " " + "Sekunden"; }}, 1000
        
+          
        );   
        
 
@@ -375,28 +437,68 @@ namespace Abschlussaufgabe {
     
     function endGame () : void {
         
-    //   Hintergrund
-     
-     crc2.beginPath();
+        
+         
+       crc2.beginPath();
      crc2.fillStyle = "black";
      crc2.fillRect(0,0,canvas.width,canvas.height);
      crc2.closePath();
      
-     
-//    Textfeld    
-     
      crc2.beginPath();
      crc2.fillStyle = "white";
       crc2.font="50px Georgia";
-     crc2.fillText("Game Over",480,100);
-     crc2.fillText("You reached" + " " + v + " " + "points!", 400, 200);  
-     crc2.fillText("Refresh to play again", 400, 300)  
+     crc2.fillText("Game Over - Deine Zeit ist abgelaufen",350,200);
+     crc2.fillText("You reached" + " " + v + " " + "points!", 400, 300);  
+     crc2.fillText("Refresh to play again", 400, 400)  
      crc2.closePath();
      crc2.fill();
+        
+        
+     clearInterval(interval);
+        
+        
+//        if (v > 10){
+//     
+//     crc2.beginPath();
+//     crc2.fillStyle = "black";
+//     crc2.fillRect(0,0,canvas.width,canvas.height);
+//     crc2.closePath();
+//     
+//     crc2.beginPath();
+//     crc2.fillStyle = "white";
+//      crc2.font="50px Georgia";
+//     crc2.fillText("Game Over",480,100);
+//     crc2.fillText("Good! You reached" + " " + v + " " + "points!", 400, 200);  
+//     crc2.fillText("Refresh to play again", 400, 300)  
+//     crc2.closePath();
+//     crc2.fill();
+//     }
+//        
+//      
+//      if ( v = 5) {
+//     
+//     crc2.beginPath();
+//     crc2.fillStyle = "black";
+//     crc2.fillRect(0,0,canvas.width,canvas.height);
+//     crc2.closePath();
+//     
+//     crc2.beginPath();
+//     crc2.fillStyle = "white";
+//      crc2.font="50px Georgia";
+//     crc2.fillText("Game Over",480,100);
+//     crc2.fillText("Wow! You reached" + " " + v + " " + "points!", 400, 200);  
+//     crc2.fillText("Refresh to play again", 400, 300)  
+//     crc2.closePath();
+//     crc2.fill();
+//     }    
+        
+
     
       
     
     }
+    
+
      
        
        
