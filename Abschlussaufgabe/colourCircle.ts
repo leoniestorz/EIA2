@@ -14,41 +14,29 @@ namespace Abschlussaufgabe {
     
 
     
-    export class ColourCircle {
+    export class ColourCircle extends Circle {
     
         x: number;
         y: number;
         color: string;
         positionY:number;
         positionX:number;
+      
 
 
 
     
         constructor(_x:number,_y:number) {
     
-         
+            super(_x,_y);
             this.x = Math.floor((Math.random() * canvas.width) + 50);
             this.y = Math.floor((Math.random() * canvas.height) + 50);
             this.draw();
             this.setRandomStyle();
+           
 
         }
  
-//Kreisposition herausfinden
-        
-        takeCirclePosition(): void {
-            this.positionX = this.x;
-            this.positionY = this.y;   
-}
-        
-//Methode 'update' 
-        
-    update () : void {
-            
-        this.draw ();
-        this.move ();
-        this.takeCirclePosition();}
 
  
 //Methode 'draw' 
@@ -62,33 +50,8 @@ namespace Abschlussaufgabe {
         crc2.fill();
     }
     
- 
-//Methode 'move' 
-    
- move() : void {
-           
-            this.y += Math.random() * 10 ;
-            
-            for (let i: number = 0; i < 100; i++) {
-        
-            if (this.x < 0) {
-                this.x = crc2.canvas.width;
-            }
-            if (this.y < 0) {
-                this.y = crc2.canvas.height;
-            }
-            if (this.y >= crc2.canvas.height) {
-                this.y = 0;
-            }}}
-        
-//Methode 'setRandomPosition'
-        
-   setRandomPosition(): void {
-       
-            this.x = Math.floor((Math.random() * canvas.width) -50); 
-            this.y = Math.floor((Math.random() * canvas.height) -50);
-       
-}
+
+  
         
 //Methode 'setRandomStyle'
     

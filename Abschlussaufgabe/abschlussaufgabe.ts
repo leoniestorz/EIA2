@@ -19,9 +19,11 @@ namespace Abschlussaufgabe {
     export let z: number = 0;
     let v: number = 0;
     let r:number = 31;
-    let e:string;
+    let e:boolean = true;
     
-    export let allCircles: ColourCircle[] = [];
+    export let allCircles: Circle[] = [];
+   
+    
     let imgData: ImageData;
 
     
@@ -107,7 +109,7 @@ namespace Abschlussaufgabe {
             
             for (let i: number = 0; i < allCircles.length; i++) {
                 
-                let d: ColourCircle = allCircles[i];
+                let d: Circle = allCircles[i];
        
                 
                 let clickX: number = event.clientX;
@@ -119,7 +121,7 @@ namespace Abschlussaufgabe {
                 if (differenceX <= 40 && differenceY <= 40) {
                     allCircles.splice(i, 1);
                    
-                    if (e == "black"){
+                    if (e == false){
                         v--;}
                     else {v++;}
                
@@ -151,7 +153,7 @@ namespace Abschlussaufgabe {
        
             for (let i: number = 0; i < allCircles.length; i++) {
                 
-                let a: ColourCircle = allCircles[i];
+                let a: Circle = allCircles[i];
                 
                 
                 if (a.positionX>= 567 && a.positionX <= 750) {
@@ -168,33 +170,51 @@ namespace Abschlussaufgabe {
          
     //bunte Kreise
         
-       for (var i = 0; i < 5; i++) {    
+       for (var i = 0; i < 10; i++) {    
            
-       let y: number = 0;
-       let x: number = 0;    
-       let f: ColourCircle = new ColourCircle(x, y);
-       allCircles[i] = f;
-       f.draw();
-       f.setRandomPosition();
-       f.setRandomStyle();
-       allCircles.push();
+//       let y: number = 0;
+//       let x: number = 0;    
+//       let f: ColourCircle = new ColourCircle(x, y);
+//       allCircles[i] = f;
+//       f.draw();
+//       f.setRandomPosition();
+//       f.setRandomStyle();
+//       allCircles.push();
            
-       console.log(f)
+            
 
-    // schwarze Kreise
-           
-           
-           
-           
-           
-           
-           
+    let randomBiene = Math.floor(Math.random() * 2); 
+       
+           switch (randomBiene) {
+                        
+                                case 0:
+                                     let b: ColourCircle = new ColourCircle(this.x, this.y);
+                                      
+                                       allCircles.push(b);
+                                       e == false;
+                                       console.log(b)
+                                    break;
+                                case 1:
+                                     let q: BlackCircle = new BlackCircle(this.x, this.y);
+                                         
+                                        allCircles.push(q);
+                                      e == true;
+                                         console.log(q)
+                                    break;
+                                }
+
+
            
         removeStarttext();   
 
        }
+  
+     
+      
+      
     
-       window.setTimeout(animate, 20);}  
+      window.setTimeout(animate, 20);
+  }  
         
         
       function animate(): void {
@@ -203,7 +223,7 @@ namespace Abschlussaufgabe {
               
        for (let i: number = 0; i < allCircles.length; i++) {
            
-       let b: ColourCircle = allCircles[i];
+       let b: Circle = allCircles[i];
        b.update();
        
       

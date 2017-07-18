@@ -5,26 +5,22 @@
 //   
 //Hiermit versichere ich, dass ich diesen Code selbst erstellt habe. 
 //Er wurde nicht kopiert und auch nicht diktiert.
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
-    var ColourCircle = (function () {
+    var ColourCircle = (function (_super) {
+        __extends(ColourCircle, _super);
         function ColourCircle(_x, _y) {
+            _super.call(this, _x, _y);
             this.x = Math.floor((Math.random() * Abschlussaufgabe.canvas.width) + 50);
             this.y = Math.floor((Math.random() * Abschlussaufgabe.canvas.height) + 50);
             this.draw();
             this.setRandomStyle();
         }
-        //Kreisposition herausfinden
-        ColourCircle.prototype.takeCirclePosition = function () {
-            this.positionX = this.x;
-            this.positionY = this.y;
-        };
-        //Methode 'update' 
-        ColourCircle.prototype.update = function () {
-            this.draw();
-            this.move();
-            this.takeCirclePosition();
-        };
         //Methode 'draw' 
         ColourCircle.prototype.draw = function () {
             Abschlussaufgabe.crc2.beginPath();
@@ -33,33 +29,13 @@ var Abschlussaufgabe;
             Abschlussaufgabe.crc2.closePath();
             Abschlussaufgabe.crc2.fill();
         };
-        //Methode 'move' 
-        ColourCircle.prototype.move = function () {
-            this.y += Math.random() * 10;
-            for (var i = 0; i < 100; i++) {
-                if (this.x < 0) {
-                    this.x = Abschlussaufgabe.crc2.canvas.width;
-                }
-                if (this.y < 0) {
-                    this.y = Abschlussaufgabe.crc2.canvas.height;
-                }
-                if (this.y >= Abschlussaufgabe.crc2.canvas.height) {
-                    this.y = 0;
-                }
-            }
-        };
-        //Methode 'setRandomPosition'
-        ColourCircle.prototype.setRandomPosition = function () {
-            this.x = Math.floor((Math.random() * Abschlussaufgabe.canvas.width) - 50);
-            this.y = Math.floor((Math.random() * Abschlussaufgabe.canvas.height) - 50);
-        };
         //Methode 'setRandomStyle'
         ColourCircle.prototype.setRandomStyle = function () {
             var randomColor = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
             this.color = randomColor;
         };
         return ColourCircle;
-    }());
+    }(Abschlussaufgabe.Circle));
     Abschlussaufgabe.ColourCircle = ColourCircle;
 })(Abschlussaufgabe || (Abschlussaufgabe = {}));
 //# sourceMappingURL=colourCircle.js.map

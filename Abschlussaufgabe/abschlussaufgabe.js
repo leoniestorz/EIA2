@@ -11,7 +11,7 @@ var Abschlussaufgabe;
     Abschlussaufgabe.z = 0;
     var v = 0;
     var r = 31;
-    var e;
+    var e = true;
     Abschlussaufgabe.allCircles = [];
     var imgData;
     function init(_event) {
@@ -74,7 +74,7 @@ var Abschlussaufgabe;
             var differenceY = Math.abs(d.positionY - clickY);
             if (differenceX <= 40 && differenceY <= 40) {
                 Abschlussaufgabe.allCircles.splice(i, 1);
-                if (e == "black") {
+                if (e == false) {
                     v--;
                 }
                 else {
@@ -114,17 +114,30 @@ var Abschlussaufgabe;
     ;
     function startGame() {
         //bunte Kreise
-        for (var i = 0; i < 5; i++) {
-            var y = 0;
-            var x = 0;
-            var f = new Abschlussaufgabe.ColourCircle(x, y);
-            Abschlussaufgabe.allCircles[i] = f;
-            f.draw();
-            f.setRandomPosition();
-            f.setRandomStyle();
-            Abschlussaufgabe.allCircles.push();
-            console.log(f);
-            // schwarze Kreise
+        for (var i = 0; i < 10; i++) {
+            //       let y: number = 0;
+            //       let x: number = 0;    
+            //       let f: ColourCircle = new ColourCircle(x, y);
+            //       allCircles[i] = f;
+            //       f.draw();
+            //       f.setRandomPosition();
+            //       f.setRandomStyle();
+            //       allCircles.push();
+            var randomBiene = Math.floor(Math.random() * 2);
+            switch (randomBiene) {
+                case 0:
+                    var b = new Abschlussaufgabe.ColourCircle(this.x, this.y);
+                    Abschlussaufgabe.allCircles.push(b);
+                    e == false;
+                    console.log(b);
+                    break;
+                case 1:
+                    var q = new Abschlussaufgabe.BlackCircle(this.x, this.y);
+                    Abschlussaufgabe.allCircles.push(q);
+                    e == true;
+                    console.log(q);
+                    break;
+            }
             removeStarttext();
         }
         window.setTimeout(animate, 20);
