@@ -87,12 +87,12 @@ var Abschlussaufgabe;
                     break;
                 case 1:
                     var q = new Abschlussaufgabe.BlackCircle(this.x, this.y);
-                    Abschlussaufgabe.j = 0;
+                    Abschlussaufgabe.e = 1;
                     Abschlussaufgabe.z++;
                     Abschlussaufgabe.allCircles.push(q);
                     //                                         console.log(q)
                     console.log(Abschlussaufgabe.z + " " + "Circles");
-                    console.log(Abschlussaufgabe.j);
+                    //                                         console.log(j);
                     break;
             }
             removeStarttext();
@@ -108,10 +108,10 @@ var Abschlussaufgabe;
             var differenceY = Math.abs(d.positionY - clickY);
             if (differenceX <= 40 && differenceY <= 40) {
                 Abschlussaufgabe.allCircles.splice(i, 1);
-                if (Abschlussaufgabe.j == 0)
-                    v--;
-                else
+                if (Abschlussaufgabe.e == 0)
                     v++;
+                else
+                    v--;
                 console.log(v + " " + "Punkte");
             }
             //      Punkteanzeige
@@ -160,26 +160,81 @@ var Abschlussaufgabe;
     function drawStartscreen() {
         //      Hintergrund
         Abschlussaufgabe.crc2.beginPath();
-        Abschlussaufgabe.crc2.fillStyle = "white";
+        Abschlussaufgabe.crc2.fillStyle = "#F08080 ";
         Abschlussaufgabe.crc2.fillRect(0, 0, Abschlussaufgabe.canvas.width, Abschlussaufgabe.canvas.height);
         Abschlussaufgabe.crc2.closePath();
         //       var image = new Image();
-        //       image.src = 'Images/pfeilbutton.png';
-        //       crc2.drawImage(image, 700, 350, 100, 100)
-        ////       image.id += "button";
+        //       image.src = 'Images/hintergrund.jpg';
+        //       crc2.drawImage(image, 100, 450, 100, 100)
+        //       image.id += "button";
         //       let i: CSSStyleDeclaration = image.style;
-        ////       i.position = "fixed";
+        //       i.position = "fixed";
         //      Textfeld
         Abschlussaufgabe.crc2.beginPath();
         Abschlussaufgabe.crc2.fillStyle = "black";
-        Abschlussaufgabe.crc2.font = "50px Georgia";
-        Abschlussaufgabe.crc2.fillText("Bubble Catch", 480, 450);
+        Abschlussaufgabe.crc2.font = "150px Indie Flower";
+        Abschlussaufgabe.crc2.fillText("Bubble Catcher", 220, 490);
         Abschlussaufgabe.crc2.closePath();
         Abschlussaufgabe.crc2.fill();
+        //      Ecken
+        //        //links oben
+        //        crc2.beginPath();
+        //        crc2.strokeStyle = "#000000";
+        //        crc2.moveTo(420,190);
+        //        crc2.lineTo(420,120);
+        //        crc2.lineTo(490,120);
+        //        crc2.stroke();
+        //        //links unten
+        //        crc2.beginPath();
+        //        crc2.strokeStyle = "#000000";
+        //        crc2.moveTo(490,340);
+        //        crc2.lineTo(420,340);
+        //        crc2.lineTo(420,280);
+        //        crc2.stroke();
+        //        //rechts unten
+        //        crc2.beginPath();
+        //        crc2.strokeStyle = "#000000";
+        //        crc2.moveTo(860,340);
+        //        crc2.lineTo(930,340);
+        //        crc2.lineTo(930,280);
+        //        crc2.stroke();
+        //        //rechts oben
+        //        crc2.beginPath();
+        //        crc2.strokeStyle = "#000000";
+        //        crc2.moveTo(870,120);
+        //        crc2.lineTo(930,120);
+        //        crc2.lineTo(930,180);
+        //        crc2.stroke();
+        //     Kreise
+        Abschlussaufgabe.crc2.beginPath();
+        Abschlussaufgabe.crc2.strokeStyle = "#000000";
+        Abschlussaufgabe.crc2.arc(100, 100, 35, 0, 2 * Math.PI);
+        Abschlussaufgabe.crc2.closePath();
+        Abschlussaufgabe.crc2.stroke();
+        Abschlussaufgabe.crc2.beginPath();
+        Abschlussaufgabe.crc2.strokeStyle = "#000000";
+        Abschlussaufgabe.crc2.arc(500, 600, 65, 0, 2 * Math.PI);
+        Abschlussaufgabe.crc2.closePath();
+        Abschlussaufgabe.crc2.stroke();
+        Abschlussaufgabe.crc2.beginPath();
+        Abschlussaufgabe.crc2.strokeStyle = "#000000";
+        Abschlussaufgabe.crc2.arc(1100, 300, 85, 0, 2 * Math.PI);
+        Abschlussaufgabe.crc2.closePath();
+        Abschlussaufgabe.crc2.stroke();
+        Abschlussaufgabe.crc2.beginPath();
+        Abschlussaufgabe.crc2.strokeStyle = "#000000";
+        Abschlussaufgabe.crc2.arc(250, 250, 85, 0, 2 * Math.PI);
+        Abschlussaufgabe.crc2.closePath();
+        Abschlussaufgabe.crc2.stroke();
+        Abschlussaufgabe.crc2.beginPath();
+        Abschlussaufgabe.crc2.strokeStyle = "#000000";
+        Abschlussaufgabe.crc2.arc(920, 150, 100, 0, 2 * Math.PI);
+        Abschlussaufgabe.crc2.closePath();
+        Abschlussaufgabe.crc2.stroke();
     }
     function changeScreen() {
         //   Alertbox   
-        alert("Bubble Catch\n\nFange so viele Baelle wie moeglich um Punkte zu sammeln! Bevor die Zeit abgelaufen ist!\n\nAber Achtung! Erwische nicht die schwarzen Kugeln - sie geben Minuspunkte!\n\nViel Spass!");
+        alert("Fange so viele herabfallende Baelle wie moeglich um Punkte zu sammeln!\n\nAber Achtung! Erwische nicht die schwarzen Baelle - sie geben Minuspunkte!\n\n Die Zeit laeuft sobald du mit 'Ok' bestaetigt hast");
         Abschlussaufgabe.crc2.beginPath();
         Abschlussaufgabe.crc2.fillStyle = "#F5DEB3";
         Abschlussaufgabe.crc2.fillRect(0, 0, Abschlussaufgabe.canvas.width, Abschlussaufgabe.canvas.height);
@@ -187,8 +242,6 @@ var Abschlussaufgabe;
         //    Textfeld    
         Abschlussaufgabe.crc2.beginPath();
         Abschlussaufgabe.crc2.fillStyle = "#F5DEB3";
-        Abschlussaufgabe.crc2.font = "50px Georgia";
-        Abschlussaufgabe.crc2.fillText("Bubble Catch", 480, 300);
         Abschlussaufgabe.crc2.closePath();
         Abschlussaufgabe.crc2.fill();
     }

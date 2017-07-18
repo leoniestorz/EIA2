@@ -138,16 +138,18 @@ namespace Abschlussaufgabe {
                                     break;
                                 case 1:
                                      let q: BlackCircle = new BlackCircle(this.x, this.y);
-                                        j = 0;
+                                        e = 1;
                                         z++;
                                         allCircles.push(q);
 //                                         console.log(q)
                                         console.log(z + " " + "Circles");
-                                         console.log(j);
+//                                         console.log(j);
                                     break;
                   
                    
-                   }   
+                   }
+           
+           
    
         removeStarttext(); 
            
@@ -166,7 +168,7 @@ namespace Abschlussaufgabe {
             for (let i: number = 0; i < allCircles.length; i++) {
                 
                 let d: Circle = allCircles[i];
-       
+                
                 
                 let clickX: number = event.clientX;
                 let clickY: number = event.clientY;
@@ -178,12 +180,13 @@ namespace Abschlussaufgabe {
                     allCircles.splice(i, 1);
                    
                   
-               if (j == 0)
-                   v--;
-                  else
-                    v++;
+                if (e == 0)
+                   v++;
+          
+                 else
+                    v--;   
                     
-                    console.log(v + " " + "Punkte")
+               console.log(v + " " + "Punkte")
                 
                    
                }
@@ -267,16 +270,16 @@ namespace Abschlussaufgabe {
 
 //      Hintergrund
         crc2.beginPath();
-        crc2.fillStyle = "white";
+        crc2.fillStyle = "#F08080 ";
         crc2.fillRect(0,0,canvas.width,canvas.height);
         crc2.closePath();
      
 //       var image = new Image();
-//       image.src = 'Images/pfeilbutton.png';
-//       crc2.drawImage(image, 700, 350, 100, 100)
-////       image.id += "button";
+//       image.src = 'Images/hintergrund.jpg';
+//       crc2.drawImage(image, 100, 450, 100, 100)
+//       image.id += "button";
 //       let i: CSSStyleDeclaration = image.style;
-////       i.position = "fixed";
+//       i.position = "fixed";
      
      
 //      Textfeld
@@ -284,12 +287,72 @@ namespace Abschlussaufgabe {
         crc2.fillStyle = "black";
        
  
-        crc2.font="50px Georgia";
-        crc2.fillText("Bubble Catch",480,450);
+        crc2.font="150px Indie Flower";
+        crc2.fillText("Bubble Catcher",220,490);
         crc2.closePath();
         crc2.fill();
-  
-      
+
+//      Ecken
+//        //links oben
+//        crc2.beginPath();
+//        crc2.strokeStyle = "#000000";
+//        crc2.moveTo(420,190);
+//        crc2.lineTo(420,120);
+//        crc2.lineTo(490,120);
+//        crc2.stroke();
+//        //links unten
+//        crc2.beginPath();
+//        crc2.strokeStyle = "#000000";
+//        crc2.moveTo(490,340);
+//        crc2.lineTo(420,340);
+//        crc2.lineTo(420,280);
+//        crc2.stroke();
+//        //rechts unten
+//        crc2.beginPath();
+//        crc2.strokeStyle = "#000000";
+//        crc2.moveTo(860,340);
+//        crc2.lineTo(930,340);
+//        crc2.lineTo(930,280);
+//        crc2.stroke();
+//        //rechts oben
+//        crc2.beginPath();
+//        crc2.strokeStyle = "#000000";
+//        crc2.moveTo(870,120);
+//        crc2.lineTo(930,120);
+//        crc2.lineTo(930,180);
+//        crc2.stroke();
+     
+//     Kreise
+     
+       crc2.beginPath();
+       crc2.strokeStyle = "#000000";
+       crc2.arc(100,100,35, 0, 2 * Math.PI);
+       crc2.closePath();
+       crc2.stroke();
+     
+       crc2.beginPath();
+       crc2.strokeStyle = "#000000";
+       crc2.arc(500,600,65, 0, 2 * Math.PI);
+       crc2.closePath();
+       crc2.stroke();
+     
+       crc2.beginPath();
+       crc2.strokeStyle = "#000000";
+       crc2.arc(1100,300,85, 0, 2 * Math.PI);
+       crc2.closePath();
+       crc2.stroke();
+       
+       crc2.beginPath();
+       crc2.strokeStyle = "#000000";
+       crc2.arc(250,250,85, 0, 2 * Math.PI);
+       crc2.closePath();
+       crc2.stroke();
+     
+       crc2.beginPath();
+       crc2.strokeStyle = "#000000";
+       crc2.arc(920,150,100, 0, 2 * Math.PI);
+       crc2.closePath();
+       crc2.stroke();
 }
 
 
@@ -298,7 +361,7 @@ namespace Abschlussaufgabe {
   function changeScreen () : void {
       
 //   Alertbox   
-  alert("Bubble Catch\n\nFange so viele Baelle wie moeglich um Punkte zu sammeln! Bevor die Zeit abgelaufen ist!\n\nAber Achtung! Erwische nicht die schwarzen Kugeln - sie geben Minuspunkte!\n\nViel Spass!");    
+ alert( "Fange so viele herabfallende Baelle wie moeglich um Punkte zu sammeln!\n\nAber Achtung! Erwische nicht die schwarzen Baelle - sie geben Minuspunkte!\n\n Die Zeit laeuft sobald du mit 'Ok' bestaetigt hast");    
   
        crc2.beginPath();
      crc2.fillStyle = "#F5DEB3";
@@ -310,8 +373,6 @@ namespace Abschlussaufgabe {
     
      crc2.beginPath();
      crc2.fillStyle = "#F5DEB3";
-      crc2.font="50px Georgia";
-      crc2.fillText("Bubble Catch",480,300);
      crc2.closePath();
      crc2.fill();
   
