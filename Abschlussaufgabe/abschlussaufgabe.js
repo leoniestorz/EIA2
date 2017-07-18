@@ -78,7 +78,7 @@ var Abschlussaufgabe;
             switch (randomCircle) {
                 case 0:
                     var b = new Abschlussaufgabe.ColourCircle(this.x, this.y);
-                    Abschlussaufgabe.e = 0;
+                    //                                        e == 0;
                     Abschlussaufgabe.z++;
                     Abschlussaufgabe.allCircles.push(b);
                     //                                       console.log(b)
@@ -87,7 +87,7 @@ var Abschlussaufgabe;
                     break;
                 case 1:
                     var q = new Abschlussaufgabe.BlackCircle(this.x, this.y);
-                    Abschlussaufgabe.e = 1;
+                    //                                        e == 1;
                     Abschlussaufgabe.z++;
                     Abschlussaufgabe.allCircles.push(q);
                     //                                         console.log(q)
@@ -173,7 +173,7 @@ var Abschlussaufgabe;
         Abschlussaufgabe.crc2.beginPath();
         Abschlussaufgabe.crc2.fillStyle = "black";
         Abschlussaufgabe.crc2.font = "150px Indie Flower";
-        Abschlussaufgabe.crc2.fillText("Bubble Catcher", 220, 490);
+        Abschlussaufgabe.crc2.fillText("Bubble Catcher", 220, 520);
         Abschlussaufgabe.crc2.closePath();
         Abschlussaufgabe.crc2.fill();
         //      Ecken
@@ -231,10 +231,15 @@ var Abschlussaufgabe;
         Abschlussaufgabe.crc2.arc(920, 150, 100, 0, 2 * Math.PI);
         Abschlussaufgabe.crc2.closePath();
         Abschlussaufgabe.crc2.stroke();
+        Abschlussaufgabe.crc2.beginPath();
+        Abschlussaufgabe.crc2.strokeStyle = "#000000";
+        Abschlussaufgabe.crc2.arc(200, 100, 15, 0, 2 * Math.PI);
+        Abschlussaufgabe.crc2.closePath();
+        Abschlussaufgabe.crc2.stroke();
     }
     function changeScreen() {
         //   Alertbox   
-        alert("Fange so viele herabfallende Baelle wie moeglich um Punkte zu sammeln!\n\nAber Achtung! Erwische nicht die schwarzen Baelle - sie geben Minuspunkte!\n\n Die Zeit laeuft sobald du mit 'Ok' bestaetigt hast");
+        alert("So geht's:\n\n\nFange so viele herabfallende Baelle wie moeglich um Punkte zu sammeln!\nBlau = 2 Punkte, Rot = 3 Punkte, Gelb = 4 Punkte\n\nAber Achtung! Erwische nicht die schwarzen Baelle - sie geben Minuspunkte!\n\nDie Zeit laeuft sobald du mit 'Ok' bestaetigt hast.\n\n\n[ Hinweis: Wenn du auf dem Smartphone spielst drehe den Bildschirm ]");
         Abschlussaufgabe.crc2.beginPath();
         Abschlussaufgabe.crc2.fillStyle = "#F5DEB3";
         Abschlussaufgabe.crc2.fillRect(0, 0, Abschlussaufgabe.canvas.width, Abschlussaufgabe.canvas.height);
@@ -314,9 +319,9 @@ var Abschlussaufgabe;
         t.marginTop = "-585px";
         t.marginLeft = "1110px";
         t.paddingLeft = "20px";
-        t.height = "20px";
-        t.width = "150px";
-        t.font = "20pt";
+        t.height = "100px";
+        t.width = "200px";
+        t.font = "50pt";
         t.position = "fixed";
         t.border = "3px solid #000000";
         //     Zeitanzeige
@@ -324,7 +329,7 @@ var Abschlussaufgabe;
             if (r > 0) {
                 r--;
                 console.log("noch" + " " + r + " " + "Sekunden");
-                timer.innerHTML = "noch" + " " + r + " " + "Sekunden";
+                timer.innerHTML = "Zeit:\n\nnoch" + " " + r + " " + "Sekunden";
             }
         }, 1000);
     }

@@ -128,7 +128,7 @@ namespace Abschlussaufgabe {
                         
                                 case 0:
                                      let b: ColourCircle = new ColourCircle(this.x, this.y);
-                                        e = 0;
+//                                        e == 0;
                                         z++;
                                        allCircles.push(b);
 //                                       console.log(b)
@@ -138,7 +138,7 @@ namespace Abschlussaufgabe {
                                     break;
                                 case 1:
                                      let q: BlackCircle = new BlackCircle(this.x, this.y);
-                                        e = 1;
+//                                        e == 1;
                                         z++;
                                         allCircles.push(q);
 //                                         console.log(q)
@@ -288,7 +288,7 @@ namespace Abschlussaufgabe {
        
  
         crc2.font="150px Indie Flower";
-        crc2.fillText("Bubble Catcher",220,490);
+        crc2.fillText("Bubble Catcher",220,520);
         crc2.closePath();
         crc2.fill();
 
@@ -353,6 +353,12 @@ namespace Abschlussaufgabe {
        crc2.arc(920,150,100, 0, 2 * Math.PI);
        crc2.closePath();
        crc2.stroke();
+     
+       crc2.beginPath();
+       crc2.strokeStyle = "#000000";
+       crc2.arc(200,100,15, 0, 2 * Math.PI);
+       crc2.closePath();
+       crc2.stroke();
 }
 
 
@@ -361,7 +367,7 @@ namespace Abschlussaufgabe {
   function changeScreen () : void {
       
 //   Alertbox   
- alert( "Fange so viele herabfallende Baelle wie moeglich um Punkte zu sammeln!\n\nAber Achtung! Erwische nicht die schwarzen Baelle - sie geben Minuspunkte!\n\n Die Zeit laeuft sobald du mit 'Ok' bestaetigt hast");    
+ alert( "So geht's:\n\n\nFange so viele herabfallende Baelle wie moeglich um Punkte zu sammeln!\nBlau = 2 Punkte, Rot = 3 Punkte, Gelb = 4 Punkte\n\nAber Achtung! Erwische nicht die schwarzen Baelle - sie geben Minuspunkte!\n\nDie Zeit laeuft sobald du mit 'Ok' bestaetigt hast.\n\n\n[ Hinweis: Wenn du auf dem Smartphone spielst drehe den Bildschirm ]");    
   
        crc2.beginPath();
      crc2.fillStyle = "#F5DEB3";
@@ -468,9 +474,9 @@ namespace Abschlussaufgabe {
         t.marginTop = "-585px";
         t.marginLeft = "1110px";
         t.paddingLeft = "20px";
-        t.height = "20px";
-        t.width = "150px";
-        t.font = "20pt";
+        t.height = "100px";
+        t.width = "200px";
+        t.font = "50pt";
         t.position = "fixed";
         t.border = "3px solid #000000";
     
@@ -482,7 +488,7 @@ namespace Abschlussaufgabe {
        function(){ if (r > 0) {
         r--;
         console.log ("noch" + " " + r + " " + "Sekunden");
-        timer.innerHTML = "noch" + " " + r + " " + "Sekunden"; }}, 1000
+        timer.innerHTML = "Zeit:\n\nnoch" + " " + r + " " + "Sekunden"; }}, 1000
        
           
        );   
