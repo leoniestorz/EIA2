@@ -11,7 +11,7 @@ var Abschlussaufgabe;
     Abschlussaufgabe.z = 0; //Anzahl der Kreise insgesamt
     Abschlussaufgabe.g = 1; //Anzahl der Sterne insgesamt
     var v = 0; //Anzahl der Punkte
-    var r = 11; //Zeitangabe
+    var r = 31; //Zeitangabe
     Abschlussaufgabe.allColourCircles = [];
     Abschlussaufgabe.allBlackCircles = [];
     Abschlussaufgabe.allStars = [];
@@ -41,16 +41,17 @@ var Abschlussaufgabe;
         var punkte = document.createElement("div");
         document.body.appendChild(punkte);
         var p = punkte.style;
-        p.backgroundColor = "white";
+        p.backgroundColor = "#8FBC8F";
         p.paddingLeft = "10px";
         p.marginTop = "10px";
-        p.width = "120px";
-        p.height = "25px";
+        p.width = "220px";
+        p.height = "50px";
         p.border = " 2px solid black";
         p.position = "fixed";
         p.marginLeft = "20px";
-        p.marginTop = " -585px";
-        p.fontSize = "20px";
+        p.marginTop = " -570px";
+        p.fontSize = "40px";
+        p.font = "Indie Flower";
         punkte.innerText = "Punkte:";
         //      Speichern des Canvas als Bild
         imgData = Abschlussaufgabe.crc2.getImageData(0, 0, Abschlussaufgabe.canvas.width, Abschlussaufgabe.canvas.height);
@@ -75,7 +76,7 @@ var Abschlussaufgabe;
             console.log(Abschlussaufgabe.z + " " + "Circles");
         }
     }, 2000);
-    //alle 2 Sekunden kommen 2 Sterne hinzu    
+    //alle 4 Sekunden kommen 2 Sterne hinzu    
     var intervalStars = setInterval(function () {
         if (Abschlussaufgabe.g > 0) {
             Abschlussaufgabe.g++;
@@ -85,7 +86,7 @@ var Abschlussaufgabe;
             console.log(b);
             console.log(Abschlussaufgabe.g + " " + "Stars");
         }
-    }, 2000);
+    }, 4000);
     function startGame() {
         for (var i = 0; i < 10; i++) {
             var randomCircle = Math.floor(Math.random() * 2);
@@ -121,23 +122,25 @@ var Abschlussaufgabe;
             var differenceY = Math.abs(d.positionY - clickY);
             if (differenceX <= 40 && differenceY <= 40) {
                 Abschlussaufgabe.allColourCircles.splice(i, 1);
-                v++; //Pluspunkte im Spiel ( + 1 Punkt)
+                if (r > 0)
+                    v++; //Pluspunkte im Spiel ( + 1 Punkt)
                 console.log(v + " " + "Punkte");
             }
             //Punkteanzeige
             var punkte = document.createElement("div");
             document.body.appendChild(punkte);
             var p = punkte.style;
-            p.backgroundColor = "white";
+            p.backgroundColor = "#8FBC8F";
             p.paddingLeft = "10px";
             p.marginTop = "10px";
-            p.width = "120px";
-            p.height = "25px";
+            p.width = "220px";
+            p.height = "50px";
             p.border = " 2px solid black";
             p.position = "fixed";
             p.marginLeft = "20px";
-            p.marginTop = " -585px";
-            p.fontSize = "20px";
+            p.marginTop = " -570px";
+            p.fontSize = "40px";
+            p.font = "Indie Flower";
             punkte.innerText = "Punkte: " + v;
         }
         //Remove BlackCircles
@@ -149,7 +152,7 @@ var Abschlussaufgabe;
             var differenceY = Math.abs(d.positionY - clickY);
             if (differenceX <= 40 && differenceY <= 40) {
                 Abschlussaufgabe.allBlackCircles.splice(i, 1);
-                if (v > 0)
+                if (v > 0 && r > 0)
                     v--; //Minuspunkte im Spiel (- 1 Punkt)
                 console.log(v + " " + "Punkte");
             }
@@ -157,16 +160,17 @@ var Abschlussaufgabe;
             var punkte = document.createElement("div");
             document.body.appendChild(punkte);
             var p = punkte.style;
-            p.backgroundColor = "white";
+            p.backgroundColor = "#8FBC8F";
             p.paddingLeft = "10px";
             p.marginTop = "10px";
-            p.width = "120px";
-            p.height = "25px";
+            p.width = "220px";
+            p.height = "50px";
             p.border = " 2px solid black";
             p.position = "fixed";
             p.marginLeft = "20px";
-            p.marginTop = " -585px";
-            p.fontSize = "20px";
+            p.marginTop = " -570px";
+            p.fontSize = "40px";
+            p.font = "Indie Flower";
             punkte.innerText = "Punkte: " + v;
         }
         //Remove Stars
@@ -178,23 +182,25 @@ var Abschlussaufgabe;
             var differenceY = Math.abs(d.positionY - clickY);
             if (differenceX <= 40 && differenceY <= 40) {
                 Abschlussaufgabe.allStars.splice(i, 1);
-                v += 2; //Pluspunkte im Spiel (+ 2 Punkte)
+                if (r > 0)
+                    v += 2; //Pluspunkte im Spiel (+ 2 Punkte)
                 console.log(v + " " + "Punkte");
             }
             //Punkteanzeige
             var punkte = document.createElement("div");
             document.body.appendChild(punkte);
             var p = punkte.style;
-            p.backgroundColor = "white";
+            p.backgroundColor = "#8FBC8F";
             p.paddingLeft = "10px";
             p.marginTop = "10px";
-            p.width = "120px";
-            p.height = "25px";
+            p.width = "220px";
+            p.height = "50px";
             p.border = " 2px solid black";
             p.position = "fixed";
             p.marginLeft = "20px";
-            p.marginTop = " -585px";
-            p.fontSize = "20px";
+            p.marginTop = " -570px";
+            p.fontSize = "40px";
+            p.font = "Indie Flower";
             punkte.innerText = "Punkte: " + v;
         }
     }
@@ -340,26 +346,27 @@ var Abschlussaufgabe;
     }
     function changeScreen() {
         //   Alertbox   
-        alert("So geht's:\n\n\nFange so viele herabfallende Baelle wie moeglich um Punkte zu sammeln!\nBlau = 2 Punkte, Rot = 3 Punkte, Gelb = 4 Punkte\n\nAber Achtung! Erwische nicht die schwarzen Baelle - sie geben Minuspunkte!\n\nDie Zeit laeuft sobald du mit 'Ok' bestaetigt hast.\n\n\n[ Hinweis: Wenn du auf dem Smartphone spielst drehe den Bildschirm ]");
+        // alert( "So geht's:\n\n\nFange so viele herabfallende Baelle wie moeglich um Punkte zu sammeln!\n\n\nAber Achtung! Erwische nicht die schwarzen Baelle - sie geben Minuspunkte! Durch die seltenen Sterne hingegen erhaelst du jeweils 3 Pluspunkte!\n\nDie Zeit laeuft sobald du mit 'Ok' bestaetigt hast.\n\n\n[ Hinweis: Wenn du auf dem Smartphone spielst drehe den Bildschirm ]");    
+        alert("So geht's:\n\n\nFange so viele herabfallende Baelle wie moeglich um Punkte zu sammeln!\n\nBunte Baelle = + 1 Punkt\nSterne = + 2 Bonusunkte\nSchwarze Baelle = - 2 Punkte\n\nDie Zeit laeuft sobald du mit 'Ok' bestaetigt hast.\n\n\n[ Hinweis: Wenn du auf dem Smartphone spielst drehe den Bildschirm ]");
         Abschlussaufgabe.crc2.beginPath();
-        Abschlussaufgabe.crc2.fillStyle = "#F5DEB3";
+        Abschlussaufgabe.crc2.fillStyle = "#8FBC8F ";
         Abschlussaufgabe.crc2.fillRect(0, 0, Abschlussaufgabe.canvas.width, Abschlussaufgabe.canvas.height);
         Abschlussaufgabe.crc2.closePath();
         //    Textfeld    
         Abschlussaufgabe.crc2.beginPath();
-        Abschlussaufgabe.crc2.fillStyle = "#F5DEB3";
+        Abschlussaufgabe.crc2.fillStyle = "#8FBC8F ";
         Abschlussaufgabe.crc2.closePath();
         Abschlussaufgabe.crc2.fill();
     }
     function removeStarttext() {
         //   Hintergrund
         Abschlussaufgabe.crc2.beginPath();
-        Abschlussaufgabe.crc2.fillStyle = "#EEE8AA";
+        Abschlussaufgabe.crc2.fillStyle = "#8FBC8F";
         Abschlussaufgabe.crc2.fillRect(0, 0, Abschlussaufgabe.canvas.width, Abschlussaufgabe.canvas.height);
         Abschlussaufgabe.crc2.closePath();
         //    Textfeld    
         Abschlussaufgabe.crc2.beginPath();
-        Abschlussaufgabe.crc2.fillStyle = "#EEE8AA";
+        Abschlussaufgabe.crc2.fillStyle = "#8FBC8F";
         Abschlussaufgabe.crc2.font = "50px Georgia";
         Abschlussaufgabe.crc2.fillText("Bubble Catch", 480, 300);
         Abschlussaufgabe.crc2.closePath();
@@ -416,21 +423,49 @@ var Abschlussaufgabe;
         var timer = document.createElement("div");
         document.body.appendChild(timer);
         var t = timer.style;
-        t.backgroundColor = "#FFFFFF";
-        t.marginTop = "-585px";
-        t.marginLeft = "1110px";
+        t.backgroundColor = "#8FBC8F";
+        t.marginTop = "-575px";
+        t.marginLeft = "1060px";
         t.paddingLeft = "20px";
-        t.height = "100px";
-        t.width = "200px";
-        t.font = "50pt";
+        t.paddingTop = "10px";
+        t.height = "40px";
+        t.width = "250px";
+        t.fontSize = "30px";
+        t.font = "Indie Flower";
         t.position = "fixed";
-        t.border = "3px solid #000000";
+        //        t.border = "3px solid #000000";
+        Abschlussaufgabe.crc2.beginPath();
+        Abschlussaufgabe.crc2.strokeStyle = "#000000";
+        Abschlussaufgabe.crc2.arc(1030, 50, 20, 0, 2 * Math.PI);
+        Abschlussaufgabe.crc2.moveTo(1022, 22);
+        Abschlussaufgabe.crc2.lineTo(1038, 22);
+        Abschlussaufgabe.crc2.closePath();
+        Abschlussaufgabe.crc2.stroke();
+        Abschlussaufgabe.crc2.beginPath();
+        Abschlussaufgabe.crc2.fillStyle = "#000000";
+        Abschlussaufgabe.crc2.fillRect(1028, 22, 3, 8);
+        Abschlussaufgabe.crc2.fill();
+        Abschlussaufgabe.crc2.beginPath();
+        Abschlussaufgabe.crc2.strokeStyle = "#000000";
+        Abschlussaufgabe.crc2.moveTo(1030, 50);
+        Abschlussaufgabe.crc2.lineTo(1040, 60);
+        Abschlussaufgabe.crc2.closePath();
+        Abschlussaufgabe.crc2.stroke();
+        //        crc2.beginPath();
+        //        crc2.fillStyle = "#000000";
+        //        crc2.fillRect(1030,40,12, 3);
+        //        crc2.fill();
+        //       let image = new Image();
+        //       image.src = 'Images/stoppuhr.png';
+        //       crc2.drawImage(image, 1000, 20, 55, 55)
+        //       let i: CSSStyleDeclaration = image.style;
+        //       i.position = "fixed";
         //     Zeitanzeige
         setInterval(function () {
             if (r > 0) {
                 r--;
                 console.log("noch" + " " + r + " " + "Sekunden");
-                timer.innerHTML = "Zeit:\n\nnoch" + " " + r + " " + "Sekunden";
+                timer.innerHTML = "noch" + " " + r + " " + "Sekunden";
             }
         }, 1000);
     }
@@ -441,10 +476,11 @@ var Abschlussaufgabe;
         Abschlussaufgabe.crc2.closePath();
         Abschlussaufgabe.crc2.beginPath();
         Abschlussaufgabe.crc2.fillStyle = "white";
-        Abschlussaufgabe.crc2.font = "50px Georgia";
-        Abschlussaufgabe.crc2.fillText("Game Over - Deine Zeit ist abgelaufen", 350, 200);
-        Abschlussaufgabe.crc2.fillText("You reached" + " " + v + " " + "points!", 400, 300);
-        Abschlussaufgabe.crc2.fillText("Refresh to play again", 400, 400);
+        Abschlussaufgabe.crc2.font = "50px Indie Flower";
+        Abschlussaufgabe.crc2.fillText("GAME OVER", 500, 100);
+        Abschlussaufgabe.crc2.fillText("Deine Zeit ist abgelaufen", 370, 200);
+        Abschlussaufgabe.crc2.fillText("Du hast" + " " + v + " " + "Punkte erreicht!", 400, 300);
+        Abschlussaufgabe.crc2.fillText("[Seite neu laden um erneut zu spielen]", 300, 500);
         Abschlussaufgabe.crc2.closePath();
         Abschlussaufgabe.crc2.fill();
         clearInterval(intervalCircles);

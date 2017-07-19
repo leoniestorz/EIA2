@@ -39,8 +39,8 @@ namespace Abschlussaufgabe {
     draw(): void {
        
         crc2.beginPath();
-        crc2.strokeStyle = "black";
-        crc2.fillStyle = "yellow";
+//        crc2.strokeStyle = "black";
+        crc2.fillStyle = "rgb(255,215,0,0.8)";
         crc2.moveTo(this.x,this.y);
         crc2.lineTo(this.x + 10,this.y)
         crc2.lineTo(this.x + 15,this.y - 10)
@@ -52,7 +52,7 @@ namespace Abschlussaufgabe {
         crc2.lineTo(this.x + 7,this.y + 15)
         crc2.lineTo(this.x + 9,this.y +6)
         crc2.closePath();
-        crc2.stroke();
+//        crc2.stroke();
         crc2.fill();
         
         

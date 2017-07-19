@@ -23,8 +23,8 @@ var Abschlussaufgabe;
         //Methode 'draw' 
         Star.prototype.draw = function () {
             Abschlussaufgabe.crc2.beginPath();
-            Abschlussaufgabe.crc2.strokeStyle = "black";
-            Abschlussaufgabe.crc2.fillStyle = "yellow";
+            //        crc2.strokeStyle = "black";
+            Abschlussaufgabe.crc2.fillStyle = "rgb(255,215,0,0.8)";
             Abschlussaufgabe.crc2.moveTo(this.x, this.y);
             Abschlussaufgabe.crc2.lineTo(this.x + 10, this.y);
             Abschlussaufgabe.crc2.lineTo(this.x + 15, this.y - 10);
@@ -36,7 +36,7 @@ var Abschlussaufgabe;
             Abschlussaufgabe.crc2.lineTo(this.x + 7, this.y + 15);
             Abschlussaufgabe.crc2.lineTo(this.x + 9, this.y + 6);
             Abschlussaufgabe.crc2.closePath();
-            Abschlussaufgabe.crc2.stroke();
+            //        crc2.stroke();
             Abschlussaufgabe.crc2.fill();
         };
         return Star;

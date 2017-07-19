@@ -40,7 +40,7 @@ namespace Abschlussaufgabe {
     draw(): void {
        
         crc2.beginPath();
-        crc2.fillStyle = "#000000";
+        crc2.fillStyle = "rgb(0,0,0,0.8)";
         crc2.arc(this.x,this.y,15, 0, 2 * Math.PI);
         crc2.closePath();
         crc2.fill();

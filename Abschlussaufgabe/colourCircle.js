@@ -31,7 +31,7 @@ var Abschlussaufgabe;
         };
         //Methode 'setRandomStyle'
         ColourCircle.prototype.setRandomStyle = function () {
-            var randomColor = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
+            var randomColor = "hsl(" + Math.random() * 360 + ", 50%, 50%)";
             this.color = randomColor;
         };
         return ColourCircle;

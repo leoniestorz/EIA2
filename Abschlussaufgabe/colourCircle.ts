@@ -61,7 +61,7 @@ namespace Abschlussaufgabe {
     
     setRandomStyle(): void {
      
-    let randomColor: string = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
+    let randomColor: string = "hsl(" + Math.random() * 360 + ", 50%, 50%)";
     this.color = randomColor;}
    
 }}

@@ -20,7 +20,7 @@ namespace Abschlussaufgabe {
     export let g:number = 1;    //Anzahl der Sterne insgesamt
     
     let v: number = 0;         //Anzahl der Punkte
-    let r:number = 11;         //Zeitangabe
+    let r:number = 31;         //Zeitangabe
  
 
     export let allColourCircles: ColourCircle[] = [];
@@ -64,16 +64,17 @@ namespace Abschlussaufgabe {
         let punkte = document.createElement("div");
         document.body.appendChild(punkte);
           let p: CSSStyleDeclaration = punkte.style;
-        p.backgroundColor = "white";
+        p.backgroundColor = "#8FBC8F";
         p.paddingLeft = "10px";
         p.marginTop = "10px";
-        p.width = "120px";
-        p.height = "25px";
+        p.width = "220px";
+        p.height = "50px";
         p.border = " 2px solid black";
         p.position = "fixed";
         p.marginLeft = "20px"
-        p.marginTop = " -585px"
-        p.fontSize = "20px"; 
+        p.marginTop = " -570px"
+        p.fontSize = "40px"; 
+        p.font = "Indie Flower";
         
         punkte.innerText = "Punkte:"
        
@@ -118,7 +119,7 @@ namespace Abschlussaufgabe {
        
        ); 
     
-//alle 2 Sekunden kommen 2 Sterne hinzu    
+//alle 4 Sekunden kommen 2 Sterne hinzu    
     
     let intervalStars =  setInterval(
    
@@ -129,7 +130,7 @@ namespace Abschlussaufgabe {
                                         g++;
                                        allStars.push(b);
                                        console.log(b)
-                                       console.log(g + " " + "Stars"); }}, 2000
+                                       console.log(g + " " + "Stars"); }}, 4000
        
        ); 
     
@@ -205,6 +206,7 @@ namespace Abschlussaufgabe {
                 if (differenceX <= 40 && differenceY <= 40) {
                     allColourCircles.splice(i, 1);
                   
+                    if (r > 0)
                     v++; //Pluspunkte im Spiel ( + 1 Punkt)
   
                     
@@ -214,21 +216,21 @@ namespace Abschlussaufgabe {
                }
          
         //Punkteanzeige
-        
-        let punkte = document.createElement("div");
+          let punkte = document.createElement("div");
         document.body.appendChild(punkte);
-        let p: CSSStyleDeclaration = punkte.style;
-        p.backgroundColor = "white";
+          let p: CSSStyleDeclaration = punkte.style;
+        p.backgroundColor = "#8FBC8F";
         p.paddingLeft = "10px";
         p.marginTop = "10px";
-        p.width = "120px";
-        p.height = "25px";
+        p.width = "220px";
+        p.height = "50px";
         p.border = " 2px solid black";
         p.position = "fixed";
         p.marginLeft = "20px"
-        p.marginTop = " -585px"
-        p.fontSize = "20px"; 
-        
+        p.marginTop = " -570px"
+        p.fontSize = "40px"; 
+        p.font = "Indie Flower";
+                
         punkte.innerText = "Punkte: " + v; 
             
             }
@@ -249,7 +251,7 @@ namespace Abschlussaufgabe {
                 if (differenceX <= 40 && differenceY <= 40) {
                     allBlackCircles.splice(i, 1);
                   
-                    if (v > 0)//damit am Ende kein Punktestand im Minusbereich entsteht
+                    if (v > 0 && r > 0)//damit am Ende kein Punktestand im Minusbereich entsteht
                     v--; //Minuspunkte im Spiel (- 1 Punkt)
                     
                     
@@ -260,19 +262,20 @@ namespace Abschlussaufgabe {
            
         //Punkteanzeige
         
-        let punkte = document.createElement("div");
+           let punkte = document.createElement("div");
         document.body.appendChild(punkte);
-        let p: CSSStyleDeclaration = punkte.style;
-        p.backgroundColor = "white";
+          let p: CSSStyleDeclaration = punkte.style;
+        p.backgroundColor = "#8FBC8F";
         p.paddingLeft = "10px";
         p.marginTop = "10px";
-        p.width = "120px";
-        p.height = "25px";
+        p.width = "220px";
+        p.height = "50px";
         p.border = " 2px solid black";
         p.position = "fixed";
         p.marginLeft = "20px"
-        p.marginTop = " -585px"
-        p.fontSize = "20px"; 
+        p.marginTop = " -570px"
+        p.fontSize = "40px"; 
+        p.font = "Indie Flower";
         
         punkte.innerText = "Punkte: " + v; 
             
@@ -293,7 +296,8 @@ namespace Abschlussaufgabe {
 
                 if (differenceX <= 40 && differenceY <= 40) {
                     allStars.splice(i, 1);
-                  
+                 
+                    if (r > 0)
                     v += 2; //Pluspunkte im Spiel (+ 2 Punkte)
   
                     
@@ -304,19 +308,20 @@ namespace Abschlussaufgabe {
          
         //Punkteanzeige
         
-        let punkte = document.createElement("div");
+         let punkte = document.createElement("div");
         document.body.appendChild(punkte);
-        let p: CSSStyleDeclaration = punkte.style;
-        p.backgroundColor = "white";
+          let p: CSSStyleDeclaration = punkte.style;
+        p.backgroundColor = "#8FBC8F";
         p.paddingLeft = "10px";
         p.marginTop = "10px";
-        p.width = "120px";
-        p.height = "25px";
+        p.width = "220px";
+        p.height = "50px";
         p.border = " 2px solid black";
         p.position = "fixed";
         p.marginLeft = "20px"
-        p.marginTop = " -585px"
-        p.fontSize = "20px"; 
+        p.marginTop = " -570px"
+        p.fontSize = "40px"; 
+        p.font = "Indie Flower";
         
         punkte.innerText = "Punkte: " + v; 
             
@@ -532,10 +537,10 @@ namespace Abschlussaufgabe {
   function changeScreen () : void {
       
 //   Alertbox   
- alert( "So geht's:\n\n\nFange so viele herabfallende Baelle wie moeglich um Punkte zu sammeln!\nBlau = 2 Punkte, Rot = 3 Punkte, Gelb = 4 Punkte\n\nAber Achtung! Erwische nicht die schwarzen Baelle - sie geben Minuspunkte!\n\nDie Zeit laeuft sobald du mit 'Ok' bestaetigt hast.\n\n\n[ Hinweis: Wenn du auf dem Smartphone spielst drehe den Bildschirm ]");    
-  
+// alert( "So geht's:\n\n\nFange so viele herabfallende Baelle wie moeglich um Punkte zu sammeln!\n\n\nAber Achtung! Erwische nicht die schwarzen Baelle - sie geben Minuspunkte! Durch die seltenen Sterne hingegen erhaelst du jeweils 3 Pluspunkte!\n\nDie Zeit laeuft sobald du mit 'Ok' bestaetigt hast.\n\n\n[ Hinweis: Wenn du auf dem Smartphone spielst drehe den Bildschirm ]");    
+ alert( "So geht's:\n\n\nFange so viele herabfallende Baelle wie moeglich um Punkte zu sammeln!\n\nBunte Baelle = + 1 Punkt\nSterne = + 2 Bonusunkte\nSchwarze Baelle = - 2 Punkte\n\nDie Zeit laeuft sobald du mit 'Ok' bestaetigt hast.\n\n\n[ Hinweis: Wenn du auf dem Smartphone spielst drehe den Bildschirm ]");     
        crc2.beginPath();
-     crc2.fillStyle = "#F5DEB3";
+     crc2.fillStyle = "#8FBC8F ";
      crc2.fillRect(0,0,canvas.width,canvas.height);
      crc2.closePath();
      
@@ -543,7 +548,7 @@ namespace Abschlussaufgabe {
 //    Textfeld    
     
      crc2.beginPath();
-     crc2.fillStyle = "#F5DEB3";
+     crc2.fillStyle = "#8FBC8F ";
      crc2.closePath();
      crc2.fill();
   
@@ -558,7 +563,7 @@ namespace Abschlussaufgabe {
  //   Hintergrund
      
      crc2.beginPath();
-     crc2.fillStyle = "#EEE8AA";
+     crc2.fillStyle = "#8FBC8F";
      crc2.fillRect(0,0,canvas.width,canvas.height);
      crc2.closePath();
      
@@ -566,7 +571,7 @@ namespace Abschlussaufgabe {
 //    Textfeld    
      
      crc2.beginPath();
-     crc2.fillStyle = "#EEE8AA";
+     crc2.fillStyle = "#8FBC8F";
       crc2.font="50px Georgia";
      crc2.fillText("Bubble Catch",480,300);
      crc2.closePath();
@@ -635,15 +640,49 @@ namespace Abschlussaufgabe {
        let timer : HTMLDivElement = document.createElement ("div");
         document.body.appendChild(timer);
         let t: CSSStyleDeclaration = timer.style;
-        t.backgroundColor= "#FFFFFF";
-        t.marginTop = "-585px";
-        t.marginLeft = "1110px";
+        t.backgroundColor= "#8FBC8F";
+        t.marginTop = "-575px";
+        t.marginLeft = "1060px";
         t.paddingLeft = "20px";
-        t.height = "100px";
-        t.width = "200px";
-        t.font = "50pt";
+        t.paddingTop = "10px";
+        t.height = "40px";
+        t.width = "250px";
+        t.fontSize = "30px";
+        t.font = "Indie Flower";
         t.position = "fixed";
-        t.border = "3px solid #000000";
+//        t.border = "3px solid #000000";
+       
+       
+        crc2.beginPath();
+        crc2.strokeStyle = "#000000";
+        crc2.arc(1030,50,20, 0, 2 * Math.PI);
+        crc2.moveTo(1022,22)
+        crc2.lineTo(1038,22)
+        crc2.closePath();
+        crc2.stroke();
+       
+        crc2.beginPath();
+        crc2.fillStyle = "#000000";
+        crc2.fillRect(1028,22,3, 8);
+        crc2.fill();
+       
+        crc2.beginPath();
+        crc2.strokeStyle = "#000000";
+        crc2.moveTo(1030,50)
+        crc2.lineTo(1040,60)
+        crc2.closePath();
+        crc2.stroke();
+       
+//        crc2.beginPath();
+//        crc2.fillStyle = "#000000";
+//        crc2.fillRect(1030,40,12, 3);
+//        crc2.fill();
+
+//       let image = new Image();
+//       image.src = 'Images/stoppuhr.png';
+//       crc2.drawImage(image, 1000, 20, 55, 55)
+//       let i: CSSStyleDeclaration = image.style;
+//       i.position = "fixed";
     
       
 //     Zeitanzeige
@@ -653,7 +692,7 @@ namespace Abschlussaufgabe {
        function(){ if (r > 0) {
         r--;
         console.log ("noch" + " " + r + " " + "Sekunden");
-        timer.innerHTML = "Zeit:\n\nnoch" + " " + r + " " + "Sekunden"; }}, 1000
+        timer.innerHTML = "noch" + " " + r + " " + "Sekunden"; }}, 1000
        
           
        );   
@@ -678,10 +717,11 @@ namespace Abschlussaufgabe {
      
      crc2.beginPath();
      crc2.fillStyle = "white";
-      crc2.font="50px Georgia";
-     crc2.fillText("Game Over - Deine Zeit ist abgelaufen",350,200);
-     crc2.fillText("You reached" + " " + v + " " + "points!", 400, 300);  
-     crc2.fillText("Refresh to play again", 400, 400)  
+      crc2.font="50px Indie Flower";
+     crc2.fillText("GAME OVER",500,100)
+     crc2.fillText("Deine Zeit ist abgelaufen",370,200);
+     crc2.fillText("Du hast" + " " + v + " " + "Punkte erreicht!", 400, 300);  
+     crc2.fillText("[Seite neu laden um erneut zu spielen]", 300, 500)  
      crc2.closePath();
      crc2.fill();
         

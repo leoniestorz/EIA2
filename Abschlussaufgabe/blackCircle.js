@@ -23,7 +23,7 @@ var Abschlussaufgabe;
         //Methode 'draw' 
         BlackCircle.prototype.draw = function () {
             Abschlussaufgabe.crc2.beginPath();
-            Abschlussaufgabe.crc2.fillStyle = "#000000";
+            Abschlussaufgabe.crc2.fillStyle = "rgb(0,0,0,0.8)";
             Abschlussaufgabe.crc2.arc(this.x, this.y, 15, 0, 2 * Math.PI);
             Abschlussaufgabe.crc2.closePath();
             Abschlussaufgabe.crc2.fill();
