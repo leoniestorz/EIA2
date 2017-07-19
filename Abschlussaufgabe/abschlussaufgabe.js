@@ -8,10 +8,13 @@
 var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
     window.addEventListener("load", init);
-    Abschlussaufgabe.z = 0;
-    var v = 0;
-    var r = 11;
-    Abschlussaufgabe.allCircles = [];
+    Abschlussaufgabe.z = 0; //Anzahl der Kreise insgesamt
+    Abschlussaufgabe.g = 1; //Anzahl der Sterne insgesamt
+    var v = 0; //Anzahl der Punkte
+    var r = 11; //Zeitangabe
+    Abschlussaufgabe.allColourCircles = [];
+    Abschlussaufgabe.allBlackCircles = [];
+    Abschlussaufgabe.allStars = [];
     var imgData;
     function init(_event) {
         Abschlussaufgabe.canvas = document.getElementsByTagName("canvas")[0];
@@ -61,15 +64,26 @@ var Abschlussaufgabe;
         //      div.addEventListener("touchend", removeCircle);
         //      div.addEventListener("click", removeCircle); 
     }
-    var interval = setInterval(function () {
+    //alle 2 Sekunden kommen 2 bunte Kreise hinzu
+    var intervalCircles = setInterval(function () {
         if (Abschlussaufgabe.z > 0) {
             Abschlussaufgabe.z++;
             var b = new Abschlussaufgabe.ColourCircle(500, 0);
-            Abschlussaufgabe.e = 0;
             Abschlussaufgabe.z++;
-            Abschlussaufgabe.allCircles.push(b);
+            Abschlussaufgabe.allColourCircles.push(b);
             console.log(b);
             console.log(Abschlussaufgabe.z + " " + "Circles");
+        }
+    }, 2000);
+    //alle 2 Sekunden kommen 2 Sterne hinzu    
+    var intervalStars = setInterval(function () {
+        if (Abschlussaufgabe.g > 0) {
+            Abschlussaufgabe.g++;
+            var b = new Abschlussaufgabe.Star(500, 300);
+            Abschlussaufgabe.g++;
+            Abschlussaufgabe.allStars.push(b);
+            console.log(b);
+            console.log(Abschlussaufgabe.g + " " + "Stars");
         }
     }, 2000);
     function startGame() {
@@ -78,21 +92,19 @@ var Abschlussaufgabe;
             switch (randomCircle) {
                 case 0:
                     var b = new Abschlussaufgabe.ColourCircle(this.x, this.y);
-                    //                                        e == 0;
+                    //                                       
                     Abschlussaufgabe.z++;
-                    Abschlussaufgabe.allCircles.push(b);
+                    Abschlussaufgabe.allColourCircles.push(b);
                     //                                       console.log(b)
                     console.log(Abschlussaufgabe.z + " " + "Circles");
-                    console.log(Abschlussaufgabe.e);
                     break;
                 case 1:
                     var q = new Abschlussaufgabe.BlackCircle(this.x, this.y);
                     //                                        e == 1;
                     Abschlussaufgabe.z++;
-                    Abschlussaufgabe.allCircles.push(q);
+                    Abschlussaufgabe.allBlackCircles.push(q);
                     //                                         console.log(q)
                     console.log(Abschlussaufgabe.z + " " + "Circles");
-                    //                                         console.log(j);
                     break;
             }
             removeStarttext();
@@ -100,21 +112,76 @@ var Abschlussaufgabe;
         window.setTimeout(animate, 20);
     }
     function removeCircle(event) {
-        for (var i = 0; i < Abschlussaufgabe.allCircles.length; i++) {
-            var d = Abschlussaufgabe.allCircles[i];
+        //Remove ColourCircles
+        for (var i = 0; i < Abschlussaufgabe.allColourCircles.length; i++) {
+            var d = Abschlussaufgabe.allColourCircles[i];
             var clickX = event.clientX;
             var clickY = event.clientY;
             var differenceX = Math.abs(d.positionX - clickX);
             var differenceY = Math.abs(d.positionY - clickY);
             if (differenceX <= 40 && differenceY <= 40) {
-                Abschlussaufgabe.allCircles.splice(i, 1);
-                if (Abschlussaufgabe.e == 0)
-                    v++;
-                else
-                    v--;
+                Abschlussaufgabe.allColourCircles.splice(i, 1);
+                v++; //Pluspunkte im Spiel ( + 1 Punkt)
                 console.log(v + " " + "Punkte");
             }
-            //      Punkteanzeige
+            //Punkteanzeige
+            var punkte = document.createElement("div");
+            document.body.appendChild(punkte);
+            var p = punkte.style;
+            p.backgroundColor = "white";
+            p.paddingLeft = "10px";
+            p.marginTop = "10px";
+            p.width = "120px";
+            p.height = "25px";
+            p.border = " 2px solid black";
+            p.position = "fixed";
+            p.marginLeft = "20px";
+            p.marginTop = " -585px";
+            p.fontSize = "20px";
+            punkte.innerText = "Punkte: " + v;
+        }
+        //Remove BlackCircles
+        for (var i = 0; i < Abschlussaufgabe.allBlackCircles.length; i++) {
+            var d = Abschlussaufgabe.allBlackCircles[i];
+            var clickX = event.clientX;
+            var clickY = event.clientY;
+            var differenceX = Math.abs(d.positionX - clickX);
+            var differenceY = Math.abs(d.positionY - clickY);
+            if (differenceX <= 40 && differenceY <= 40) {
+                Abschlussaufgabe.allBlackCircles.splice(i, 1);
+                if (v > 0)
+                    v--; //Minuspunkte im Spiel (- 1 Punkt)
+                console.log(v + " " + "Punkte");
+            }
+            //Punkteanzeige
+            var punkte = document.createElement("div");
+            document.body.appendChild(punkte);
+            var p = punkte.style;
+            p.backgroundColor = "white";
+            p.paddingLeft = "10px";
+            p.marginTop = "10px";
+            p.width = "120px";
+            p.height = "25px";
+            p.border = " 2px solid black";
+            p.position = "fixed";
+            p.marginLeft = "20px";
+            p.marginTop = " -585px";
+            p.fontSize = "20px";
+            punkte.innerText = "Punkte: " + v;
+        }
+        //Remove Stars
+        for (var i = 0; i < Abschlussaufgabe.allStars.length; i++) {
+            var d = Abschlussaufgabe.allStars[i];
+            var clickX = event.clientX;
+            var clickY = event.clientY;
+            var differenceX = Math.abs(d.positionX - clickX);
+            var differenceY = Math.abs(d.positionY - clickY);
+            if (differenceX <= 40 && differenceY <= 40) {
+                Abschlussaufgabe.allStars.splice(i, 1);
+                v += 2; //Pluspunkte im Spiel (+ 2 Punkte)
+                console.log(v + " " + "Punkte");
+            }
+            //Punkteanzeige
             var punkte = document.createElement("div");
             document.body.appendChild(punkte);
             var p = punkte.style;
@@ -132,8 +199,31 @@ var Abschlussaufgabe;
         }
     }
     function checkPosition() {
-        for (var i = 0; i < Abschlussaufgabe.allCircles.length; i++) {
-            var a = Abschlussaufgabe.allCircles[i];
+        for (var i = 0; i < Abschlussaufgabe.allColourCircles.length; i++) {
+            //Position of ColourCircles                 
+            var a = Abschlussaufgabe.allColourCircles[i];
+            if (a.positionX >= 567 && a.positionX <= 750) {
+                if (a.positionY >= 245 && a.positionY <= 429) {
+                    console.log("Hey");
+                }
+            }
+            ;
+        }
+        ;
+        //Position of BlackCircles
+        for (var i = 0; i < Abschlussaufgabe.allBlackCircles.length; i++) {
+            var a = Abschlussaufgabe.allBlackCircles[i];
+            if (a.positionX >= 567 && a.positionX <= 750) {
+                if (a.positionY >= 245 && a.positionY <= 429) {
+                    console.log("Hey");
+                }
+            }
+            ;
+        }
+        ;
+        //Position of Stars
+        for (var i = 0; i < Abschlussaufgabe.allStars.length; i++) {
+            var a = Abschlussaufgabe.allStars[i];
             if (a.positionX >= 567 && a.positionX <= 750) {
                 if (a.positionY >= 245 && a.positionY <= 429) {
                     console.log("Hey");
@@ -146,8 +236,19 @@ var Abschlussaufgabe;
     ;
     function animate() {
         Abschlussaufgabe.crc2.putImageData(imgData, 0, 0);
-        for (var i = 0; i < Abschlussaufgabe.allCircles.length; i++) {
-            var b = Abschlussaufgabe.allCircles[i];
+        //animate ColourCircles
+        for (var i = 0; i < Abschlussaufgabe.allColourCircles.length; i++) {
+            var b = Abschlussaufgabe.allColourCircles[i];
+            b.update();
+        }
+        //animate BlackCircles
+        for (var i = 0; i < Abschlussaufgabe.allBlackCircles.length; i++) {
+            var b = Abschlussaufgabe.allBlackCircles[i];
+            b.update();
+        }
+        //animate Stars
+        for (var i = 0; i < Abschlussaufgabe.allStars.length; i++) {
+            var b = Abschlussaufgabe.allStars[i];
             b.update();
         }
         window.setTimeout(animate, 20);
@@ -346,7 +447,8 @@ var Abschlussaufgabe;
         Abschlussaufgabe.crc2.fillText("Refresh to play again", 400, 400);
         Abschlussaufgabe.crc2.closePath();
         Abschlussaufgabe.crc2.fill();
-        clearInterval(interval);
+        clearInterval(intervalCircles);
+        clearInterval(intervalStars);
         //        if (v > 10){
         //     
         //     crc2.beginPath();

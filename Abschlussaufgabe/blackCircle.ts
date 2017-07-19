@@ -13,14 +13,14 @@ namespace Abschlussaufgabe {
     
 
     
-    export class BlackCircle extends Circle {
+    export class BlackCircle extends movingObject {
     
         x: number;
         y: number;
         color: string;
         positionY:number;
         positionX:number;
-        j:number = 0;
+       
 
     
         constructor(_x:number,_y:number) {
@@ -29,7 +29,6 @@ namespace Abschlussaufgabe {
             this.x = Math.floor((Math.random() * canvas.width) + 50);
             this.y = Math.floor((Math.random() * canvas.height) + 50);
             this.draw();
-            this.j = 0;
            
 
 
@@ -46,7 +45,7 @@ namespace Abschlussaufgabe {
         crc2.closePath();
         crc2.fill();
         
-        j=0;
+        
     }
   
 

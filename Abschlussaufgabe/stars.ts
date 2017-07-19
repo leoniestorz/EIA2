@@ -1,5 +1,4 @@
 
-
 //Aufgabe: Abschlussaufgabe
 //Name: Leonie Storz
 //Matrikel: 255077
@@ -9,21 +8,18 @@
 //Er wurde nicht kopiert und auch nicht diktiert.
 
 
-
 namespace Abschlussaufgabe {
     
 
     
-    export class ColourCircle extends movingObject {
+    export class Star extends movingObject {
     
         x: number;
         y: number;
         color: string;
         positionY:number;
         positionX:number;
-      
-
-
+       
 
     
         constructor(_x:number,_y:number) {
@@ -32,11 +28,10 @@ namespace Abschlussaufgabe {
             this.x = Math.floor((Math.random() * canvas.width) + 50);
             this.y = Math.floor((Math.random() * canvas.height) + 50);
             this.draw();
-            this.setRandomStyle();
-          
+           
+
 
         }
- 
 
  
 //Methode 'draw' 
@@ -44,24 +39,29 @@ namespace Abschlussaufgabe {
     draw(): void {
        
         crc2.beginPath();
-        crc2.fillStyle = this.color;
-        crc2.arc(this.x,this.y,15, 0, 2 * Math.PI);
+        crc2.strokeStyle = "black";
+        crc2.fillStyle = "yellow";
+        crc2.moveTo(this.x,this.y);
+        crc2.lineTo(this.x + 10,this.y)
+        crc2.lineTo(this.x + 15,this.y - 10)
+        crc2.lineTo(this.x + 20,this.y )
+        crc2.lineTo(this.x + 30,this.y)
+        crc2.lineTo(this.x + 21,this.y + 6)
+        crc2.lineTo(this.x + 25,this.y + 15)
+        crc2.lineTo(this.x + 15,this.y + 8)
+        crc2.lineTo(this.x + 7,this.y + 15)
+        crc2.lineTo(this.x + 9,this.y +6)
         crc2.closePath();
+        crc2.stroke();
         crc2.fill();
         
         
-        
-        
     }
-    
-
   
-        
-//Methode 'setRandomStyle'
-    
-    setRandomStyle(): void {
-     
-    let randomColor: string = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
-    this.color = randomColor;}
+
+  } 
+
    
-}}
+}
+
+

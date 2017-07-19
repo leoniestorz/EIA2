@@ -13,14 +13,14 @@ namespace Abschlussaufgabe {
     
 
     
-    export class Circle {
+    export class movingObject {
     
         x: number;
         y: number;
         color: string;
         positionY:number;
         positionX:number;
-      
+        
 
 
     

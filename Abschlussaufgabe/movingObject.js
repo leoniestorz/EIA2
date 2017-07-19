@@ -7,26 +7,26 @@
 //Er wurde nicht kopiert und auch nicht diktiert.
 var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
-    var Circle = (function () {
-        function Circle(_x, _y) {
+    var movingObject = (function () {
+        function movingObject(_x, _y) {
             this.x = Math.floor((Math.random() * Abschlussaufgabe.canvas.width) + 50);
             this.y = Math.floor((Math.random() * Abschlussaufgabe.canvas.height) + 50);
             this.draw();
             //            this.setRandomStyle();
         }
         //Kreisposition herausfinden
-        Circle.prototype.takeCirclePosition = function () {
+        movingObject.prototype.takeCirclePosition = function () {
             this.positionX = this.x;
             this.positionY = this.y;
         };
         //Methode 'update' 
-        Circle.prototype.update = function () {
+        movingObject.prototype.update = function () {
             this.draw();
             this.move();
             this.takeCirclePosition();
         };
         //Methode 'draw' 
-        Circle.prototype.draw = function () {
+        movingObject.prototype.draw = function () {
             Abschlussaufgabe.crc2.beginPath();
             Abschlussaufgabe.crc2.fillStyle = this.color;
             Abschlussaufgabe.crc2.arc(this.x, this.y, 15, 0, 2 * Math.PI);
@@ -34,7 +34,7 @@ var Abschlussaufgabe;
             Abschlussaufgabe.crc2.fill();
         };
         //Methode 'move' 
-        Circle.prototype.move = function () {
+        movingObject.prototype.move = function () {
             this.y += Math.random() * 10;
             for (var i = 0; i < 100; i++) {
                 if (this.x < 0) {
@@ -49,17 +49,17 @@ var Abschlussaufgabe;
             }
         };
         //Methode 'setRandomPosition'
-        Circle.prototype.setRandomPosition = function () {
+        movingObject.prototype.setRandomPosition = function () {
             this.x = Math.floor((Math.random() * Abschlussaufgabe.canvas.width) - 50);
             this.y = Math.floor((Math.random() * Abschlussaufgabe.canvas.height) - 50);
         };
         //Methode 'setRandomStyle'
-        Circle.prototype.setRandomStyle = function () {
+        movingObject.prototype.setRandomStyle = function () {
             var randomColor = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
             this.color = randomColor;
         };
-        return Circle;
+        return movingObject;
     }());
-    Abschlussaufgabe.Circle = Circle;
+    Abschlussaufgabe.movingObject = movingObject;
 })(Abschlussaufgabe || (Abschlussaufgabe = {}));
-//# sourceMappingURL=circle.js.map
+//# sourceMappingURL=movingObject.js.map

@@ -16,14 +16,16 @@ namespace Abschlussaufgabe {
     
 
   
-    export let z: number = 0;
-    let v: number = 0;
-    let r:number = 11;
-    export let e:number;
-    export let j:number;
+    export let z: number = 0;  //Anzahl der Kreise insgesamt
+    export let g:number = 1;    //Anzahl der Sterne insgesamt
     
-    export let allCircles: Circle[] = [];
-   
+    let v: number = 0;         //Anzahl der Punkte
+    let r:number = 11;         //Zeitangabe
+ 
+
+    export let allColourCircles: ColourCircle[] = [];
+    export let allBlackCircles:BlackCircle[] = [];
+    export let allStars:Star[] = [];
 
     let imgData: ImageData;
 
@@ -100,18 +102,38 @@ namespace Abschlussaufgabe {
      
     
  } 
-      let interval =  setInterval(
+    
+//alle 2 Sekunden kommen 2 bunte Kreise hinzu
+       
+      let intervalCircles =  setInterval(
    
        function(){ if (z > 0) {
         z++;
         let b: ColourCircle = new ColourCircle(500, 0);
-                                       e = 0;
+                                
                                         z++;
-                                       allCircles.push(b);
+                                       allColourCircles.push(b);
                                        console.log(b)
                                        console.log(z + " " + "Circles"); }}, 2000
        
        ); 
+    
+//alle 2 Sekunden kommen 2 Sterne hinzu    
+    
+    let intervalStars =  setInterval(
+   
+       function(){ if (g > 0) {
+        g++;
+        let b: Star = new Star (500, 300);
+                                
+                                        g++;
+                                       allStars.push(b);
+                                       console.log(b)
+                                       console.log(g + " " + "Stars"); }}, 2000
+       
+       ); 
+    
+    
      
     function startGame(): void {
          
@@ -128,22 +150,24 @@ namespace Abschlussaufgabe {
                         
                                 case 0:
                                      let b: ColourCircle = new ColourCircle(this.x, this.y);
-//                                        e == 0;
+//                                       
                                         z++;
-                                       allCircles.push(b);
+                                        
+                                       allColourCircles.push(b);
 //                                       console.log(b)
                                        console.log(z + " " + "Circles");
                   
-                                       console.log(e);
+                                     
                                     break;
                                 case 1:
                                      let q: BlackCircle = new BlackCircle(this.x, this.y);
 //                                        e == 1;
                                         z++;
-                                        allCircles.push(q);
+                                        
+                                        allBlackCircles.push(q);
 //                                         console.log(q)
                                         console.log(z + " " + "Circles");
-//                                         console.log(j);
+
                                     break;
                   
                    
@@ -164,10 +188,12 @@ namespace Abschlussaufgabe {
     
     
         function removeCircle(event : MouseEvent): void {
-            
-            for (let i: number = 0; i < allCircles.length; i++) {
+
+//Remove ColourCircles
+                        
+            for (let i: number = 0; i < allColourCircles.length; i++) {
                 
-                let d: Circle = allCircles[i];
+                let d: ColourCircle = allColourCircles[i];
                 
                 
                 let clickX: number = event.clientX;
@@ -177,21 +203,17 @@ namespace Abschlussaufgabe {
                 let differenceY: number = Math.abs(d.positionY - clickY);
 
                 if (differenceX <= 40 && differenceY <= 40) {
-                    allCircles.splice(i, 1);
-                   
+                    allColourCircles.splice(i, 1);
                   
-                if (e == 0)
-                   v++;
-          
-                 else
-                    v--;   
+                    v++; //Pluspunkte im Spiel ( + 1 Punkt)
+  
                     
                console.log(v + " " + "Punkte")
                 
                    
                }
          
-//      Punkteanzeige
+        //Punkteanzeige
         
         let punkte = document.createElement("div");
         document.body.appendChild(punkte);
@@ -210,9 +232,95 @@ namespace Abschlussaufgabe {
         punkte.innerText = "Punkte: " + v; 
             
             }
+
+//Remove BlackCircles
             
+        for (let i: number = 0; i < allBlackCircles.length; i++) {
+                
+                let d: BlackCircle = allBlackCircles[i];
+                
+                
+                let clickX: number = event.clientX;
+                let clickY: number = event.clientY;
+                
+                let differenceX: number = Math.abs(d.positionX - clickX);
+                let differenceY: number = Math.abs(d.positionY - clickY);
+
+                if (differenceX <= 40 && differenceY <= 40) {
+                    allBlackCircles.splice(i, 1);
+                  
+                    if (v > 0)//damit am Ende kein Punktestand im Minusbereich entsteht
+                    v--; //Minuspunkte im Spiel (- 1 Punkt)
+                    
+                    
+               console.log(v + " " + "Punkte")
+                
+                   
+               }
+           
+        //Punkteanzeige
+        
+        let punkte = document.createElement("div");
+        document.body.appendChild(punkte);
+        let p: CSSStyleDeclaration = punkte.style;
+        p.backgroundColor = "white";
+        p.paddingLeft = "10px";
+        p.marginTop = "10px";
+        p.width = "120px";
+        p.height = "25px";
+        p.border = " 2px solid black";
+        p.position = "fixed";
+        p.marginLeft = "20px"
+        p.marginTop = " -585px"
+        p.fontSize = "20px"; 
+        
+        punkte.innerText = "Punkte: " + v; 
             
+            }
+         
+//Remove Stars
+                       
+      for (let i: number = 0; i < allStars.length; i++) {
+                
+                let d: ColourCircle = allStars[i];
+                
+                
+                let clickX: number = event.clientX;
+                let clickY: number = event.clientY;
+                
+                let differenceX: number = Math.abs(d.positionX - clickX);
+                let differenceY: number = Math.abs(d.positionY - clickY);
+
+                if (differenceX <= 40 && differenceY <= 40) {
+                    allStars.splice(i, 1);
+                  
+                    v += 2; //Pluspunkte im Spiel (+ 2 Punkte)
+  
+                    
+               console.log(v + " " + "Punkte")
+                
+                   
+               }
+         
+        //Punkteanzeige
+        
+        let punkte = document.createElement("div");
+        document.body.appendChild(punkte);
+        let p: CSSStyleDeclaration = punkte.style;
+        p.backgroundColor = "white";
+        p.paddingLeft = "10px";
+        p.marginTop = "10px";
+        p.width = "120px";
+        p.height = "25px";
+        p.border = " 2px solid black";
+        p.position = "fixed";
+        p.marginLeft = "20px"
+        p.marginTop = " -585px"
+        p.fontSize = "20px"; 
+        
+        punkte.innerText = "Punkte: " + v; 
             
+            }         
             
 
 }
@@ -220,9 +328,11 @@ namespace Abschlussaufgabe {
  function checkPosition(): void {
        
        
-            for (let i: number = 0; i < allCircles.length; i++) {
+            for (let i: number = 0; i < allColourCircles.length; i++) {
                 
-                let a: Circle = allCircles[i];
+//Position of ColourCircles                 
+                
+                let a: movingObject = allColourCircles[i];
                 
                 
                 if (a.positionX>= 567 && a.positionX <= 750) {
@@ -233,6 +343,39 @@ namespace Abschlussaufgabe {
                     }
                 };
             };
+
+//Position of BlackCircles
+     
+             for (let i: number = 0; i < allBlackCircles.length; i++) {
+                
+                let a: movingObject = allBlackCircles[i];
+                
+                
+                if (a.positionX>= 567 && a.positionX <= 750) {
+                if (a.positionY >= 245 && a.positionY <= 429) {
+                        console.log("Hey");
+
+
+                    }
+                };
+            };
+
+//Position of Stars
+     
+            for (let i: number = 0; i < allStars.length; i++) {
+                
+                let a: movingObject = allStars[i];
+                
+                
+                if (a.positionX>= 567 && a.positionX <= 750) {
+                if (a.positionY >= 245 && a.positionY <= 429) {
+                        console.log("Hey");
+
+
+                    }
+                };
+            };
+     
         }; 
         
 
@@ -241,10 +384,32 @@ namespace Abschlussaufgabe {
       function animate(): void {
         
        crc2.putImageData(imgData, 0, 0); 
-              
-       for (let i: number = 0; i < allCircles.length; i++) {
+        
+//animate ColourCircles
+                   
+       for (let i: number = 0; i < allColourCircles.length; i++) {
            
-       let b: Circle = allCircles[i];
+       let b: movingObject = allColourCircles[i];
+       b.update();
+       
+      
+       }
+
+//animate BlackCircles
+                    
+       for (let i: number = 0; i < allBlackCircles.length; i++) {
+           
+       let b: movingObject = allBlackCircles[i];
+       b.update();
+       
+      
+       }
+ 
+//animate Stars
+                    
+       for (let i: number = 0; i < allStars.length; i++) {
+           
+       let b: movingObject = allStars[i];
        b.update();
        
       
@@ -521,7 +686,8 @@ namespace Abschlussaufgabe {
      crc2.fill();
         
         
-     clearInterval(interval);
+     clearInterval(intervalCircles);
+     clearInterval(intervalStars);
         
         
 //        if (v > 10){

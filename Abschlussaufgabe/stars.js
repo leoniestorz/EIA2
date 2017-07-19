@@ -12,30 +12,35 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
-    var ColourCircle = (function (_super) {
-        __extends(ColourCircle, _super);
-        function ColourCircle(_x, _y) {
+    var Star = (function (_super) {
+        __extends(Star, _super);
+        function Star(_x, _y) {
             _super.call(this, _x, _y);
             this.x = Math.floor((Math.random() * Abschlussaufgabe.canvas.width) + 50);
             this.y = Math.floor((Math.random() * Abschlussaufgabe.canvas.height) + 50);
             this.draw();
-            this.setRandomStyle();
         }
         //Methode 'draw' 
-        ColourCircle.prototype.draw = function () {
+        Star.prototype.draw = function () {
             Abschlussaufgabe.crc2.beginPath();
-            Abschlussaufgabe.crc2.fillStyle = this.color;
-            Abschlussaufgabe.crc2.arc(this.x, this.y, 15, 0, 2 * Math.PI);
+            Abschlussaufgabe.crc2.strokeStyle = "black";
+            Abschlussaufgabe.crc2.fillStyle = "yellow";
+            Abschlussaufgabe.crc2.moveTo(this.x, this.y);
+            Abschlussaufgabe.crc2.lineTo(this.x + 10, this.y);
+            Abschlussaufgabe.crc2.lineTo(this.x + 15, this.y - 10);
+            Abschlussaufgabe.crc2.lineTo(this.x + 20, this.y);
+            Abschlussaufgabe.crc2.lineTo(this.x + 30, this.y);
+            Abschlussaufgabe.crc2.lineTo(this.x + 21, this.y + 6);
+            Abschlussaufgabe.crc2.lineTo(this.x + 25, this.y + 15);
+            Abschlussaufgabe.crc2.lineTo(this.x + 15, this.y + 8);
+            Abschlussaufgabe.crc2.lineTo(this.x + 7, this.y + 15);
+            Abschlussaufgabe.crc2.lineTo(this.x + 9, this.y + 6);
             Abschlussaufgabe.crc2.closePath();
+            Abschlussaufgabe.crc2.stroke();
             Abschlussaufgabe.crc2.fill();
         };
-        //Methode 'setRandomStyle'
-        ColourCircle.prototype.setRandomStyle = function () {
-            var randomColor = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
-            this.color = randomColor;
-        };
-        return ColourCircle;
+        return Star;
     }(Abschlussaufgabe.movingObject));
-    Abschlussaufgabe.ColourCircle = ColourCircle;
+    Abschlussaufgabe.Star = Star;
 })(Abschlussaufgabe || (Abschlussaufgabe = {}));
-//# sourceMappingURL=colourCircle.js.map
+//# sourceMappingURL=stars.js.map

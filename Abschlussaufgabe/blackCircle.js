@@ -16,11 +16,9 @@ var Abschlussaufgabe;
         __extends(BlackCircle, _super);
         function BlackCircle(_x, _y) {
             _super.call(this, _x, _y);
-            this.j = 0;
             this.x = Math.floor((Math.random() * Abschlussaufgabe.canvas.width) + 50);
             this.y = Math.floor((Math.random() * Abschlussaufgabe.canvas.height) + 50);
             this.draw();
-            this.j = 0;
         }
         //Methode 'draw' 
         BlackCircle.prototype.draw = function () {
@@ -29,10 +27,9 @@ var Abschlussaufgabe;
             Abschlussaufgabe.crc2.arc(this.x, this.y, 15, 0, 2 * Math.PI);
             Abschlussaufgabe.crc2.closePath();
             Abschlussaufgabe.crc2.fill();
-            Abschlussaufgabe.j = 0;
         };
         return BlackCircle;
-    }(Abschlussaufgabe.Circle));
+    }(Abschlussaufgabe.movingObject));
     Abschlussaufgabe.BlackCircle = BlackCircle;
 })(Abschlussaufgabe || (Abschlussaufgabe = {}));
 //# sourceMappingURL=blackCircle.js.map
