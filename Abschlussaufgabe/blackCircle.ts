@@ -13,15 +13,8 @@ namespace Abschlussaufgabe {
     
 
     
-    export class BlackCircle extends movingObject {
+    export class BlackCircle extends MovingObject {
     
-        x: number;
-        y: number;
-        color: string;
-        positionY:number;
-        positionX:number;
-       
-
     
         constructor(_x:number,_y:number) {
     
@@ -35,7 +28,7 @@ namespace Abschlussaufgabe {
         }
 
  
-//Methode 'draw' 
+//schwarze Bubble zeichnen 
         
     draw(): void {
        

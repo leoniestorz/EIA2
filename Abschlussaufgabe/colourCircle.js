@@ -21,7 +21,7 @@ var Abschlussaufgabe;
             this.draw();
             this.setRandomStyle();
         }
-        //Methode 'draw' 
+        //bunte Bubble zeichnen
         ColourCircle.prototype.draw = function () {
             Abschlussaufgabe.crc2.beginPath();
             Abschlussaufgabe.crc2.fillStyle = this.color;
@@ -29,13 +29,13 @@ var Abschlussaufgabe;
             Abschlussaufgabe.crc2.closePath();
             Abschlussaufgabe.crc2.fill();
         };
-        //Methode 'setRandomStyle'
+        //zufaellige Farbe
         ColourCircle.prototype.setRandomStyle = function () {
             var randomColor = "hsl(" + Math.random() * 360 + ", 50%, 50%)";
             this.color = randomColor;
         };
         return ColourCircle;
-    }(Abschlussaufgabe.movingObject));
+    }(Abschlussaufgabe.MovingObject));
     Abschlussaufgabe.ColourCircle = ColourCircle;
 })(Abschlussaufgabe || (Abschlussaufgabe = {}));
 //# sourceMappingURL=colourCircle.js.map

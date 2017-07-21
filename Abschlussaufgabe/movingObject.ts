@@ -13,7 +13,7 @@ namespace Abschlussaufgabe {
     
 
     
-    export class movingObject {
+    export class MovingObject {
     
         x: number;
         y: number;
@@ -30,27 +30,26 @@ namespace Abschlussaufgabe {
             this.x = Math.floor((Math.random() * canvas.width) + 50);
             this.y = Math.floor((Math.random() * canvas.height) + 50);
             this.draw();
-//            this.setRandomStyle();
 
         }
  
 //Kreisposition herausfinden
         
-        takeCirclePosition(): void {
+        takeObjectPosition(): void {
             this.positionX = this.x;
             this.positionY = this.y;   
 }
         
-//Methode 'update' 
+//Animation
         
     update () : void {
             
         this.draw ();
         this.move ();
-        this.takeCirclePosition();}
+        this.takeObjectPosition();}
 
  
-//Methode 'draw' 
+//Objekt zeichnen
         
     draw(): void {
        
@@ -62,7 +61,7 @@ namespace Abschlussaufgabe {
     }
     
  
-//Methode 'move' 
+//zufaellige Bewegungsrichtung
     
  move() : void {
            
@@ -80,7 +79,7 @@ namespace Abschlussaufgabe {
                 this.y = 0;
             }}}
         
-//Methode 'setRandomPosition'
+//zufaellige Startposition
         
    setRandomPosition(): void {
        
@@ -88,13 +87,5 @@ namespace Abschlussaufgabe {
             this.y = Math.floor((Math.random() * canvas.height) -50);
        
 }
-        
-//Methode 'setRandomStyle'
-    
-    setRandomStyle(): void {
-     
-    let randomColor: string = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
-    this.color = randomColor;}
-//   
-
-        }}
+          
+             }}

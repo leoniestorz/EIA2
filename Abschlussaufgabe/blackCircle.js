@@ -20,7 +20,7 @@ var Abschlussaufgabe;
             this.y = Math.floor((Math.random() * Abschlussaufgabe.canvas.height) + 50);
             this.draw();
         }
-        //Methode 'draw' 
+        //schwarze Bubble zeichnen 
         BlackCircle.prototype.draw = function () {
             Abschlussaufgabe.crc2.beginPath();
             Abschlussaufgabe.crc2.fillStyle = "rgb(0,0,0,0.8)";
@@ -29,7 +29,7 @@ var Abschlussaufgabe;
             Abschlussaufgabe.crc2.fill();
         };
         return BlackCircle;
-    }(Abschlussaufgabe.movingObject));
+    }(Abschlussaufgabe.MovingObject));
     Abschlussaufgabe.BlackCircle = BlackCircle;
 })(Abschlussaufgabe || (Abschlussaufgabe = {}));
 //# sourceMappingURL=blackCircle.js.map

@@ -19,8 +19,8 @@ namespace Abschlussaufgabe {
     export let z: number = 0;  //Anzahl der Kreise insgesamt
     export let g:number = 1;    //Anzahl der Sterne insgesamt
     
-    let v: number = 0;         //Anzahl der Punkte
-    let r:number = 31;         //Zeitangabe
+    let p: number = 0;         //Anzahl der Punkte
+    let r:number = 61;         //Zeitangabe
  
 
     export let allColourCircles: ColourCircle[] = [];
@@ -35,78 +35,53 @@ namespace Abschlussaufgabe {
         canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
 
-        
-//     Funktionsaufrufe
-                 
        drawStartscreen(); 
            
        changeScreen();
        setCounter(); 
+       removeStarttext();
 
-//     Div-Element erstellen
-               
-//        let div : HTMLDivElement = document.createElement ("div");
-//        document.body.appendChild(div);
-//        let s: CSSStyleDeclaration = div.style;
-//        s.backgroundColor= "red";
-//        s.marginTop = "-250px";
-//        s.marginLeft = "620px";
-//        s.height = "100px";
-//        s.width = "100px";
-//        s.position = "fixed";
-//        s.borderBottomLeftRadius = "100px";
-//        s.borderBottomRightRadius = "100px";
-//        s.borderTopLeftRadius = "100px";
-//        s.borderTopRightRadius = "100px";
 
 //      Punkteanzeige
         
         let punkte = document.createElement("div");
         document.body.appendChild(punkte);
-          let p: CSSStyleDeclaration = punkte.style;
-        p.backgroundColor = "#8FBC8F";
-        p.paddingLeft = "10px";
-        p.marginTop = "10px";
-        p.width = "220px";
-        p.height = "50px";
-        p.border = " 2px solid black";
-        p.position = "fixed";
-        p.marginLeft = "20px"
-        p.marginTop = " -570px"
-        p.fontSize = "40px"; 
-        p.font = "Indie Flower";
+          let i: CSSStyleDeclaration = punkte.style;
+        i.backgroundColor = "rgb(143,188,143)";
+        i.paddingLeft = "10px";
+        i.marginTop = "10px";
+        i.width = "220px";
+        i.height = "50px";
+        i.border = " 2px solid black";
+        i.position = "fixed";
+        i.marginLeft = "20px"
+        i.marginTop = " -570px"
+        i.fontSize = "40px"; 
+        i.font = "Indie Flower";
         
         punkte.innerText = "Punkte:"
+        
+
        
 //      Speichern des Canvas als Bild
             
-        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); 
+        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height);
+
         
         window.setTimeout(animate, 20);
-        
+
+
         startGame();
         
-//      EventListener 
         
-//      div.addEventListener("touchend", changeScreen); 
-//      div.addEventListener("click", changeScreen); 
-     
-        
-        canvas.addEventListener("touchend", removeCircle);
-        canvas.addEventListener("click", removeCircle);   
-           
-//      div.addEventListener("touchend", removeCircle);
-//      div.addEventListener("click", removeCircle); 
-        
- 
-        
-     
-    
+        canvas.addEventListener("touchend", removeObject);
+        canvas.addEventListener("click", removeObject);   
+
  } 
     
 //alle 2 Sekunden kommen 2 bunte Kreise hinzu
        
-      let intervalCircles =  setInterval(
+      let intervalColourCircles =  setInterval(
    
        function(){ if (z > 0) {
         z++;
@@ -115,11 +90,26 @@ namespace Abschlussaufgabe {
                                         z++;
                                        allColourCircles.push(b);
                                        console.log(b)
-                                       console.log(z + " " + "Circles"); }}, 2000
+                                       console.log(z + " " + "Circles"); }}, 1000
        
        ); 
     
-//alle 4 Sekunden kommen 2 Sterne hinzu    
+//alle 2 Sekunden kommen 2 schwarze Kreise hinzu
+       
+      let intervalBlackCircles =  setInterval(
+   
+       function(){ if (z > 0) {
+        z++;
+        let b: BlackCircle = new BlackCircle(500, 0);
+                                
+                                        z++;
+                                       allBlackCircles.push(b);
+                                       console.log(b)
+                                       console.log(z + " " + "Circles"); }}, 6000
+       
+       ); 
+    
+//alle 8 Sekunden kommen 2 Sterne hinzu    
     
     let intervalStars =  setInterval(
    
@@ -130,7 +120,7 @@ namespace Abschlussaufgabe {
                                         g++;
                                        allStars.push(b);
                                        console.log(b)
-                                       console.log(g + " " + "Stars"); }}, 4000
+                                       console.log(g + " " + "Stars"); }}, 8000
        
        ); 
     
@@ -138,12 +128,10 @@ namespace Abschlussaufgabe {
      
     function startGame(): void {
          
-
+//       console.log("startGame");
         
-       for (var i = 0; i < 10; i++) {    
-
-           
-            
+       for (var i = 0; i < 20; i++) {    
+      
 
        let randomCircle = Math.floor(Math.random() * 2); 
        
@@ -151,46 +139,33 @@ namespace Abschlussaufgabe {
                         
                                 case 0:
                                      let b: ColourCircle = new ColourCircle(this.x, this.y);
-//                                       
                                         z++;
-                                        
                                        allColourCircles.push(b);
-//                                       console.log(b)
                                        console.log(z + " " + "Circles");
                   
-                                     
                                     break;
                                 case 1:
                                      let q: BlackCircle = new BlackCircle(this.x, this.y);
-//                                        e == 1;
                                         z++;
-                                        
                                         allBlackCircles.push(q);
-//                                         console.log(q)
                                         console.log(z + " " + "Circles");
 
                                     break;
                   
                    
                    }
-           
-           
-   
-        removeStarttext(); 
-           
-     
-
+  
        }
         
-               
+      
   
       window.setTimeout(animate, 20);
   }    
     
     
-        function removeCircle(event : MouseEvent): void {
+        function removeObject(event : MouseEvent): void {
 
-//Remove ColourCircles
+//Remove ColourCircle
                         
             for (let i: number = 0; i < allColourCircles.length; i++) {
                 
@@ -203,39 +178,46 @@ namespace Abschlussaufgabe {
                 let differenceX: number = Math.abs(d.positionX - clickX);
                 let differenceY: number = Math.abs(d.positionY - clickY);
 
-                if (differenceX <= 40 && differenceY <= 40) {
+                if (differenceX <= 30 && differenceY <= 30) {
                     allColourCircles.splice(i, 1);
+//                    console.log("removeColourCircle");
                   
                     if (r > 0)
-                    v++; //Pluspunkte im Spiel ( + 1 Punkt)
+                    p++; //Pluspunkte im Spiel ( + 1 Punkt)
   
                     
-               console.log(v + " " + "Punkte")
+               console.log(p + " " + "Punkte")
                 
                    
                }
          
         //Punkteanzeige
-          let punkte = document.createElement("div");
+       let punkte = document.createElement("div");
         document.body.appendChild(punkte);
-          let p: CSSStyleDeclaration = punkte.style;
-        p.backgroundColor = "#8FBC8F";
-        p.paddingLeft = "10px";
-        p.marginTop = "10px";
-        p.width = "220px";
-        p.height = "50px";
-        p.border = " 2px solid black";
-        p.position = "fixed";
-        p.marginLeft = "20px"
-        p.marginTop = " -570px"
-        p.fontSize = "40px"; 
-        p.font = "Indie Flower";
+          let m: CSSStyleDeclaration = punkte.style;
+        m.backgroundColor = "rgb(143,188,143)";
+        m.paddingLeft = "10px";
+        m.marginTop = "10px";
+        m.width = "220px";
+        m.height = "50px";
+        m.border = " 2px solid black";
+        m.position = "fixed";
+        m.marginLeft = "20px"
+        m.marginTop = " -570px"
+        m.fontSize = "40px"; 
+        m.font = "Indie Flower";
+        
                 
-        punkte.innerText = "Punkte: " + v; 
+        punkte.innerText = "Punkte: " + p; 
+                
+                
+                
+                
             
             }
+            
 
-//Remove BlackCircles
+//Remove BlackCircle
             
         for (let i: number = 0; i < allBlackCircles.length; i++) {
                 
@@ -248,44 +230,47 @@ namespace Abschlussaufgabe {
                 let differenceX: number = Math.abs(d.positionX - clickX);
                 let differenceY: number = Math.abs(d.positionY - clickY);
 
-                if (differenceX <= 40 && differenceY <= 40) {
+                if (differenceX <= 30 && differenceY <= 30) {
                     allBlackCircles.splice(i, 1);
+//                    console.log("removeBlackCircle");
                   
-                    if (v > 0 && r > 0)//damit am Ende kein Punktestand im Minusbereich entsteht
-                    v--; //Minuspunkte im Spiel (- 1 Punkt)
+                    if (p > 4 && r > 0)//damit am Ende kein Punktestand im Minusbereich entsteht
+                    p -= 5; //Minuspunkte im Spiel (- 5 Punkt)
                     
                     
-               console.log(v + " " + "Punkte")
+               console.log(p + " " + "Punkte")
                 
                    
                }
            
         //Punkteanzeige
         
-           let punkte = document.createElement("div");
+       let punkte = document.createElement("div");
         document.body.appendChild(punkte);
-          let p: CSSStyleDeclaration = punkte.style;
-        p.backgroundColor = "#8FBC8F";
-        p.paddingLeft = "10px";
-        p.marginTop = "10px";
-        p.width = "220px";
-        p.height = "50px";
-        p.border = " 2px solid black";
-        p.position = "fixed";
-        p.marginLeft = "20px"
-        p.marginTop = " -570px"
-        p.fontSize = "40px"; 
-        p.font = "Indie Flower";
+          let m: CSSStyleDeclaration = punkte.style;
+        m.backgroundColor = "rgb(143,188,143)";
+        m.paddingLeft = "10px";
+        m.marginTop = "10px";
+        m.width = "220px";
+        m.height = "50px";
+        m.border = " 2px solid black";
+        m.position = "fixed";
+        m.marginLeft = "20px"
+        m.marginTop = " -570px"
+        m.fontSize = "40px"; 
+        m.font = "Indie Flower";
         
-        punkte.innerText = "Punkte: " + v; 
+        
+        
+        punkte.innerText = "Punkte: " + p; 
             
             }
          
-//Remove Stars
+//Remove Star
                        
       for (let i: number = 0; i < allStars.length; i++) {
                 
-                let d: ColourCircle = allStars[i];
+                let d: Star = allStars[i];
                 
                 
                 let clickX: number = event.clientX;
@@ -294,36 +279,38 @@ namespace Abschlussaufgabe {
                 let differenceX: number = Math.abs(d.positionX - clickX);
                 let differenceY: number = Math.abs(d.positionY - clickY);
 
-                if (differenceX <= 40 && differenceY <= 40) {
+                if (differenceX <= 30 && differenceY <= 30) {
                     allStars.splice(i, 1);
+//                    console.log("removeStar");
                  
                     if (r > 0)
-                    v += 2; //Pluspunkte im Spiel (+ 2 Punkte)
-  
+                   { p += 3; //Pluspunkte im Spiel (+ 3 Punkte)
+                    r += 3;} // 2 Sekunden Bonuszeit
                     
-               console.log(v + " " + "Punkte")
+               console.log(p + " " + "Punkte")
                 
                    
                }
          
         //Punkteanzeige
         
-         let punkte = document.createElement("div");
+      let punkte = document.createElement("div");
         document.body.appendChild(punkte);
-          let p: CSSStyleDeclaration = punkte.style;
-        p.backgroundColor = "#8FBC8F";
-        p.paddingLeft = "10px";
-        p.marginTop = "10px";
-        p.width = "220px";
-        p.height = "50px";
-        p.border = " 2px solid black";
-        p.position = "fixed";
-        p.marginLeft = "20px"
-        p.marginTop = " -570px"
-        p.fontSize = "40px"; 
-        p.font = "Indie Flower";
+          let m: CSSStyleDeclaration = punkte.style;
+        m.backgroundColor = "rgb(143,188,143)";
+        m.paddingLeft = "10px";
+        m.marginTop = "10px";
+        m.width = "220px";
+        m.height = "50px";
+        m.border = " 2px solid black";
+        m.position = "fixed";
+        m.marginLeft = "20px"
+        m.marginTop = " -570px"
+        m.fontSize = "40px"; 
+        m.font = "Indie Flower";
         
-        punkte.innerText = "Punkte: " + v; 
+        
+        punkte.innerText = "Punkte: " + p; 
             
             }         
             
@@ -332,17 +319,18 @@ namespace Abschlussaufgabe {
 
  function checkPosition(): void {
        
-       
+
+           
             for (let i: number = 0; i < allColourCircles.length; i++) {
                 
 //Position of ColourCircles                 
                 
-                let a: movingObject = allColourCircles[i];
+                let a: MovingObject = allColourCircles[i];
                 
                 
                 if (a.positionX>= 567 && a.positionX <= 750) {
                 if (a.positionY >= 245 && a.positionY <= 429) {
-                        console.log("Hey");
+//                         console.log("checkColourCirclePosition");
 
 
                     }
@@ -353,12 +341,12 @@ namespace Abschlussaufgabe {
      
              for (let i: number = 0; i < allBlackCircles.length; i++) {
                 
-                let a: movingObject = allBlackCircles[i];
+                let a: MovingObject = allBlackCircles[i];
                 
                 
                 if (a.positionX>= 567 && a.positionX <= 750) {
                 if (a.positionY >= 245 && a.positionY <= 429) {
-                        console.log("Hey");
+//                        console.log("checkBlackCirclePosition");
 
 
                     }
@@ -369,12 +357,12 @@ namespace Abschlussaufgabe {
      
             for (let i: number = 0; i < allStars.length; i++) {
                 
-                let a: movingObject = allStars[i];
+                let a: MovingObject = allStars[i];
                 
                 
                 if (a.positionX>= 567 && a.positionX <= 750) {
                 if (a.positionY >= 245 && a.positionY <= 429) {
-                        console.log("Hey");
+//                        console.log("checkStarPosition");
 
 
                     }
@@ -388,14 +376,15 @@ namespace Abschlussaufgabe {
         
       function animate(): void {
         
-       crc2.putImageData(imgData, 0, 0); 
+       crc2.putImageData(imgData, 0, 0);
         
 //animate ColourCircles
                    
        for (let i: number = 0; i < allColourCircles.length; i++) {
            
-       let b: movingObject = allColourCircles[i];
+       let b: MovingObject = allColourCircles[i];
        b.update();
+       
        
       
        }
@@ -404,7 +393,7 @@ namespace Abschlussaufgabe {
                     
        for (let i: number = 0; i < allBlackCircles.length; i++) {
            
-       let b: movingObject = allBlackCircles[i];
+       let b: MovingObject = allBlackCircles[i];
        b.update();
        
       
@@ -414,7 +403,7 @@ namespace Abschlussaufgabe {
                     
        for (let i: number = 0; i < allStars.length; i++) {
            
-       let b: movingObject = allStars[i];
+       let b: MovingObject = allStars[i];
        b.update();
        
       
@@ -422,37 +411,24 @@ namespace Abschlussaufgabe {
        
        window.setTimeout(animate, 20);
        
+       
         if ( r == 0)   
-        endGame();        
-        
-//        canvas.addEventListener("touchend",addCircle); 
-//        canvas.addEventListener("click", addCircle);
+        endGame();       
     }      
         
-        
 
-
-    
 //--------------------------------------Funktionen---------------------------------------------------------------------------
     
    
  function drawStartscreen (): void {
 
-//      Hintergrund
+     console.log("drawStartscreen");
+
         crc2.beginPath();
-        crc2.fillStyle = "#F08080 ";
+        crc2.fillStyle = "rgb(143,188,143,0.5) ";
         crc2.fillRect(0,0,canvas.width,canvas.height);
         crc2.closePath();
-     
-//       var image = new Image();
-//       image.src = 'Images/hintergrund.jpg';
-//       crc2.drawImage(image, 100, 450, 100, 100)
-//       image.id += "button";
-//       let i: CSSStyleDeclaration = image.style;
-//       i.position = "fixed";
-     
-     
-//      Textfeld
+
         crc2.beginPath();
         crc2.fillStyle = "black";
        
@@ -496,13 +472,13 @@ namespace Abschlussaufgabe {
      
        crc2.beginPath();
        crc2.strokeStyle = "#000000";
-       crc2.arc(100,100,35, 0, 2 * Math.PI);
+       crc2.arc(100,200,35, 0, 2 * Math.PI);
        crc2.closePath();
        crc2.stroke();
      
        crc2.beginPath();
        crc2.strokeStyle = "#000000";
-       crc2.arc(500,600,65, 0, 2 * Math.PI);
+       crc2.arc(500,650,65, 0, 2 * Math.PI);
        crc2.closePath();
        crc2.stroke();
      
@@ -536,111 +512,63 @@ namespace Abschlussaufgabe {
    
   function changeScreen () : void {
       
+  console.log("changeScreen");    
+      
 //   Alertbox   
-// alert( "So geht's:\n\n\nFange so viele herabfallende Baelle wie moeglich um Punkte zu sammeln!\n\n\nAber Achtung! Erwische nicht die schwarzen Baelle - sie geben Minuspunkte! Durch die seltenen Sterne hingegen erhaelst du jeweils 3 Pluspunkte!\n\nDie Zeit laeuft sobald du mit 'Ok' bestaetigt hast.\n\n\n[ Hinweis: Wenn du auf dem Smartphone spielst drehe den Bildschirm ]");    
- alert( "So geht's:\n\n\nFange so viele herabfallende Baelle wie moeglich um Punkte zu sammeln!\n\nBunte Baelle = + 1 Punkt\nSterne = + 2 Bonusunkte\nSchwarze Baelle = - 2 Punkte\n\nDie Zeit laeuft sobald du mit 'Ok' bestaetigt hast.\n\n\n[ Hinweis: Wenn du auf dem Smartphone spielst drehe den Bildschirm ]");     
-       crc2.beginPath();
-     crc2.fillStyle = "#8FBC8F ";
+
+     alert( "So geht's:\n\n\nFange so viele herabfallende Bubbles wie moeglich um Punkte zu sammeln!\n\nBunte Bubble = + 1 Punkt\nStern = + 3 Punkte und 2 Sekunden Bonuszeit\nSchwarze Bubble = - 5 Punkte\n\nDeine Minute laeuft sobald du mit 'Ok' bestaetigt hast.\n\n\n[ Hinweis: Wenn du auf dem Smartphone oder Tablet spielst drehe den Bildschirm ]");     
+     
+     crc2.beginPath();
+     crc2.fillStyle = "rgb(143,188,143,0.5) ";
      crc2.fillRect(0,0,canvas.width,canvas.height);
      crc2.closePath();
-     
-     
-//    Textfeld    
+   
     
      crc2.beginPath();
-     crc2.fillStyle = "#8FBC8F ";
+     crc2.fillStyle = "rgb(143,188,143,0.5) ";
      crc2.closePath();
      crc2.fill();
-  
 
-  
   }   
  
 
 
  function removeStarttext () : void {
-     
- //   Hintergrund
-     
+ 
      crc2.beginPath();
-     crc2.fillStyle = "#8FBC8F";
+     crc2.fillStyle = "rgb(143,188,143,0.5) ";
      crc2.fillRect(0,0,canvas.width,canvas.height);
      crc2.closePath();
-     
-     
-//    Textfeld    
-     
+
      crc2.beginPath();
-     crc2.fillStyle = "#8FBC8F";
-      crc2.font="50px Georgia";
-     crc2.fillText("Bubble Catch",480,300);
+     crc2.fillStyle = "rgb(143,188,143,0.5) F";
      crc2.closePath();
      crc2.fill();
  
  
  }
      
-  
-//Fuegt bei jedem Kick neue Kreise hinzu, 
-//damit der Spieler weiterhin Punkte erzielen kann
-        
-    function addCircle(_event:Event): void {
-        
-//        setInterval(
-//   
-//       function(){ if (z > 0) {
-//        z++;
-//        let b: ColourCircle = new ColourCircle(500, 0);
-//                                       e = 0;
-//                                        z++;
-//                                       allCircles.push(b);
-//                                       console.log(b)
-//                                       console.log(z); }}, 1000
-//       
-//       ); 
-        
-        
-        
-//         for (var i = 0; i < 2; i++) {    
-//
-//           
-//            
-//
-//    let randomCircle = Math.floor(Math.random() * 2); 
-//       
-//           switch (randomCircle) {
-//                        
-//                                case 0:
-//                                     let b: ColourCircle = new ColourCircle(500, 0);
-//                                       e = 0;
-//                                        z++;
-//                                       allCircles.push(b);
-//                                       console.log(b)
-//                                       console.log(z);
-//                                    break;
-//                                case 1:
-//                                     let q: BlackCircle = new BlackCircle(500, 0);
-//                                        e = 1;
-//                                          z++;
-//                                        allCircles.push(q);
-//                                         console.log(q)
-//                                        console.log(z);
-//                                    break;
-//                                }   
-//   
-//        removeStarttext();   
-//
-//       }
-//  
-       
- }  
-     
+ 
    function setCounter () : void {
-        
+       
+ console.log("setCounter");
+       
+//     Zeitanzeige
+          
+       setInterval(
+   
+       function(){ if (r > 0) {
+        r--;
+        console.log ("noch" + " " + r + " " + "Sekunden");
+        timer.innerHTML = "noch" + " " + r + " " + "Sekunden"; }}, 1000
+       
+          
+       );         
+       
+       
        let timer : HTMLDivElement = document.createElement ("div");
         document.body.appendChild(timer);
         let t: CSSStyleDeclaration = timer.style;
-        t.backgroundColor= "#8FBC8F";
         t.marginTop = "-575px";
         t.marginLeft = "1060px";
         t.paddingLeft = "20px";
@@ -650,7 +578,6 @@ namespace Abschlussaufgabe {
         t.fontSize = "30px";
         t.font = "Indie Flower";
         t.position = "fixed";
-//        t.border = "3px solid #000000";
        
        
         crc2.beginPath();
@@ -673,42 +600,13 @@ namespace Abschlussaufgabe {
         crc2.closePath();
         crc2.stroke();
        
-//        crc2.beginPath();
-//        crc2.fillStyle = "#000000";
-//        crc2.fillRect(1030,40,12, 3);
-//        crc2.fill();
 
-//       let image = new Image();
-//       image.src = 'Images/stoppuhr.png';
-//       crc2.drawImage(image, 1000, 20, 55, 55)
-//       let i: CSSStyleDeclaration = image.style;
-//       i.position = "fixed";
-    
-      
-//     Zeitanzeige
-          
-       setInterval(
-   
-       function(){ if (r > 0) {
-        r--;
-        console.log ("noch" + " " + r + " " + "Sekunden");
-        timer.innerHTML = "noch" + " " + r + " " + "Sekunden"; }}, 1000
-       
-          
-       );   
-       
-
-        
-   
-   
-   
-   
    }
     
     
     function endGame () : void {
         
-        
+       console.log("endGame"); 
          
        crc2.beginPath();
      crc2.fillStyle = "black";
@@ -720,124 +618,20 @@ namespace Abschlussaufgabe {
       crc2.font="50px Indie Flower";
      crc2.fillText("GAME OVER",500,100)
      crc2.fillText("Deine Zeit ist abgelaufen",370,200);
-     crc2.fillText("Du hast" + " " + v + " " + "Punkte erreicht!", 400, 300);  
+     crc2.fillText("Du hast" + " " + p + " " + "Punkte erreicht!", 400, 300);  
      crc2.fillText("[Seite neu laden um erneut zu spielen]", 300, 500)  
      crc2.closePath();
      crc2.fill();
         
         
-     clearInterval(intervalCircles);
+     clearInterval(intervalColourCircles);
+     clearInterval(intervalBlackCircles);
      clearInterval(intervalStars);
-        
-        
-//        if (v > 10){
-//     
-//     crc2.beginPath();
-//     crc2.fillStyle = "black";
-//     crc2.fillRect(0,0,canvas.width,canvas.height);
-//     crc2.closePath();
-//     
-//     crc2.beginPath();
-//     crc2.fillStyle = "white";
-//      crc2.font="50px Georgia";
-//     crc2.fillText("Game Over",480,100);
-//     crc2.fillText("Good! You reached" + " " + v + " " + "points!", 400, 200);  
-//     crc2.fillText("Refresh to play again", 400, 300)  
-//     crc2.closePath();
-//     crc2.fill();
-//     }
-//        
-//      
-//      if ( v = 5) {
-//     
-//     crc2.beginPath();
-//     crc2.fillStyle = "black";
-//     crc2.fillRect(0,0,canvas.width,canvas.height);
-//     crc2.closePath();
-//     
-//     crc2.beginPath();
-//     crc2.fillStyle = "white";
-//      crc2.font="50px Georgia";
-//     crc2.fillText("Game Over",480,100);
-//     crc2.fillText("Wow! You reached" + " " + v + " " + "points!", 400, 200);  
-//     crc2.fillText("Refresh to play again", 400, 300)  
-//     crc2.closePath();
-//     crc2.fill();
-//     }    
-        
-
-    
-      
+   
     
     }
-    
-
-     
-       
-       
-//    function removeCircle () : void {
-//         
-//        this.parentNode.removeChild(this);
-//         allCircles.push();
-//         z--
-//         console.log(z);
-//    
-//    }
 
 
-    
-//    function drawButton(_color:string, _farbe:string): void {
-//        
-//
-//    var btn = document.createElement("BUTTON");
-//    var t = document.createTextNode("Start");
-//        btn.appendChild(t);
-//    document.body.appendChild(btn);
-//    btn.id += "button";
-//        
-//        btn.style.color = "#000000";
-//        btn.style.backgroundColor = "#FFFFFF";
-//        btn.style.height = "50px";
-//        btn.style.marginTop = "-300px";
-//        btn.style.marginLeft = "650px";
-//}
-        
-// function drawCircle (_fillStyle: string, x:number, y:number) {
-//     
-//        crc2.beginPath();
-//        crc2.fillStyle = _fillStyle;
-//         
-//        crc2.arc(x,y,15, 0, 2 * Math.PI);
-//       
-//        crc2.closePath();
-//        crc2.fill();
-//        
-// 
-// 
-// }
-        
-
-//        let s: CSSStyleDeclaration = div.style;
-//        s.backgroundColor=_color;
-//        
-//        let f: CSSStyleDeclaration = div.style;
-//        f.color=_farbe;
-        
-
-    
-// function createButton() {
-//   
-//    let button: HTMLButtonElement = document.createElement("button");
-//        canvas.appendChild(button);
-//        
-////        button.id += "button"; 
-////        
-////      
-//        document.getElementById("button").style.background = "#000000"; 
-////        document.getElementById("button").style.width = "170px";
-////        document.getElementById("button").style.height = "50px";
-// }
-//    ;   
     
 
 };

@@ -14,18 +14,9 @@ namespace Abschlussaufgabe {
     
 
     
-    export class ColourCircle extends movingObject {
+    export class ColourCircle extends MovingObject {
     
-        x: number;
-        y: number;
-        color: string;
-        positionY:number;
-        positionX:number;
-      
 
-
-
-    
         constructor(_x:number,_y:number) {
     
             super(_x,_y);
@@ -36,10 +27,8 @@ namespace Abschlussaufgabe {
           
 
         }
- 
 
- 
-//Methode 'draw' 
+//bunte Bubble zeichnen
         
     draw(): void {
        
@@ -48,16 +37,12 @@ namespace Abschlussaufgabe {
         crc2.arc(this.x,this.y,15, 0, 2 * Math.PI);
         crc2.closePath();
         crc2.fill();
-        
-        
-        
-        
-    }
+ }
     
 
   
         
-//Methode 'setRandomStyle'
+//zufaellige Farbe
     
     setRandomStyle(): void {
      

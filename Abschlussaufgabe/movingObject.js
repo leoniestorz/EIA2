@@ -7,34 +7,33 @@
 //Er wurde nicht kopiert und auch nicht diktiert.
 var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
-    var movingObject = (function () {
-        function movingObject(_x, _y) {
+    var MovingObject = (function () {
+        function MovingObject(_x, _y) {
             this.x = Math.floor((Math.random() * Abschlussaufgabe.canvas.width) + 50);
             this.y = Math.floor((Math.random() * Abschlussaufgabe.canvas.height) + 50);
             this.draw();
-            //            this.setRandomStyle();
         }
         //Kreisposition herausfinden
-        movingObject.prototype.takeCirclePosition = function () {
+        MovingObject.prototype.takeObjectPosition = function () {
             this.positionX = this.x;
             this.positionY = this.y;
         };
-        //Methode 'update' 
-        movingObject.prototype.update = function () {
+        //Animation
+        MovingObject.prototype.update = function () {
             this.draw();
             this.move();
-            this.takeCirclePosition();
+            this.takeObjectPosition();
         };
-        //Methode 'draw' 
-        movingObject.prototype.draw = function () {
+        //Objekt zeichnen
+        MovingObject.prototype.draw = function () {
             Abschlussaufgabe.crc2.beginPath();
             Abschlussaufgabe.crc2.fillStyle = this.color;
             Abschlussaufgabe.crc2.arc(this.x, this.y, 15, 0, 2 * Math.PI);
             Abschlussaufgabe.crc2.closePath();
             Abschlussaufgabe.crc2.fill();
         };
-        //Methode 'move' 
-        movingObject.prototype.move = function () {
+        //zufaellige Bewegungsrichtung
+        MovingObject.prototype.move = function () {
             this.y += Math.random() * 10;
             for (var i = 0; i < 100; i++) {
                 if (this.x < 0) {
@@ -48,18 +47,13 @@ var Abschlussaufgabe;
                 }
             }
         };
-        //Methode 'setRandomPosition'
-        movingObject.prototype.setRandomPosition = function () {
+        //zufaellige Startposition
+        MovingObject.prototype.setRandomPosition = function () {
             this.x = Math.floor((Math.random() * Abschlussaufgabe.canvas.width) - 50);
             this.y = Math.floor((Math.random() * Abschlussaufgabe.canvas.height) - 50);
         };
-        //Methode 'setRandomStyle'
-        movingObject.prototype.setRandomStyle = function () {
-            var randomColor = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
-            this.color = randomColor;
-        };
-        return movingObject;
+        return MovingObject;
     }());
-    Abschlussaufgabe.movingObject = movingObject;
+    Abschlussaufgabe.MovingObject = MovingObject;
 })(Abschlussaufgabe || (Abschlussaufgabe = {}));
 //# sourceMappingURL=movingObject.js.map

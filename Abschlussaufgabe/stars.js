@@ -20,10 +20,9 @@ var Abschlussaufgabe;
             this.y = Math.floor((Math.random() * Abschlussaufgabe.canvas.height) + 50);
             this.draw();
         }
-        //Methode 'draw' 
+        //Stern zeichnen
         Star.prototype.draw = function () {
             Abschlussaufgabe.crc2.beginPath();
-            //        crc2.strokeStyle = "black";
             Abschlussaufgabe.crc2.fillStyle = "rgb(255,215,0,0.8)";
             Abschlussaufgabe.crc2.moveTo(this.x, this.y);
             Abschlussaufgabe.crc2.lineTo(this.x + 10, this.y);
@@ -36,11 +35,10 @@ var Abschlussaufgabe;
             Abschlussaufgabe.crc2.lineTo(this.x + 7, this.y + 15);
             Abschlussaufgabe.crc2.lineTo(this.x + 9, this.y + 6);
             Abschlussaufgabe.crc2.closePath();
-            //        crc2.stroke();
             Abschlussaufgabe.crc2.fill();
         };
         return Star;
-    }(Abschlussaufgabe.movingObject));
+    }(Abschlussaufgabe.MovingObject));
     Abschlussaufgabe.Star = Star;
 })(Abschlussaufgabe || (Abschlussaufgabe = {}));
 //# sourceMappingURL=stars.js.map
